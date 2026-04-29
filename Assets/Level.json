@@ -1,0 +1,29 @@
+
+{
+    "Level Info": {
+    "Name": "Birds of a Feather",
+    "Artist": "Billie Eilish",
+    "Level Author": "Dev",
+    "Difficulty": "Easy",
+    "Dust": 1.0,
+    "Speed": 1,
+    "Length": 210
+},
+    "Level Data": {
+    "Tile1":
+    [1, 1, 180, -1080],
+    "Tile2":
+    [2, 3, 540, -1080],
+    "Tile3":
+    [3, 3, 180, -1080],
+    "Tile4":
+    [3, 3, 900, -1080],
+    "Tile5":
+    [3, 3, 180, -1080]
+},
+    "Player Data": {
+        "High Score": 0,
+        "Attempts": 0,
+        "Completed": false
+}
+}

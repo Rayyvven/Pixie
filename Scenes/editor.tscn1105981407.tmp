@@ -1,0 +1,385 @@
+[gd_scene format=3 uid="uid://dj0qeuu7oacob"]
+
+[ext_resource type="AudioStream" uid="uid://cpf4sluskwrcb" path="res://Music/Alone With Me - Good Kid.mp3" id="1_32ik4"]
+[ext_resource type="Script" uid="uid://ck3qkqhsan1yr" path="res://Scenes/camera_2d.gd" id="1_b78su"]
+[ext_resource type="Script" uid="uid://carvup2f4ru0q" path="res://Scenes/play.gd" id="3_7fkqn"]
+[ext_resource type="Texture2D" uid="uid://d3hcrw54n06ck" path="res://Assets/PlayButton.png" id="4_nfgmo"]
+[ext_resource type="Script" uid="uid://dt0mj164cp4oe" path="res://Scenes/Pseudo.gd" id="4_wkuwf"]
+[ext_resource type="PackedScene" uid="uid://deksvknoo3q7i" path="res://Scenes/editortile.tscn" id="5_wkuwf"]
+[ext_resource type="Script" uid="uid://bdpc4vegd180e" path="res://Scenes/place_tile.gd" id="6_8howc"]
+[ext_resource type="Texture2D" uid="uid://dndcmx0q6hp1f" path="res://Assets/PauseButtonNoBG.png" id="6_op3c8"]
+[ext_resource type="Script" uid="uid://dkqnnsq6jhob6" path="res://Scenes/v_scroll_bar.gd" id="7_eo2o7"]
+[ext_resource type="Script" uid="uid://djwejk3mwabhl" path="res://Scenes/pause.gd" id="8_1k58v"]
+[ext_resource type="Script" uid="uid://bmnxb3ino27t8" path="res://Scenes/speed_control.gd" id="8_yl2l4"]
+[ext_resource type="Script" uid="uid://bykkxn7rr2oty" path="res://Scenes/options.gd" id="9_exjlx"]
+[ext_resource type="Texture2D" uid="uid://dhnwluyatu58s" path="res://Assets/CurnoxCogWheelWithOutLineThankYouTwin.png" id="9_nfgmo"]
+[ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="10_nfgmo"]
+[ext_resource type="Script" uid="uid://e75lyy41e28j" path="res://Scenes/song_file.gd" id="12_cnbw5"]
+[ext_resource type="Script" uid="uid://cjg4pf8h06riw" path="res://Scenes/import.gd" id="12_op3c8"]
+[ext_resource type="Script" uid="uid://bm87kpvidk8ox" path="res://Scenes/song_file_label.gd" id="13_0l4bc"]
+[ext_resource type="Script" uid="uid://ddlfgebmjq0lr" path="res://Scenes/speed_val.gd" id="13_3lyd6"]
+[ext_resource type="Script" uid="uid://5ayk1qyr5n5k" path="res://Scenes/bpm_label.gd" id="14_i5vsu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfgmo"]
+shader = ExtResource("10_nfgmo")
+shader_parameter/blur_amount = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_op3c8"]
+shader = ExtResource("10_nfgmo")
+shader_parameter/blur_amount = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_exjlx"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_op3c8"]
+font_size = 32
+
+[node name="Editor" type="Node2D" unique_id=942173898]
+
+[node name="EditorTile" parent="." unique_id=1008328882 instance=ExtResource("5_wkuwf")]
+position = Vector2(-900.00006, 390.00018)
+
+[node name="SpeedControl" type="Node2D" parent="." unique_id=804342017]
+unique_name_in_owner = true
+position = Vector2(-449.99994, 900)
+scale = Vector2(0.33, 0.33)
+script = ExtResource("8_yl2l4")
+
+[node name="UI Elements" type="Node" parent="." unique_id=191671333]
+
+[node name="Camera2D" type="Camera2D" parent="UI Elements" unique_id=1043028808]
+position = Vector2(540, 960)
+limit_enabled = false
+script = ExtResource("1_b78su")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UI Elements/Camera2D" unique_id=1931328057]
+position = Vector2(-989.99994, -60)
+scale = Vector2(0.33, 0.33)
+stream = ExtResource("1_32ik4")
+bus = &"LevelMusic"
+playback_type = 1
+
+[node name="ButtonHighlight" type="ColorRect" parent="UI Elements/Camera2D" unique_id=1592108156]
+z_index = 10
+offset_left = -540.0
+offset_top = 750.0
+offset_right = 540.0
+offset_bottom = 960.0
+mouse_default_cursor_shape = 2
+color = Color(0.47079715, 0.47079715, 0.47079715, 0.25)
+
+[node name="ButtonBlur" type="ColorRect" parent="UI Elements/Camera2D" unique_id=2094286772]
+z_index = 10
+material = SubResource("ShaderMaterial_nfgmo")
+offset_left = -540.0
+offset_top = 750.0
+offset_right = 540.0
+offset_bottom = 960.0
+mouse_default_cursor_shape = 2
+color = Color(0.47058824, 0.47058824, 0.47058824, 1)
+
+[node name="Play" type="TextureButton" parent="UI Elements/Camera2D" unique_id=260923295]
+z_index = 10
+offset_left = 300.0
+offset_top = 780.0
+offset_right = 450.0
+offset_bottom = 941.0
+tooltip_text = "Play"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_nfgmo")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_7fkqn")
+
+[node name="Pause" type="TextureButton" parent="UI Elements/Camera2D" unique_id=1762810432]
+show_behind_parent = true
+z_index = 20
+offset_left = -90.0
+offset_top = 780.0
+offset_right = 60.0
+offset_bottom = 941.0
+tooltip_text = "Pause"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_op3c8")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("8_1k58v")
+
+[node name="Options" type="TextureButton" parent="UI Elements/Camera2D" unique_id=1237690377]
+z_index = 10
+offset_left = -420.0
+offset_top = 780.0
+offset_right = -270.0
+offset_bottom = 941.0
+tooltip_text = "Options"
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("9_nfgmo")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("9_exjlx")
+
+[node name="OptionsMenu" type="Node2D" parent="UI Elements/Camera2D/Options" unique_id=1129371953]
+position = Vector2(-120, -1740)
+
+[node name="OptionsBlur" type="ColorRect" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1068906641]
+z_index = 15
+material = SubResource("ShaderMaterial_op3c8")
+offset_right = 1080.0
+offset_bottom = 1710.0
+
+[node name="ColorRect" type="ColorRect" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1265094183]
+z_index = 16
+offset_left = 90.0
+offset_top = 90.0
+offset_right = 970.0
+offset_bottom = 1650.0
+color = Color(0.5449743, 0.54497427, 0.54497427, 1)
+
+[node name="Label" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=2146579144]
+z_index = 21
+offset_left = 120.0
+offset_top = 90.0
+offset_right = 600.0
+offset_bottom = 360.0
+text = "Options"
+label_settings = SubResource("LabelSettings_exjlx")
+
+[node name="SongFile" type="Button" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1978988165]
+z_index = 22
+offset_left = 120.0
+offset_top = 570.0
+offset_right = 390.0
+offset_bottom = 660.0
+script = ExtResource("12_cnbw5")
+
+[node name="Song File Label" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu/SongFile" unique_id=1383166412]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 840.0
+offset_bottom = 141.0
+text = "Song File:
+N/A
+"
+label_settings = SubResource("LabelSettings_op3c8")
+clip_text = true
+script = ExtResource("13_0l4bc")
+
+[node name="BPM Label" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu/SongFile" unique_id=952663796]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 120.0
+offset_right = 840.0
+offset_bottom = 261.0
+text = "BPM:
+N/A
+"
+label_settings = SubResource("LabelSettings_op3c8")
+clip_text = true
+script = ExtResource("14_i5vsu")
+
+[node name="FileDialog" type="FileDialog" parent="UI Elements/Camera2D/Options/OptionsMenu/SongFile" unique_id=91717007]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+ok_button_text = "Import Level"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.mp3", "*.ogg")
+use_native_dialog = true
+
+[node name="LevelName" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1409931766]
+z_index = 22
+offset_left = 270.0
+offset_top = 240.0
+offset_right = 758.5
+offset_bottom = 331.0
+theme_override_font_sizes/font_size = 32
+text = "Unnamed"
+placeholder_text = "Level Name"
+alignment = 1
+max_length = 32
+
+[node name="LevelDescription" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=2091590425]
+z_index = 22
+offset_left = 158.5
+offset_top = 360.0
+offset_right = 870.0
+offset_bottom = 510.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Description"
+alignment = 1
+max_length = 256
+expand_to_text_length = true
+
+[node name="SongName" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1661370346]
+z_index = 22
+offset_left = 120.0
+offset_top = 690.0
+offset_right = 390.0
+offset_bottom = 743.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Song Name"
+alignment = 1
+max_length = 32
+
+[node name="SongArtist" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1933015751]
+z_index = 22
+offset_left = 120.0
+offset_top = 750.0
+offset_right = 390.0
+offset_bottom = 803.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Artist"
+alignment = 1
+max_length = 32
+
+[node name="SpeedVal" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=275838948]
+z_index = 20
+offset_left = 180.0
+offset_top = 870.0
+offset_right = 308.0
+offset_bottom = 960.0
+theme_override_font_sizes/font_size = 32
+text = "500"
+placeholder_text = "Speed"
+alignment = 1
+max_length = 4
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+script = ExtResource("13_3lyd6")
+
+[node name="DifficultySelect" type="OptionButton" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=2112880719]
+z_index = 22
+offset_left = 120.0
+offset_top = 1020.0
+offset_right = 390.0
+offset_bottom = 1110.0
+theme_override_font_sizes/font_size = 32
+item_count = 6
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+popup/item_3/text = "Insane"
+popup/item_3/id = 3
+popup/item_4/text = "Brutal"
+popup/item_4/id = 4
+popup/item_5/text = "Extreme"
+popup/item_5/id = 5
+
+[node name="DifficultyLabel" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu/DifficultySelect" unique_id=265664439]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 19.0
+offset_right = 445.0
+offset_bottom = 112.0
+text = "Difficulty
+"
+label_settings = SubResource("LabelSettings_op3c8")
+
+[node name="Export" type="Button" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1515054952]
+z_index = 22
+offset_left = 870.0
+offset_top = 1530.0
+offset_right = 960.0
+offset_bottom = 1628.0
+text = "Export"
+
+[node name="Share" type="Button" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1346987357]
+z_index = 22
+offset_left = 750.0
+offset_top = 1530.0
+offset_right = 840.0
+offset_bottom = 1628.0
+text = "Share"
+
+[node name="Import" type="Button" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=192576838]
+z_index = 22
+offset_left = 630.0
+offset_top = 1530.0
+offset_right = 720.0
+offset_bottom = 1628.0
+text = "Import"
+script = ExtResource("12_op3c8")
+
+[node name="FileDialog" type="FileDialog" parent="UI Elements/Camera2D/Options/OptionsMenu/Import" unique_id=779258638]
+oversampling_override = 1.0
+title = "Open a Directory"
+position = Vector2i(0, 36)
+ok_button_text = "Import Level"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="GridLine2" type="ColorRect" parent="UI Elements/Camera2D" unique_id=417463344]
+z_index = 10
+offset_left = -540.0
+offset_top = 570.0
+offset_right = 540.0
+offset_bottom = 610.0
+color = Color(1, 0.7598514, 1, 0.462)
+
+[node name="GridLine1" type="ColorRect" parent="UI Elements/Camera2D" unique_id=638872130]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -1040.0
+offset_right = -178.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5006195, 0.5006196, 0.5006196, 0.46300003)
+
+[node name="ColorRect5" type="ColorRect" parent="UI Elements/Camera2D" unique_id=1044938096]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = -1050.0
+offset_right = 185.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5006195, 0.5006196, 0.5006196, 0.46300003)
+
+[node name="VScrollBar" type="VScrollBar" parent="UI Elements/Camera2D" unique_id=701683315]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.21900001)
+visibility_layer = 1023
+z_index = 10
+offset_left = 489.0
+offset_top = -930.0
+offset_right = 527.0
+offset_bottom = 720.0
+tooltip_text = "Level Position"
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+max_value = 10000.0
+value = 10000.0
+rounded = true
+custom_step = -0.1
+script = ExtResource("7_eo2o7")
+
+[node name="Node" type="Node" parent="." unique_id=2097553553]
+script = ExtResource("4_wkuwf")
+
+[node name="Place Tile" type="Node2D" parent="." unique_id=483865401]
+script = ExtResource("6_8howc")
+
+[connection signal="button_down" from="UI Elements/Camera2D/Play" to="UI Elements/Camera2D/Play" method="_on_button_down"]
+[connection signal="button_down" from="UI Elements/Camera2D/Pause" to="UI Elements/Camera2D/Pause" method="_on_button_down"]
+[connection signal="toggled" from="UI Elements/Camera2D/Options" to="UI Elements/Camera2D/Options" method="_on_toggled"]
+[connection signal="button_down" from="UI Elements/Camera2D/Options/OptionsMenu/SongFile" to="UI Elements/Camera2D/Options/OptionsMenu/SongFile" method="_on_button_down"]
+[connection signal="LoadedSong" from="UI Elements/Camera2D/Options/OptionsMenu/SongFile/Song File Label" to="UI Elements/Camera2D/Options/OptionsMenu/SongFile/BPM Label" method="_on_song_file_label_loaded_song"]
+[connection signal="file_selected" from="UI Elements/Camera2D/Options/OptionsMenu/SongFile/FileDialog" to="UI Elements/Camera2D/Options/OptionsMenu/SongFile/Song File Label" method="_on_file_dialog_file_selected"]
+[connection signal="button_down" from="UI Elements/Camera2D/Options/OptionsMenu/Import" to="UI Elements/Camera2D/Options/OptionsMenu/Import" method="_on_button_down"]

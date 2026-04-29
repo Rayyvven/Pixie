@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://b6bhusc2w1uvx"]
+
+[ext_resource type="Script" uid="uid://dsojehx0o68nw" path="res://Scripts/texture_button.gd" id="1_xsjyq"]
+[ext_resource type="AudioStream" uid="uid://cexhjkvd4obll" path="res://Assets/Button.mp3" id="3_4kj4d"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rvq8p"]
+load_path = "res://.godot/imported/TileNoBG.png-8c3f2f8526705dfc32b89ae162ec77f1.ctex"
+
+[sub_resource type="Animation" id="Animation_rvq8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureButton:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureButton:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TextureButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4kj4d"]
+resource_name = "TilePressed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureButton:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureButton:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666665),
+"transitions": PackedFloat32Array(0.5, 0.25),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TextureButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khers"]
+_data = {
+&"RESET": SubResource("Animation_rvq8p"),
+&"TilePressed": SubResource("Animation_4kj4d")
+}
+
+[node name="Tile" type="Node2D" unique_id=1008328882]
+scale = Vector2(0.33, 0.33)
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1128363034]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -535.5
+offset_top = -960.5
+offset_right = 535.5
+offset_bottom = 960.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(535, 960)
+action_mode = 0
+texture_normal = SubResource("CompressedTexture2D_rvq8p")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_xsjyq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=243233303]
+root_node = NodePath("../AudioStreamPlayer2D")
+libraries/ = SubResource("AnimationLibrary_khers")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1487648224]
+stream = ExtResource("3_4kj4d")
+bus = &"SFX"
+
+[connection signal="button_down" from="TextureButton" to="TextureButton" method="_on_button_down"]

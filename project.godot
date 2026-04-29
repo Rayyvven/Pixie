@@ -1,0 +1,53 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Pixie"
+config/description="A work in progress mobile game titled \"Pixie\". Inspired by Piano Tiles, this rhythm game will feature elements similar to those of other rhythm games, such as an editor, texture packs, and more!"
+config/version="0.0.7"
+run/main_scene="uid://dj0qeuu7oacob"
+config/features=PackedStringArray("4.6", "Mobile")
+boot_splash/bg_color=Color(0.19946826, 0.051528104, 0.29403222, 1)
+boot_splash/show_image=false
+config/icon="uid://08cgm67lj6fv"
+
+[audio]
+
+buses/default_bus_layout="uid://d2laofv0fsd72"
+
+[autoload]
+
+EditorOptionsGlobal="*uid://bykkxn7rr2oty"
+PlayButton="*uid://carvup2f4ru0q"
+LevelController="*uid://dr6mx3kn8dg7b"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/stretch/mode="viewport"
+window/handheld/orientation=1
+window/vsync/vsync_mode=0
+
+[gui]
+
+theme/default_font_antialiasing=2
+theme/default_font_multichannel_signed_distance_field=true
+theme/custom_font="uid://shdn4p2vqypc"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true

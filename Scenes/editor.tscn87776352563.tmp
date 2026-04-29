@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://dj0qeuu7oacob"]
+
+[ext_resource type="Script" uid="uid://ck3qkqhsan1yr" path="res://Scenes/camera_2d.gd" id="1_b78su"]
+[ext_resource type="Texture2D" uid="uid://b6ypcsfmpwsmi" path="res://Assets/PlayGD.webp" id="1_eyy8u"]
+[ext_resource type="Texture2D" uid="uid://285lpkjjbtbg" path="res://Assets/pngtree-vector-art-layer-of-a-restart-and-refresh-icon-button-for-a-video-game-asset-menu-vector-picture-image_9989056.png" id="2_a7iym"]
+[ext_resource type="Script" uid="uid://carvup2f4ru0q" path="res://Scenes/play.gd" id="3_7fkqn"]
+[ext_resource type="Texture2D" uid="uid://bqforew0wk6na" path="res://Assets/2979540390_preview_40857334.png" id="3_7wlcy"]
+[ext_resource type="Script" uid="uid://dt0mj164cp4oe" path="res://Scenes/Pseudo.gd" id="4_wkuwf"]
+[ext_resource type="PackedScene" uid="uid://deksvknoo3q7i" path="res://Scenes/editortile.tscn" id="5_wkuwf"]
+[ext_resource type="Script" uid="uid://bdpc4vegd180e" path="res://Scenes/place_tile.gd" id="6_8howc"]
+[ext_resource type="Script" uid="uid://bmnxb3ino27t8" path="res://Scenes/speed_control.gd" id="8_yl2l4"]
+
+[node name="Editor" type="Node2D" unique_id=942173898]
+
+[node name="UI Elements" type="Node" parent="." unique_id=191671333]
+
+[node name="Camera2D" type="Camera2D" parent="UI Elements" unique_id=1043028808]
+position = Vector2(540, 960)
+script = ExtResource("1_b78su")
+
+[node name="ColorRect" type="ColorRect" parent="UI Elements/Camera2D" unique_id=1592108156]
+z_index = 10
+offset_left = -540.0
+offset_top = 750.0
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0.4724152, 0.47241515, 0.47241515, 1)
+
+[node name="Play" type="TextureButton" parent="UI Elements/Camera2D" unique_id=260923295]
+z_index = 10
+offset_left = 300.0
+offset_top = 780.0
+offset_right = 450.0
+offset_bottom = 941.0
+texture_normal = ExtResource("1_eyy8u")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_7fkqn")
+
+[node name="Reset" type="TextureButton" parent="UI Elements/Camera2D" unique_id=2124105496]
+z_index = 10
+offset_left = -420.0
+offset_top = 780.0
+offset_right = -270.0
+offset_bottom = 941.0
+texture_normal = ExtResource("2_a7iym")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Pause" type="TextureButton" parent="UI Elements/Camera2D" unique_id=1762810432]
+z_index = 10
+offset_left = -60.0
+offset_top = 780.0
+offset_right = 90.0
+offset_bottom = 941.0
+texture_normal = ExtResource("3_7wlcy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="GridLine2" type="ColorRect" parent="UI Elements/Camera2D" unique_id=417463344]
+z_index = 10
+offset_left = -540.0
+offset_top = 570.0
+offset_right = 540.0
+offset_bottom = 610.0
+color = Color(1, 0.7598514, 1, 0.462)
+
+[node name="GridLine1" type="ColorRect" parent="UI Elements/Camera2D" unique_id=638872130]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -1040.0
+offset_right = -178.0
+offset_bottom = 750.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5006195, 0.5006196, 0.5006196, 0.46300003)
+
+[node name="ColorRect5" type="ColorRect" parent="UI Elements/Camera2D" unique_id=1044938096]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = -1050.0
+offset_right = 185.0
+offset_bottom = 740.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5006195, 0.5006196, 0.5006196, 0.46300003)
+
+[node name="VScrollBar" type="VScrollBar" parent="UI Elements/Camera2D" unique_id=701683315]
+unique_name_in_owner = true
+z_index = 10
+offset_left = 489.0
+offset_top = -930.0
+offset_right = 527.0
+offset_bottom = 720.0
+max_value = 10000.0
+value = 10000.0
+rounded = true
+custom_step = -0.1
+
+[node name="Node" type="Node" parent="." unique_id=2097553553]
+script = ExtResource("4_wkuwf")
+
+[node name="EditorTile" parent="." unique_id=1008328882 instance=ExtResource("5_wkuwf")]
+position = Vector2(-449.99994, 900)
+
+[node name="SpeedControl" type="Node2D" parent="EditorTile" unique_id=804342017]
+unique_name_in_owner = true
+script = ExtResource("8_yl2l4")
+
+[node name="Place Tile" type="Node" parent="." unique_id=471043823]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=483865401]
+script = ExtResource("6_8howc")
+
+[connection signal="button_down" from="UI Elements/Camera2D/Play" to="UI Elements/Camera2D/Play" method="_on_button_down"]

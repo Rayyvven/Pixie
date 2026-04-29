@@ -1,0 +1,830 @@
+[gd_scene format=3 uid="uid://dj0qeuu7oacob"]
+
+[ext_resource type="AudioStream" uid="uid://cpf4sluskwrcb" path="res://Music/Alone With Me - Good Kid.mp3" id="1_32ik4"]
+[ext_resource type="Script" uid="uid://ck3qkqhsan1yr" path="res://Scenes/camera_2d.gd" id="1_b78su"]
+[ext_resource type="Script" uid="uid://carvup2f4ru0q" path="res://Scenes/play.gd" id="3_7fkqn"]
+[ext_resource type="Script" uid="uid://cwfkk8t7s181c" path="res://Scenes/background.gd" id="3_fls10"]
+[ext_resource type="Texture2D" uid="uid://d3hcrw54n06ck" path="res://Assets/PlayButton.png" id="4_nfgmo"]
+[ext_resource type="Script" uid="uid://dt0mj164cp4oe" path="res://Scenes/Pseudo.gd" id="4_wkuwf"]
+[ext_resource type="Script" uid="uid://bdpc4vegd180e" path="res://Scenes/place_tile.gd" id="6_8howc"]
+[ext_resource type="Texture2D" uid="uid://dndcmx0q6hp1f" path="res://Assets/PauseButtonNoBG.png" id="6_op3c8"]
+[ext_resource type="Script" uid="uid://dkqnnsq6jhob6" path="res://Scenes/v_scroll_bar.gd" id="7_eo2o7"]
+[ext_resource type="Texture2D" uid="uid://bhytravkrqu4e" path="res://Assets/ResetButtonNew.png" id="7_lo3ql"]
+[ext_resource type="Script" uid="uid://djwejk3mwabhl" path="res://Scenes/pause.gd" id="8_1k58v"]
+[ext_resource type="Script" uid="uid://carg20lrylsaf" path="res://Scenes/reset.gd" id="8_5yagh"]
+[ext_resource type="Script" uid="uid://bmnxb3ino27t8" path="res://Scenes/speed_control.gd" id="8_yl2l4"]
+[ext_resource type="Script" uid="uid://bykkxn7rr2oty" path="res://Scenes/options.gd" id="9_exjlx"]
+[ext_resource type="Texture2D" uid="uid://dhnwluyatu58s" path="res://Assets/CurnoxCogWheelWithOutLineThankYouTwin.png" id="9_nfgmo"]
+[ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="10_nfgmo"]
+[ext_resource type="Script" uid="uid://e75lyy41e28j" path="res://Scenes/song_file.gd" id="11_af0oh"]
+[ext_resource type="Script" uid="uid://cjg4pf8h06riw" path="res://Scenes/import.gd" id="12_op3c8"]
+[ext_resource type="Script" uid="uid://bm87kpvidk8ox" path="res://Scenes/song_file_label.gd" id="13_0l4bc"]
+[ext_resource type="Script" uid="uid://ddlfgebmjq0lr" path="res://Scenes/speed_val.gd" id="13_3lyd6"]
+[ext_resource type="Script" uid="uid://5ayk1qyr5n5k" path="res://Scenes/bpm_label.gd" id="14_i5vsu"]
+[ext_resource type="Script" uid="uid://d3t6seg068yoi" path="res://Scenes/level_name.gd" id="14_ruwpr"]
+[ext_resource type="Script" uid="uid://i01mvfd4p34p" path="res://Scenes/level_description.gd" id="15_1giqv"]
+[ext_resource type="Script" uid="uid://cisuq22rvjxpe" path="res://Scenes/song_name.gd" id="16_6utg8"]
+[ext_resource type="Script" uid="uid://waw0jjp7g0lg" path="res://Scenes/play_position.gd" id="16_l5j4h"]
+[ext_resource type="Script" uid="uid://dt710dm3kyexr" path="res://Scenes/song_artist.gd" id="17_yoksu"]
+[ext_resource type="Script" uid="uid://desxjy4lma3hx" path="res://Scenes/tile_select.gd" id="18_o8yew"]
+[ext_resource type="Texture2D" uid="uid://dhp85sqxg2sne" path="res://Assets/TileNoBG.png" id="18_pee1p"]
+[ext_resource type="Script" uid="uid://c84fuc1svamt0" path="res://Scenes/difficulty_select.gd" id="19_ng50i"]
+[ext_resource type="Texture2D" uid="uid://docxkiwnqflhl" path="res://Assets/SliderTile.png" id="19_o8yew"]
+[ext_resource type="Script" uid="uid://dr6mx3kn8dg7b" path="res://LevelController.gd" id="20_aco8m"]
+[ext_resource type="Script" uid="uid://cowylyutbte8a" path="res://Scenes/tile_select_basic.gd" id="20_u6te5"]
+[ext_resource type="Texture2D" uid="uid://b6wnkosgdfbst" path="res://Assets/FlickTileStatic.png" id="22_efg2m"]
+[ext_resource type="Texture2D" uid="uid://dxbcbkvxrs4xw" path="res://Assets/EndTile.png" id="22_iis80"]
+[ext_resource type="AudioStream" uid="uid://hq83w1gkc1cf" path="res://Assets/CardFlip.mp3" id="23_06d57"]
+[ext_resource type="AudioStream" uid="uid://docifig4a4yv1" path="res://Assets/CardPutDown.mp3" id="24_af0oh"]
+[ext_resource type="Script" uid="uid://xy6liadbkp3j" path="res://Scenes/tile_placer_drag_thing.gd" id="25_iis80"]
+[ext_resource type="Script" uid="uid://biqewtrm3ttp5" path="res://Scenes/debuglabel.gd" id="25_ukxwk"]
+[ext_resource type="Texture2D" uid="uid://idwtbk4h8cf0" path="res://Assets/TileColorSelect.png" id="32_x83xj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfgmo"]
+shader = ExtResource("10_nfgmo")
+shader_parameter/blur_amount = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_op3c8"]
+shader = ExtResource("10_nfgmo")
+shader_parameter/blur_amount = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_exjlx"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_op3c8"]
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_iis80"]
+resource_name = "HideTiles"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.25, 0.25),
+"update": 0,
+"values": [Vector2(300, 1.3113417e-05), Vector2(-90, -3.934025e-06)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TileSelectSlide:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 0.3),
+"update": 0,
+"values": [Vector2(300, 150.00002), Vector2(-90, 150)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TileSelectFlick:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.35, 0.35),
+"update": 0,
+"values": [Vector2(300, 300.00003), Vector2(-90, 299.99997)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TileSelectLevelEnd:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.4, 0.4),
+"update": 0,
+"values": [Vector2(300, 450.00003), Vector2(-90, 449.99997)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TileSelectLevelEnd2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.45, 0.45),
+"update": 0,
+"values": [Vector2(300, 600), Vector2(-90, 600)]
+}
+
+[sub_resource type="Animation" id="Animation_efg2m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-90, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TileSelectSlide:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-90, 150)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TileSelectFlick:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-90, 299.99997)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TileSelectLevelEnd:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-90.00001, 450)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TileSelectLevelEnd2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-90, 600)]
+}
+
+[sub_resource type="Animation" id="Animation_u6te5"]
+resource_name = "ShowTiles"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.25, 0.25),
+"update": 0,
+"values": [Vector2(-90, -3.934025e-06), Vector2(300, 1.3113417e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TileSelectSlide:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 0.3),
+"update": 0,
+"values": [Vector2(-90, 150), Vector2(300, 150.00002)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TileSelectFlick:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.35, 0.35),
+"update": 0,
+"values": [Vector2(-90, 299.99997), Vector2(300, 300.00003)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TileSelectLevelEnd:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.76666665),
+"transitions": PackedFloat32Array(0.4, 0.4),
+"update": 0,
+"values": [Vector2(-90.00001, 450), Vector2(300, 450.00003)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TileSelectLevelEnd2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.45, 0.45),
+"update": 0,
+"values": [Vector2(-90, 600), Vector2(300, 600)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efg2m"]
+_data = {
+&"HideTiles": SubResource("Animation_iis80"),
+&"RESET": SubResource("Animation_efg2m"),
+&"ShowTiles": SubResource("Animation_u6te5")
+}
+
+[node name="Editor" type="Node2D" unique_id=942173898]
+
+[node name="SpeedControl" type="Node2D" parent="." unique_id=804342017]
+unique_name_in_owner = true
+position = Vector2(-449.99994, 900)
+scale = Vector2(0.33, 0.33)
+script = ExtResource("8_yl2l4")
+
+[node name="UI Elements" type="Node" parent="." unique_id=191671333]
+
+[node name="Camera2D" type="Camera2D" parent="UI Elements" unique_id=1043028808]
+position = Vector2(540, 960)
+limit_enabled = false
+script = ExtResource("1_b78su")
+
+[node name="Background" type="ColorRect" parent="UI Elements/Camera2D" unique_id=1758927252]
+z_index = -99
+offset_left = -540.0
+offset_top = -1170.0
+offset_right = 540.0
+offset_bottom = 1170.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_fls10")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UI Elements/Camera2D" unique_id=1931328057]
+position = Vector2(-989.99994, -60)
+scale = Vector2(0.33, 0.33)
+stream = ExtResource("1_32ik4")
+bus = &"LevelMusic"
+playback_type = 1
+
+[node name="ButtonHighlight" type="ColorRect" parent="UI Elements/Camera2D" unique_id=1592108156]
+z_index = 10
+offset_left = -540.0
+offset_top = 750.0
+offset_right = 540.0
+offset_bottom = 960.0
+mouse_default_cursor_shape = 2
+color = Color(0.47079715, 0.47079715, 0.47079715, 0.25)
+
+[node name="ButtonBlur" type="ColorRect" parent="UI Elements/Camera2D" unique_id=2094286772]
+z_index = 10
+material = SubResource("ShaderMaterial_nfgmo")
+offset_left = -540.0
+offset_top = 750.0
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0.47058824, 0.47058824, 0.47058824, 1)
+
+[node name="Play" type="TextureButton" parent="UI Elements/Camera2D" unique_id=260923295]
+z_index = 10
+offset_left = 300.0
+offset_top = 780.0
+offset_right = 450.0
+offset_bottom = 941.0
+tooltip_text = "Play"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_nfgmo")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_7fkqn")
+
+[node name="Reset" type="TextureButton" parent="UI Elements/Camera2D" unique_id=2108410079]
+z_index = 10
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 540.0
+offset_bottom = 840.0
+tooltip_text = "Play"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_lo3ql")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("8_5yagh")
+
+[node name="Pause" type="TextureButton" parent="UI Elements/Camera2D" unique_id=1762810432]
+show_behind_parent = true
+z_index = 20
+offset_left = -90.0
+offset_top = 780.0
+offset_right = 60.0
+offset_bottom = 941.0
+tooltip_text = "Pause"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_op3c8")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("8_1k58v")
+
+[node name="Options" type="TextureButton" parent="UI Elements/Camera2D" unique_id=1237690377]
+z_index = 10
+offset_left = -420.0
+offset_top = 780.0
+offset_right = -270.0
+offset_bottom = 941.0
+tooltip_text = "Options"
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("9_nfgmo")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("9_exjlx")
+
+[node name="OptionsMenu" type="Node2D" parent="UI Elements/Camera2D/Options" unique_id=1129371953]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-120, -1740)
+
+[node name="OptionsBlur" type="ColorRect" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1068906641]
+z_index = 15
+material = SubResource("ShaderMaterial_op3c8")
+offset_right = 1080.0
+offset_bottom = 1710.0
+
+[node name="ColorRect" type="ColorRect" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1265094183]
+z_index = 16
+offset_left = 90.0
+offset_top = 90.0
+offset_right = 970.0
+offset_bottom = 1650.0
+color = Color(0.5449209, 0.5449209, 0.5449209, 0.595)
+
+[node name="Label" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=2146579144]
+z_index = 21
+offset_left = 90.0
+offset_top = 90.0
+offset_right = 570.0
+offset_bottom = 360.0
+text = "Options"
+label_settings = SubResource("LabelSettings_exjlx")
+
+[node name="SongFile" type="Button" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1978988165]
+z_index = 22
+offset_left = 120.0
+offset_top = 570.0
+offset_right = 390.0
+offset_bottom = 660.0
+mouse_default_cursor_shape = 2
+script = ExtResource("11_af0oh")
+
+[node name="Song File Label" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu/SongFile" unique_id=1383166412]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 840.0
+offset_bottom = 141.0
+text = "Song File:
+N/A
+"
+label_settings = SubResource("LabelSettings_op3c8")
+clip_text = true
+script = ExtResource("13_0l4bc")
+
+[node name="Length Label" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu/SongFile" unique_id=952663796]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 120.0
+offset_right = 840.0
+offset_bottom = 261.0
+text = "Length:
+N/A
+"
+label_settings = SubResource("LabelSettings_op3c8")
+clip_text = true
+script = ExtResource("14_i5vsu")
+
+[node name="FileDialog" type="FileDialog" parent="UI Elements/Camera2D/Options/OptionsMenu/SongFile" unique_id=91717007]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+ok_button_text = "Import Level"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.mp3", "*.ogg")
+use_native_dialog = true
+
+[node name="LevelName" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1409931766]
+z_index = 22
+offset_left = 270.0
+offset_top = 240.0
+offset_right = 758.5
+offset_bottom = 331.0
+theme_override_font_sizes/font_size = 32
+text = "Unnamed"
+placeholder_text = "Level Name"
+alignment = 1
+max_length = 32
+script = ExtResource("14_ruwpr")
+
+[node name="LevelDescription" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=2091590425]
+visible = false
+z_index = 22
+offset_left = 158.5
+offset_top = 360.0
+offset_right = 870.0
+offset_bottom = 510.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Description"
+alignment = 1
+max_length = 256
+expand_to_text_length = true
+script = ExtResource("15_1giqv")
+
+[node name="TextEdit" type="TextEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=153587690]
+z_index = 25
+offset_left = 150.0
+offset_top = 360.0
+offset_right = 870.0
+offset_bottom = 510.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Description (optional)"
+wrap_mode = 1
+
+[node name="SongName" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1661370346]
+z_index = 22
+offset_left = 120.0
+offset_top = 690.0
+offset_right = 390.0
+offset_bottom = 743.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Song Name"
+alignment = 1
+max_length = 32
+script = ExtResource("16_6utg8")
+
+[node name="SongArtist" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1933015751]
+z_index = 22
+offset_left = 120.0
+offset_top = 750.0
+offset_right = 390.0
+offset_bottom = 803.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Artist"
+alignment = 1
+max_length = 32
+script = ExtResource("17_yoksu")
+
+[node name="SpeedVal" type="LineEdit" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=275838948]
+z_index = 20
+offset_left = 180.0
+offset_top = 870.0
+offset_right = 308.0
+offset_bottom = 960.0
+theme_override_font_sizes/font_size = 32
+text = "500"
+placeholder_text = "Speed"
+alignment = 1
+max_length = 4
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+script = ExtResource("13_3lyd6")
+
+[node name="DifficultySelect" type="OptionButton" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=2112880719]
+z_index = 22
+offset_left = 120.0
+offset_top = 1020.0
+offset_right = 390.0
+offset_bottom = 1110.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 32
+item_count = 6
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+popup/item_3/text = "Insane"
+popup/item_3/id = 3
+popup/item_4/text = "Brutal"
+popup/item_4/id = 4
+popup/item_5/text = "Extreme"
+popup/item_5/id = 5
+script = ExtResource("19_ng50i")
+
+[node name="DifficultyLabel" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu/DifficultySelect" unique_id=265664439]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 19.0
+offset_right = 445.0
+offset_bottom = 112.0
+text = "Difficulty
+"
+label_settings = SubResource("LabelSettings_op3c8")
+
+[node name="Export" type="Button" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1515054952]
+z_index = 22
+offset_left = 870.0
+offset_top = 1530.0
+offset_right = 960.0
+offset_bottom = 1628.0
+mouse_default_cursor_shape = 2
+text = "Export"
+script = ExtResource("20_aco8m")
+
+[node name="Share" type="Button" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=1346987357]
+z_index = 22
+offset_left = 750.0
+offset_top = 1530.0
+offset_right = 840.0
+offset_bottom = 1628.0
+mouse_default_cursor_shape = 8
+text = "Share"
+
+[node name="Import" type="Button" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=192576838]
+z_index = 22
+offset_left = 630.0
+offset_top = 1530.0
+offset_right = 720.0
+offset_bottom = 1628.0
+mouse_default_cursor_shape = 8
+text = "Import"
+script = ExtResource("12_op3c8")
+
+[node name="FileDialog" type="FileDialog" parent="UI Elements/Camera2D/Options/OptionsMenu/Import" unique_id=779258638]
+oversampling_override = 1.0
+title = "Open a Directory"
+position = Vector2i(0, 36)
+ok_button_text = "Import Level"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="CheckButton" type="CheckButton" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=518289792]
+z_index = 25
+offset_left = 90.0
+offset_top = 1570.0
+offset_right = 188.0
+offset_bottom = 1623.0
+scale = Vector2(1.5, 1.5)
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 16
+text = "Debug"
+
+[node name="BackgroundColorPicker" type="ColorPicker" parent="UI Elements/Camera2D/Options/OptionsMenu" unique_id=216676356]
+z_index = 20
+offset_left = 90.0
+offset_top = 1110.0
+offset_right = 388.0
+offset_bottom = 1407.0
+color = Color(0, 0, 0, 1)
+edit_alpha = false
+edit_intensity = false
+picker_shape = 1
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+presets_visible = false
+
+[node name="Background Color" type="Label" parent="UI Elements/Camera2D/Options/OptionsMenu/BackgroundColorPicker" unique_id=2036760366]
+layout_mode = 2
+text = "Background Color"
+label_settings = SubResource("LabelSettings_op3c8")
+
+[node name="GridLine2" type="ColorRect" parent="UI Elements/Camera2D" unique_id=417463344]
+z_index = 10
+offset_left = -540.0
+offset_top = 570.0
+offset_right = 540.0
+offset_bottom = 610.0
+color = Color(1, 0.7598514, 1, 0.462)
+
+[node name="GridLine1" type="ColorRect" parent="UI Elements/Camera2D" unique_id=638872130]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -1040.0
+offset_right = -178.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5006195, 0.5006196, 0.5006196, 0.46300003)
+
+[node name="ColorRect5" type="ColorRect" parent="UI Elements/Camera2D" unique_id=1044938096]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = -1050.0
+offset_right = 185.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5006195, 0.5006196, 0.5006196, 0.46300003)
+
+[node name="VScrollBar" type="VScrollBar" parent="UI Elements/Camera2D" unique_id=701683315]
+unique_name_in_owner = true
+visibility_layer = 1023
+z_index = 10
+offset_left = 489.0
+offset_top = -930.0
+offset_right = 527.0
+offset_bottom = 720.0
+tooltip_text = "Level Position"
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+max_value = 100000.0
+value = 100000.0
+rounded = true
+custom_step = -0.1
+script = ExtResource("7_eo2o7")
+
+[node name="TileSelect" type="TextureButton" parent="UI Elements/Camera2D" unique_id=1770152087]
+z_index = 15
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = 870.0
+offset_right = -420.71912
+offset_bottom = 989.6
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_nfgmo")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("18_o8yew")
+
+[node name="TileSelectBasic" type="TextureButton" parent="UI Elements/Camera2D/TileSelect" unique_id=609936086]
+show_behind_parent = true
+z_index = -5
+layout_mode = 0
+offset_left = -90.0
+offset_right = 59.999847
+offset_bottom = 179.99998
+rotation = 1.5707964
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("18_pee1p")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("20_u6te5")
+
+[node name="TileSelectSlide" type="TextureButton" parent="UI Elements/Camera2D/TileSelect" unique_id=1577775482]
+layout_mode = 0
+offset_left = -90.0
+offset_top = 150.0
+offset_right = 60.00006
+offset_bottom = 330.0
+rotation = 1.5707964
+mouse_default_cursor_shape = 8
+texture_normal = ExtResource("19_o8yew")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TileSelectFlick" type="TextureButton" parent="UI Elements/Camera2D/TileSelect" unique_id=1979179185]
+layout_mode = 0
+offset_left = -90.0
+offset_top = 299.99997
+offset_right = 59.99994
+offset_bottom = 479.99997
+rotation = 1.5707964
+mouse_default_cursor_shape = 8
+texture_normal = ExtResource("22_efg2m")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TileSelectLevelEnd" type="TextureButton" parent="UI Elements/Camera2D/TileSelect" unique_id=1640747918]
+layout_mode = 0
+offset_left = -90.00001
+offset_top = 450.0
+offset_right = 59.99993
+offset_bottom = 630.0
+rotation = 1.5707964
+mouse_default_cursor_shape = 8
+texture_normal = ExtResource("22_iis80")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TileSelectLevelEnd2" type="TextureButton" parent="UI Elements/Camera2D/TileSelect" unique_id=1616586064]
+layout_mode = 0
+offset_left = -90.0
+offset_top = 600.0
+offset_right = 59.99994
+offset_bottom = 780.0
+rotation = 1.5707964
+mouse_default_cursor_shape = 8
+texture_normal = ExtResource("32_x83xj")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI Elements/Camera2D/TileSelect" unique_id=195269998]
+root_node = NodePath("../TileSelectBasic")
+libraries/ = SubResource("AnimationLibrary_efg2m")
+
+[node name="CardPickUp" type="AudioStreamPlayer" parent="UI Elements/Camera2D/TileSelect" unique_id=1531269760]
+stream = ExtResource("23_06d57")
+bus = &"SFX"
+
+[node name="CardPutDown" type="AudioStreamPlayer" parent="UI Elements/Camera2D/TileSelect" unique_id=1199256016]
+stream = ExtResource("24_af0oh")
+bus = &"SFX"
+
+[node name="Label" type="Label" parent="UI Elements/Camera2D" unique_id=485110023]
+offset_left = -540.0
+offset_top = -960.0
+offset_right = -30.0
+offset_bottom = -720.0
+theme_override_font_sizes/font_size = 32
+script = ExtResource("25_ukxwk")
+
+[node name="PlayPosition" type="ColorRect" parent="UI Elements" unique_id=946087885]
+offset_top = 1695.0
+offset_right = 1080.0
+offset_bottom = 1710.0
+mouse_default_cursor_shape = 14
+color = Color(1, 0.8277864, 1, 1)
+script = ExtResource("16_l5j4h")
+
+[node name="Node" type="Node" parent="." unique_id=2097553553]
+script = ExtResource("4_wkuwf")
+
+[node name="Place Tile" type="Node2D" parent="." unique_id=483865401]
+script = ExtResource("6_8howc")
+
+[node name="TilePlacer" type="Node2D" parent="." unique_id=105616275]
+z_as_relative = false
+script = ExtResource("25_iis80")
+
+[node name="TextureButton" type="TextureButton" parent="TilePlacer" unique_id=1263162582]
+visibility_layer = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.0
+offset_top = -270.0
+offset_right = 181.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 6
+texture_normal = ExtResource("18_pee1p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="mouse_entered" from="UI Elements/Camera2D/ButtonHighlight" to="TilePlacer" method="_on_button_highlight_mouse_entered"]
+[connection signal="mouse_exited" from="UI Elements/Camera2D/ButtonHighlight" to="TilePlacer" method="_on_button_highlight_mouse_exited"]
+[connection signal="mouse_entered" from="UI Elements/Camera2D/ButtonBlur" to="TilePlacer" method="_on_button_blur_mouse_entered"]
+[connection signal="mouse_exited" from="UI Elements/Camera2D/ButtonBlur" to="TilePlacer" method="_on_button_blur_mouse_exited"]
+[connection signal="button_down" from="UI Elements/Camera2D/Play" to="UI Elements/Camera2D/Play" method="_on_button_down"]
+[connection signal="button_down" from="UI Elements/Camera2D/Play" to="UI Elements/PlayPosition" method="_on_play_button_down"]
+[connection signal="button_down" from="UI Elements/Camera2D/Reset" to="UI Elements/Camera2D/Reset" method="_on_button_down"]
+[connection signal="button_down" from="UI Elements/Camera2D/Pause" to="UI Elements/Camera2D/Pause" method="_on_button_down"]
+[connection signal="toggled" from="UI Elements/Camera2D/Options" to="UI Elements/Camera2D/Options" method="_on_toggled"]
+[connection signal="toggled" from="UI Elements/Camera2D/Options" to="TilePlacer" method="_on_options_toggled"]
+[connection signal="button_down" from="UI Elements/Camera2D/Options/OptionsMenu/SongFile" to="UI Elements/Camera2D/Options/OptionsMenu/SongFile" method="_on_button_down"]
+[connection signal="LoadedSong" from="UI Elements/Camera2D/Options/OptionsMenu/SongFile/Song File Label" to="UI Elements/Camera2D/Options/OptionsMenu/SongFile/Length Label" method="_on_song_file_label_loaded_song"]
+[connection signal="file_selected" from="UI Elements/Camera2D/Options/OptionsMenu/SongFile/FileDialog" to="UI Elements/Camera2D/Options/OptionsMenu/SongFile/Song File Label" method="_on_file_dialog_file_selected"]
+[connection signal="text_submitted" from="UI Elements/Camera2D/Options/OptionsMenu/LevelName" to="UI Elements/Camera2D/Options/OptionsMenu/LevelName" method="_on_text_submitted"]
+[connection signal="text_submitted" from="UI Elements/Camera2D/Options/OptionsMenu/LevelDescription" to="UI Elements/Camera2D/Options/OptionsMenu/LevelDescription" method="_on_text_submitted"]
+[connection signal="text_submitted" from="UI Elements/Camera2D/Options/OptionsMenu/SongName" to="UI Elements/Camera2D/Options/OptionsMenu/SongName" method="_on_text_submitted"]
+[connection signal="text_submitted" from="UI Elements/Camera2D/Options/OptionsMenu/SongArtist" to="UI Elements/Camera2D/Options/OptionsMenu/SongArtist" method="_on_text_submitted"]
+[connection signal="text_submitted" from="UI Elements/Camera2D/Options/OptionsMenu/SpeedVal" to="UI Elements/Camera2D/Options/OptionsMenu/SpeedVal" method="_on_text_submitted"]
+[connection signal="item_selected" from="UI Elements/Camera2D/Options/OptionsMenu/DifficultySelect" to="UI Elements/Camera2D/Options/OptionsMenu/DifficultySelect" method="_on_item_selected"]
+[connection signal="button_down" from="UI Elements/Camera2D/Options/OptionsMenu/Export" to="UI Elements/Camera2D/Options/OptionsMenu/Export" method="_on_button_down"]
+[connection signal="button_down" from="UI Elements/Camera2D/Options/OptionsMenu/Import" to="UI Elements/Camera2D/Options/OptionsMenu/Import" method="_on_button_down"]
+[connection signal="color_changed" from="UI Elements/Camera2D/Options/OptionsMenu/BackgroundColorPicker" to="UI Elements/Camera2D/Background" method="_on_background_color_picker_color_changed"]
+[connection signal="button_down" from="UI Elements/Camera2D/TileSelect" to="UI Elements/Camera2D/TileSelect" method="_on_button_down"]
+[connection signal="toggled" from="UI Elements/Camera2D/TileSelect" to="UI Elements/Camera2D/TileSelect" method="_on_toggled"]
+[connection signal="toggled" from="UI Elements/Camera2D/TileSelect/TileSelectBasic" to="UI Elements/Camera2D/TileSelect/TileSelectBasic" method="_on_toggled"]
+[connection signal="button_down" from="TilePlacer/TextureButton" to="TilePlacer" method="_on_texture_button_button_down"]
+[connection signal="button_up" from="TilePlacer/TextureButton" to="TilePlacer" method="_on_texture_button_button_up"]

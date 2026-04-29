@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cacnfbeyrall5"
+path="res://.godot/imported/Sabotage - Laufey.mp3-4b8dc7fa4e07cae6ac1de776a3f8809d.mp3str"
+
+[deps]
+
+source_file="res://Music/Sabotage - Laufey.mp3"
+dest_files=["res://.godot/imported/Sabotage - Laufey.mp3-4b8dc7fa4e07cae6ac1de776a3f8809d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

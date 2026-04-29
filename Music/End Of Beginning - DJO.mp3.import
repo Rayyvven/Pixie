@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhtv01rg3l25v"
+path="res://.godot/imported/End Of Beginning - DJO.mp3-82ceacac5e976fd3593291bddd23c335.mp3str"
+
+[deps]
+
+source_file="res://Music/End Of Beginning - DJO.mp3"
+dest_files=["res://.godot/imported/End Of Beginning - DJO.mp3-82ceacac5e976fd3593291bddd23c335.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

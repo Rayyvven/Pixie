@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://oq05y0e8gjey"]
+
+[ext_resource type="Script" uid="uid://dn25s85wqkji3" path="res://Scripts/reset.gd" id="1_gg4uj"]
+[ext_resource type="Texture2D" uid="uid://6tawuo2vmlnt" path="res://Assets/glowthing.png" id="1_gxdsr"]
+[ext_resource type="AudioStream" uid="uid://cexhjkvd4obll" path="res://Assets/Button.mp3" id="2_addsm"]
+
+[sub_resource type="Curve" id="Curve_gg4uj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_addsm"]
+curve = SubResource("Curve_gg4uj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gg4uj"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+spread = 49.545
+initial_velocity_min = -50.0
+initial_velocity_max = 50.46
+gravity = Vector3(0, 50, 0)
+scale_min = 0.0
+scale_max = 13.509999
+color = Color(0.82135487, 0.79327714, 1, 1)
+alpha_curve = SubResource("CurveTexture_addsm")
+hue_variation_min = -0.06000002
+hue_variation_max = 0.13999997
+
+[sub_resource type="Curve" id="Curve_addsm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8011696, 0.5167786), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_v617e"]
+curve = SubResource("Curve_addsm")
+
+[sub_resource type="Curve" id="Curve_vwgac"]
+_limits = [0.0, 0.5, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.0033557415), -0.3531233, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gpm0r"]
+curve = SubResource("Curve_vwgac")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c4mr8"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_gpm0r")
+alpha_curve = SubResource("CurveTexture_v617e")
+
+[node name="ParticleClick" type="Node2D" unique_id=1599191970]
+script = ExtResource("1_gg4uj")
+
+[node name="Tapped" type="AudioStreamPlayer2D" parent="." unique_id=2134187996]
+stream = ExtResource("2_addsm")
+bus = &"SFX"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=942534056]
+emitting = false
+amount = 15
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_gg4uj")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=778055845]
+emitting = false
+amount = 1
+texture = ExtResource("1_gxdsr")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_c4mr8")
