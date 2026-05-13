@@ -1,15 +1,13 @@
 extends Camera2D
 @onready var options_menu: Node2D = %OptionsMenu
+@onready var pause_menu: Node2D = %PauseMenu
+@onready var play: TextureButton = $Play
+@onready var play_position: Button = $"../PlayPosition"
+@onready var sync_bar_follow: CheckButton = $EditorPause/PauseMenu/SyncBarFollow
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 func _process(delta: float) -> void:
-	if options_menu.visible == false:
+	if options_menu.visible == false and pause_menu.visible == false:
 		position.y = %VScrollBar.value
-	else:
-		position.y = 10000000
-
-
-func _on_play_button_down() -> void:
-	pass # Replace with function body.
+		if sync_bar_follow.button_pressed == true and play.Speed != 0:
+			position.y = play_position.position.y - 720
+			%VScrollBar.value = position.y

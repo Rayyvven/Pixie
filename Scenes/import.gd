@@ -1,15 +1,13 @@
 extends Button
+signal LoadLevel(dir: String)
+
+func _on_file_dialog_dir_selected(dir: String) -> void:
+	#get_tree().reload_current_scene()
+	print("Emitted Signal!")
+	LoadLevel.emit(dir)
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-
-
-
-func _on_button_down() -> void:
+func _on_pressed() -> void:
 	if $FileDialog.visible == false:
 		$FileDialog.visible = true
 	else:

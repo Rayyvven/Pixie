@@ -28,6 +28,13 @@ buses/default_bus_layout="uid://d2laofv0fsd72"
 EditorOptionsGlobal="*uid://bykkxn7rr2oty"
 PlayButton="*uid://carvup2f4ru0q"
 LevelController="*uid://dr6mx3kn8dg7b"
+SignalBus="*uid://co8l8twjyudc7"
+EditorOptions="*uid://c8nq0mx8dx5ws"
+TileSnap="*uid://dxcn3rkhis8q3"
+SmoothDrag="*uid://cdpym7hkfa0a2"
+ButtonBlur="*uid://b5h1wdypogl02"
+SelectedTile="*uid://cflf0uyedllxl"
+TileSnapX="*uid://cf7jlh8t0qk0o"
 
 [display]
 
@@ -36,6 +43,10 @@ window/size/viewport_height=1920
 window/stretch/mode="viewport"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SignalBus/plugin.cfg")
 
 [gui]
 
@@ -51,3 +62,12 @@ theme/custom_font="uid://shdn4p2vqypc"
 
 rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true
+
+[signal_bus]
+
+signals={
+"Import": [{
+"name": "dir",
+"type": 21
+}]
+}

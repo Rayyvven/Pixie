@@ -2,11 +2,6 @@ extends Label
 @onready var file_dialog: FileDialog = $"../FileDialog"
 signal LoadedSong
 @onready var music: AudioStreamPlayer2D = $"../../../../AudioStreamPlayer2D"
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
@@ -19,5 +14,6 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		print("Loaded file ", file_dialog.get_current_file())
 		LoadedSong.emit()
 		LevelController.LevelData["Level Info"]["SongFile"] = file_dialog.get_current_file()
+		LevelController.LevelData["Level Info"]["Song"] = file_dialog.current_path
 	else:
 		text = "Song File:\nN/A"

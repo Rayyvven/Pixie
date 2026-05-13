@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dohy0wsrbc5a1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpkal"]
+font_size = 64
+
+[node name="LoadingScene" type="Node2D" unique_id=232187658]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1402828433]
+position = Vector2(540, 960)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1080661518]
+offset_right = 1080.0
+offset_bottom = 1920.0
+mouse_default_cursor_shape = 5
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1928954346]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 914.0
+offset_right = 734.0
+offset_bottom = 1004.0
+pivot_offset = Vector2(195, 45)
+text = "Loading..."
+label_settings = SubResource("LabelSettings_jpkal")
+horizontal_alignment = 1

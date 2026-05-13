@@ -1,12 +1,13 @@
 extends Node2D
 @onready var camera_2d: Camera2D = $"../UI Elements/Camera2D"
-@onready var tile: TextureButton = $TextureButton
-@onready var options_menu: Node2D = %OptionsMenu
 
+@onready var tile: TextureButton = $BasicTile
+@onready var options_menu: Node2D = %OptionsMenu
+@onready var v_scroll_bar: VScrollBar = %VScrollBar
+signal place
+signal delete
 #@onready var place_tile: Node2D = %"Place Tile"
 @onready var place_tile = get_node("Place Tile")
-
-
 
 var json = JSON.new()
 var path = "user://level.json"
@@ -27,9 +28,12 @@ var data = {
 }
 var TileID = ""
 func save_level():
+	
 	#data["Level Data"]("Tile")
 	LevelController.TotalTiles += 1
 	TileID = "Tile" + str(LevelController.TotalTiles)
+	if TileID == "Tile3" or TileID == "Tile2" or TileID == "Tile1":
+		position.x -= 2500
 	print(LevelController.TotalTiles)
 	LevelController.LevelData["Level Data"]["Tile" + str(LevelController.TotalTiles)] = [1, 1, position.x, position.y]
 	print(LevelController.LevelData)
@@ -48,7 +52,17 @@ var offset = Vector2(0,0)
 func _process(delta: float) -> void:
 	if dragging == true:
 		position = get_global_mouse_position() - offset
-	if get_global_mouse_position().x >= 1000 == true:
+		if SmoothDrag.DragSmooth == false:
+			print("GridSnapDrag")
+			if TileSnapX.SnapX == true:
+				if get_global_mouse_position().x < 357:
+					position.x = 180
+				elif get_global_mouse_position().x > 357 and get_global_mouse_position().x < 720:
+					position.x = 540
+				else:
+					position.x = 900
+				position.y = snapped(position.y, 100)
+	if get_global_mouse_position().x >= 1000 or EditorOptionsGlobal.Shown == true or get_viewport().get_mouse_position().y >= 1700 or get_viewport().get_mouse_position().y <= 150 and get_viewport().get_mouse_position().x <= 150 or EditorOptionsGlobal.Shown:
 		tile.disabled = true
 		#print("Disabled Tile")
 		tile.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -61,6 +75,7 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	data = save_level()
 	print(data)
+
 	
 func _on_texture_button_button_up() -> void:
 	dragging = false
@@ -69,22 +84,27 @@ func _on_texture_button_button_up() -> void:
 		
 		print_rich("[color=yellow]Removed Tile! [/color]")
 		print(LevelController.LevelData)
+		delete.emit()
 		queue_free()
 	else:
-		if get_global_mouse_position().x < 357:
-			position.x = 180
-		elif get_global_mouse_position().x > 357 and get_global_mouse_position().x < 720:
-			position.x = 540
-		else:
-			position.x = 900
-		position.y = snapped(position.y, 100)
-		#print("Placed at ", position)
+		if TileSnapX.SnapX == true:
+			if get_global_mouse_position().x < 357:
+				position.x = 180
+			elif get_global_mouse_position().x > 357 and get_global_mouse_position().x < 720:
+				position.x = 540
+			else:
+				position.x = 900
+		if TileSnap.SnapY == true:
+			position.y = snapped(position.y, 100)
 		print_rich("[color=cyan]Placed Tile at [/color]", position)
+		place.emit()
 
 		LevelController.LevelData["Level Data"][TileID] = [1, 1, position.x, position.y]
 		print("Modified: ", LevelController.LevelData)
 func _on_texture_button_button_down() -> void:
 	offset = get_global_mouse_position() - global_position
+
+	
 	dragging = true
 	
 	print("dragging...", global_position)

@@ -1,6 +1,7 @@
 extends Node
 var TotalTiles = 0
 @onready var file_dialog: FileDialog = $"../SongFile/FileDialog"
+@onready var export_dir: FileDialog = $ExportDir
 
 var LevelData = {
 	"Level Info": {
@@ -26,8 +27,9 @@ var LevelData = {
 func _ready() -> void:
 	pass
 	
-func save():
-	var base_dir = "user://Levels/"
+func save(dir):
+	#var base_dir = "user://Levels/"
+	var base_dir = dir+"/"
 	DirAccess.make_dir_recursive_absolute(base_dir)
 
 	var level_name = LevelController.LevelData["Level Info"]["Name"]
@@ -55,5 +57,13 @@ func save():
 
 	print("Saved successfully to ", LVLDIR)
 
-func _on_button_down() -> void:
-	save()
+
+
+func _on_export_dir_dir_selected(dir: String) -> void:
+	var base_dir = dir+"/"
+	save(dir)
+
+
+func _on_pressed() -> void:
+	export_dir.visible = true
+	await export_dir.file_selected
