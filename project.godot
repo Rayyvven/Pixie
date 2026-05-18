@@ -13,7 +13,7 @@ config_version=5
 config/name="Pixie"
 config/description="A work in progress mobile game titled \"Pixie\". Inspired by Piano Tiles, this rhythm game will feature elements similar to those of other rhythm games, such as an editor, texture packs, and more!"
 config/version="0.0.7"
-run/main_scene="uid://dj0qeuu7oacob"
+run/main_scene="uid://cuajpnmcpy0hf"
 config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/bg_color=Color(0.19946826, 0.051528104, 0.29403222, 1)
 boot_splash/show_image=false
@@ -28,13 +28,13 @@ buses/default_bus_layout="uid://d2laofv0fsd72"
 EditorOptionsGlobal="*uid://bykkxn7rr2oty"
 PlayButton="*uid://carvup2f4ru0q"
 LevelController="*uid://dr6mx3kn8dg7b"
-SignalBus="*uid://co8l8twjyudc7"
 EditorOptions="*uid://c8nq0mx8dx5ws"
 TileSnap="*uid://dxcn3rkhis8q3"
 SmoothDrag="*uid://cdpym7hkfa0a2"
 ButtonBlur="*uid://b5h1wdypogl02"
 SelectedTile="*uid://cflf0uyedllxl"
 TileSnapX="*uid://cf7jlh8t0qk0o"
+Firebase="*uid://cvb26atjckwlq"
 
 [display]
 
@@ -46,7 +46,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SignalBus/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
 
 [gui]
 

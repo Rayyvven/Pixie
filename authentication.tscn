@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cuajpnmcpy0hf"]
+
+[ext_resource type="Script" uid="uid://fj7r6081ujf" path="res://Scripts/authentication.gd" id="1_sh67b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sh67b"]
+font_size = 64
+
+[node name="Authentication" type="Control" unique_id=1706562055]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sh67b")
+
+[node name="StateLabel" type="Label" parent="." unique_id=1857727265]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 323.0
+offset_right = 918.0
+offset_bottom = 402.0
+text = "Not Logged In!"
+label_settings = SubResource("LabelSettings_sh67b")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Email" type="TextEdit" parent="." unique_id=1969929326]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 529.0
+offset_right = 711.0
+offset_bottom = 587.0
+theme_override_font_sizes/font_size = 28
+placeholder_text = "Email"
+
+[node name="Password" type="LineEdit" parent="." unique_id=708675001]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 599.0
+offset_right = 711.0
+offset_bottom = 657.0
+theme_override_font_sizes/font_size = 28
+placeholder_text = "Password"
+secret = true
+secret_character = "⋆"
+
+[node name="Sign Up" type="Button" parent="." unique_id=565669271]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 676.0
+offset_right = 417.0
+offset_bottom = 726.0
+theme_override_font_sizes/font_size = 28
+text = "Sign Up"
+
+[node name="Login" type="Button" parent="." unique_id=1197077708]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 676.0
+offset_right = 562.0
+offset_bottom = 726.0
+theme_override_font_sizes/font_size = 28
+text = "Log In"
+
+[node name="Help" type="Button" parent="." unique_id=862253258]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 676.0
+offset_right = 711.0
+offset_bottom = 726.0
+theme_override_font_sizes/font_size = 28
+text = "Help"
+
+[connection signal="pressed" from="Sign Up" to="." method="_on_sign_up_pressed"]
+[connection signal="pressed" from="Login" to="." method="_on_login_pressed"]

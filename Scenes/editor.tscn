@@ -1,80 +1,85 @@
 [gd_scene format=3 uid="uid://dj0qeuu7oacob"]
 
 [ext_resource type="AudioStream" uid="uid://cpf4sluskwrcb" path="res://Music/Alone With Me - Good Kid.mp3" id="1_32ik4"]
-[ext_resource type="Script" uid="uid://ck3qkqhsan1yr" path="res://Scenes/camera_2d.gd" id="1_b78su"]
-[ext_resource type="Script" uid="uid://carvup2f4ru0q" path="res://Scenes/play.gd" id="3_7fkqn"]
-[ext_resource type="Script" uid="uid://cwfkk8t7s181c" path="res://Scenes/background.gd" id="3_fls10"]
-[ext_resource type="Script" uid="uid://cusex0n4yf5u3" path="res://Scenes/editor_pause_menu.gd" id="4_1l34x"]
+[ext_resource type="Script" uid="uid://ck3qkqhsan1yr" path="res://Scripts/camera_2d.gd" id="1_b78su"]
+[ext_resource type="Texture2D" uid="uid://cmxjwpoadvh44" path="res://Assets/GlugnusBrokenScreen.png" id="2_6ojly"]
+[ext_resource type="Script" uid="uid://carvup2f4ru0q" path="res://Scripts/play.gd" id="3_7fkqn"]
+[ext_resource type="Script" uid="uid://cwfkk8t7s181c" path="res://Scripts/background.gd" id="3_fls10"]
+[ext_resource type="Script" uid="uid://bccywkokgkgcl" path="res://Scripts/glungus_easter_egg.gd" id="3_nypm4"]
+[ext_resource type="Script" uid="uid://cusex0n4yf5u3" path="res://Scripts/editor_pause_menu.gd" id="4_1l34x"]
 [ext_resource type="Texture2D" uid="uid://d3hcrw54n06ck" path="res://Assets/PlayButton.png" id="4_nfgmo"]
-[ext_resource type="Script" uid="uid://oatx5hto2eov" path="res://Scenes/music_volume.gd" id="5_gbgnm"]
-[ext_resource type="Script" uid="uid://0s884cgwrjvg" path="res://Scenes/help.gd" id="5_u1k11"]
-[ext_resource type="Script" uid="uid://bdpc4vegd180e" path="res://Scenes/place_tile.gd" id="6_8howc"]
-[ext_resource type="Script" uid="uid://bus1lpjqvv4m2" path="res://Scenes/sfx_volume.gd" id="6_hppm4"]
+[ext_resource type="Script" uid="uid://bqu0ur7xylb6x" path="res://Scripts/exit_without_saving.gd" id="4_vmtry"]
+[ext_resource type="Script" uid="uid://d0f4acwy3lfsa" path="res://Scripts/playtest.gd" id="4_ykdnf"]
+[ext_resource type="Script" uid="uid://oatx5hto2eov" path="res://Scripts/music_volume.gd" id="5_gbgnm"]
+[ext_resource type="Script" uid="uid://0s884cgwrjvg" path="res://Scripts/help.gd" id="5_u1k11"]
+[ext_resource type="Script" uid="uid://bdpc4vegd180e" path="res://Scripts/place_tile.gd" id="6_8howc"]
+[ext_resource type="Script" uid="uid://bus1lpjqvv4m2" path="res://Scripts/sfx_volume.gd" id="6_hppm4"]
 [ext_resource type="Texture2D" uid="uid://dndcmx0q6hp1f" path="res://Assets/PauseButtonNoBG.png" id="6_op3c8"]
 [ext_resource type="Texture2D" uid="uid://bhytravkrqu4e" path="res://Assets/ResetButtonNew.png" id="7_lo3ql"]
-[ext_resource type="Script" uid="uid://djwejk3mwabhl" path="res://Scenes/pause.gd" id="8_1k58v"]
+[ext_resource type="Script" uid="uid://dvt0iagb2lsnv" path="res://Scripts/reset_track.gd" id="7_nypm4"]
+[ext_resource type="Script" uid="uid://djwejk3mwabhl" path="res://Scripts/pause.gd" id="8_1k58v"]
+[ext_resource type="Script" uid="uid://t5cdnmjm6kb3" path="res://Scripts/pause_editor_options.gd" id="8_5p5qg"]
 [ext_resource type="Script" uid="uid://carg20lrylsaf" path="res://Scenes/reset.gd" id="8_5yagh"]
-[ext_resource type="Script" uid="uid://dxcn3rkhis8q3" path="res://Scenes/tile_snap.gd" id="8_6rfi4"]
-[ext_resource type="Script" uid="uid://cdpym7hkfa0a2" path="res://Scenes/smooth_drag.gd" id="8_u1k11"]
+[ext_resource type="Script" uid="uid://dxcn3rkhis8q3" path="res://Scripts/tile_snap.gd" id="8_6rfi4"]
+[ext_resource type="Script" uid="uid://cdpym7hkfa0a2" path="res://Scripts/smooth_drag.gd" id="8_u1k11"]
 [ext_resource type="Texture2D" uid="uid://dk4hftfieudv5" path="res://Assets/PixieAssets/AlertChangelogButton.png" id="8_vrol2"]
-[ext_resource type="Script" uid="uid://06v2kc6rj8u4" path="res://Scenes/pause_editor_change_log.gd" id="9_ahqwb"]
-[ext_resource type="Script" uid="uid://bykkxn7rr2oty" path="res://Scenes/options.gd" id="9_exjlx"]
+[ext_resource type="Script" uid="uid://06v2kc6rj8u4" path="res://Scripts/pause_editor_change_log.gd" id="9_ahqwb"]
+[ext_resource type="Script" uid="uid://bykkxn7rr2oty" path="res://Scripts/options.gd" id="9_exjlx"]
 [ext_resource type="Texture2D" uid="uid://dhnwluyatu58s" path="res://Assets/CurnoxCogWheelWithOutLineThankYouTwin.png" id="9_nfgmo"]
 [ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="10_nfgmo"]
-[ext_resource type="Script" uid="uid://e75lyy41e28j" path="res://Scenes/song_file.gd" id="11_af0oh"]
-[ext_resource type="Script" uid="uid://cp3l03576fqw0" path="res://Scenes/button.gd" id="12_2h0k7"]
-[ext_resource type="Script" uid="uid://cf7jlh8t0qk0o" path="res://Scenes/tile_snap_x.gd" id="12_5p5qg"]
-[ext_resource type="Script" uid="uid://b5h1wdypogl02" path="res://Scenes/button_blur.gd" id="12_asgqx"]
-[ext_resource type="Script" uid="uid://cjg4pf8h06riw" path="res://Scenes/import.gd" id="12_op3c8"]
-[ext_resource type="Script" uid="uid://bm87kpvidk8ox" path="res://Scenes/song_file_label.gd" id="13_0l4bc"]
-[ext_resource type="Script" uid="uid://ddlfgebmjq0lr" path="res://Scenes/speed_val.gd" id="13_3lyd6"]
-[ext_resource type="Script" uid="uid://5ayk1qyr5n5k" path="res://Scenes/bpm_label.gd" id="14_i5vsu"]
-[ext_resource type="Script" uid="uid://d3t6seg068yoi" path="res://Scenes/level_name.gd" id="14_ruwpr"]
-[ext_resource type="Script" uid="uid://i01mvfd4p34p" path="res://Scenes/level_description.gd" id="15_1giqv"]
-[ext_resource type="Script" uid="uid://cisuq22rvjxpe" path="res://Scenes/song_name.gd" id="16_6utg8"]
-[ext_resource type="Script" uid="uid://waw0jjp7g0lg" path="res://Scenes/play_position.gd" id="16_l5j4h"]
-[ext_resource type="Script" uid="uid://dt710dm3kyexr" path="res://Scenes/song_artist.gd" id="17_yoksu"]
-[ext_resource type="Script" uid="uid://desxjy4lma3hx" path="res://Scenes/tile_select.gd" id="18_o8yew"]
+[ext_resource type="Script" uid="uid://e75lyy41e28j" path="res://Scripts/song_file.gd" id="11_af0oh"]
+[ext_resource type="Script" uid="uid://cp3l03576fqw0" path="res://Scripts/button.gd" id="12_2h0k7"]
+[ext_resource type="Script" uid="uid://cf7jlh8t0qk0o" path="res://Scripts/tile_snap_x.gd" id="12_5p5qg"]
+[ext_resource type="Script" uid="uid://cjg4pf8h06riw" path="res://Scripts/import.gd" id="12_op3c8"]
+[ext_resource type="Script" uid="uid://bm87kpvidk8ox" path="res://Scripts/song_file_label.gd" id="13_0l4bc"]
+[ext_resource type="Script" uid="uid://ddlfgebmjq0lr" path="res://Scripts/speed_val.gd" id="13_3lyd6"]
+[ext_resource type="Script" uid="uid://5ayk1qyr5n5k" path="res://Scripts/bpm_label.gd" id="14_i5vsu"]
+[ext_resource type="Script" uid="uid://d3t6seg068yoi" path="res://Scripts/level_name.gd" id="14_ruwpr"]
+[ext_resource type="Script" uid="uid://i01mvfd4p34p" path="res://Scripts/level_description.gd" id="15_1giqv"]
+[ext_resource type="Script" uid="uid://cisuq22rvjxpe" path="res://Scripts/song_name.gd" id="16_6utg8"]
+[ext_resource type="Script" uid="uid://waw0jjp7g0lg" path="res://Scripts/play_position.gd" id="16_l5j4h"]
+[ext_resource type="Script" uid="uid://dt710dm3kyexr" path="res://Scripts/song_artist.gd" id="17_yoksu"]
+[ext_resource type="Script" uid="uid://desxjy4lma3hx" path="res://Scripts/tile_select.gd" id="18_o8yew"]
 [ext_resource type="Texture2D" uid="uid://dhp85sqxg2sne" path="res://Assets/TileNoBG.png" id="18_pee1p"]
-[ext_resource type="Script" uid="uid://c84fuc1svamt0" path="res://Scenes/difficulty_select.gd" id="19_ng50i"]
+[ext_resource type="Script" uid="uid://c84fuc1svamt0" path="res://Scripts/difficulty_select.gd" id="19_ng50i"]
 [ext_resource type="Texture2D" uid="uid://docxkiwnqflhl" path="res://Assets/SliderTile.png" id="19_o8yew"]
-[ext_resource type="Script" uid="uid://dr6mx3kn8dg7b" path="res://LevelController.gd" id="20_aco8m"]
-[ext_resource type="Script" uid="uid://cowylyutbte8a" path="res://Scenes/tile_select_basic.gd" id="20_u6te5"]
+[ext_resource type="Script" uid="uid://dr6mx3kn8dg7b" path="res://Scripts/LevelController.gd" id="20_aco8m"]
+[ext_resource type="Script" uid="uid://cowylyutbte8a" path="res://Scripts/tile_select_basic.gd" id="20_u6te5"]
 [ext_resource type="Texture2D" uid="uid://b6wnkosgdfbst" path="res://Assets/FlickTileStatic.png" id="22_efg2m"]
 [ext_resource type="Texture2D" uid="uid://dxbcbkvxrs4xw" path="res://Assets/EndTile.png" id="22_iis80"]
 [ext_resource type="AudioStream" uid="uid://hq83w1gkc1cf" path="res://Assets/CardFlip.mp3" id="23_06d57"]
 [ext_resource type="AudioStream" uid="uid://docifig4a4yv1" path="res://Assets/CardPutDown.mp3" id="24_af0oh"]
-[ext_resource type="Script" uid="uid://cagy8vnhcltcq" path="res://Scenes/bpm_val.gd" id="25_hppm4"]
-[ext_resource type="Script" uid="uid://xy6liadbkp3j" path="res://Scenes/tile_placer_drag_thing.gd" id="25_iis80"]
-[ext_resource type="Script" uid="uid://biqewtrm3ttp5" path="res://Scenes/debuglabel.gd" id="25_ukxwk"]
+[ext_resource type="Script" uid="uid://cagy8vnhcltcq" path="res://Scripts/bpm_val.gd" id="25_hppm4"]
+[ext_resource type="Script" uid="uid://xy6liadbkp3j" path="res://Scripts/tile_placer_drag_thing.gd" id="25_iis80"]
+[ext_resource type="Script" uid="uid://biqewtrm3ttp5" path="res://Scripts/debuglabel.gd" id="25_ukxwk"]
 [ext_resource type="Texture2D" uid="uid://dex87x572pl3g" path="res://Assets/PixieAssets/ImportButton.png" id="28_6rfi4"]
 [ext_resource type="Texture2D" uid="uid://idwtbk4h8cf0" path="res://Assets/TileColorSelect.png" id="32_x83xj"]
-[ext_resource type="Script" uid="uid://cflf0uyedllxl" path="res://Scenes/selected_tile.gd" id="34_ekxub"]
-[ext_resource type="Script" uid="uid://bvxqnpke80rkm" path="res://Scenes/tile_select_slide.gd" id="38_sdqln"]
+[ext_resource type="Script" uid="uid://cflf0uyedllxl" path="res://Scripts/selected_tile.gd" id="34_ekxub"]
+[ext_resource type="Script" uid="uid://bvxqnpke80rkm" path="res://Scripts/tile_select_slide.gd" id="38_sdqln"]
 [ext_resource type="AudioStream" uid="uid://dx0agug4im5mg" path="res://freesound_community-plastic-trash-can-98819.mp3" id="40_1pi8w"]
 [ext_resource type="AudioStream" uid="uid://bldortv6hwqtk" path="res://dragon-studio-pop-402322.mp3" id="40_dmbb2"]
-[ext_resource type="Script" uid="uid://bqea11hvk2yqk" path="res://Scenes/tile_select_flick.gd" id="40_napiy"]
-[ext_resource type="Script" uid="uid://cgep0hgg821we" path="res://Scenes/tile_place.gd" id="41_hhub4"]
-[ext_resource type="Script" uid="uid://dfn7x63tnlb3b" path="res://Scenes/tile_select_level_end.gd" id="42_42lpt"]
-[ext_resource type="Script" uid="uid://pfgyte504mcx" path="res://Scenes/tile_delete.gd" id="42_dmbb2"]
-[ext_resource type="Script" uid="uid://bl0y66y1y541c" path="res://Scenes/tile_select_color.gd" id="44_jr8do"]
+[ext_resource type="Script" uid="uid://bqea11hvk2yqk" path="res://Scripts/tile_select_flick.gd" id="40_napiy"]
+[ext_resource type="Script" uid="uid://cgep0hgg821we" path="res://Scripts/tile_place.gd" id="41_hhub4"]
+[ext_resource type="Script" uid="uid://dfn7x63tnlb3b" path="res://Scripts/tile_select_level_end.gd" id="42_42lpt"]
+[ext_resource type="Script" uid="uid://pfgyte504mcx" path="res://Scripts/tile_delete.gd" id="42_dmbb2"]
+[ext_resource type="Script" uid="uid://bl0y66y1y541c" path="res://Scripts/tile_select_color.gd" id="44_jr8do"]
 [ext_resource type="Texture2D" uid="uid://utygqnrt6c2k" path="res://Assets/PixieAssets/SliderTileBottom.png" id="50_ij0l5"]
-[ext_resource type="Script" uid="uid://dnrov6nwo71mi" path="res://Scenes/tile_placer_slider.gd" id="51_42lpt"]
+[ext_resource type="Script" uid="uid://dnrov6nwo71mi" path="res://Scripts/tile_placer_slider.gd" id="51_42lpt"]
 [ext_resource type="Texture2D" uid="uid://dtkgbrkbewir5" path="res://Assets/PixieAssets/SliderTileTop.png" id="51_ekxub"]
 [ext_resource type="Texture2D" uid="uid://1quwrunsot66" path="res://Assets/PixieAssets/SliderTileMiddle.png" id="52_sdqln"]
-[ext_resource type="Script" uid="uid://coklh2w4cturr" path="res://Scenes/middle.gd" id="54_jr8do"]
-[ext_resource type="Script" uid="uid://bih328tku6pgn" path="res://Scenes/top.gd" id="56_gdfjn"]
-[ext_resource type="Script" uid="uid://cwgr1y7oxvo46" path="res://Scenes/scale_control.gd" id="57_ehg5j"]
+[ext_resource type="Script" uid="uid://coklh2w4cturr" path="res://Scripts/middle.gd" id="54_jr8do"]
+[ext_resource type="Script" uid="uid://bih328tku6pgn" path="res://Scripts/top.gd" id="56_gdfjn"]
+[ext_resource type="Script" uid="uid://cwgr1y7oxvo46" path="res://Scripts/scale_control.gd" id="57_ehg5j"]
 [ext_resource type="Texture2D" uid="uid://dlf1diwi0vpxq" path="res://Assets/PixieAssets/TileNoDetail.png" id="58_asmss"]
-[ext_resource type="Script" uid="uid://b8mn6s0e0f82n" path="res://Scenes/tile_placer_flick.gd" id="58_e10g1"]
+[ext_resource type="Script" uid="uid://b8mn6s0e0f82n" path="res://Scripts/tile_placer_flick.gd" id="58_e10g1"]
 [ext_resource type="Texture2D" uid="uid://b5ibbtybnygi5" path="res://Assets/PixieAssets/FlickTileDirection.png" id="59_e10g1"]
-[ext_resource type="Script" uid="uid://cv5ay0ka5lk7c" path="res://Scenes/FlickTop.gd" id="61_eotcv"]
-[ext_resource type="Script" uid="uid://c1u54bi5g8sfl" path="res://Scenes/rotate.gd" id="62_5frhh"]
+[ext_resource type="Script" uid="uid://cv5ay0ka5lk7c" path="res://Scripts/FlickTop.gd" id="61_eotcv"]
+[ext_resource type="Script" uid="uid://c1u54bi5g8sfl" path="res://Scripts/rotate.gd" id="62_5frhh"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dmbb2"]
 load_path = "res://.godot/imported/PauseButtonNoBG.png-32f21b1fe91d6d17fc4efbdf6b6c0456.ctex"
 
-[sub_resource type="Shader" id="Shader_1l34x"]
+[sub_resource type="Shader" id="Shader_xos7g"]
 code = "shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
@@ -86,8 +91,11 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gbgnm"]
-shader = SubResource("Shader_1l34x")
+shader = SubResource("Shader_xos7g")
 shader_parameter/blur_amount = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5p5qg"]
+font_size = 64
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ahqwb"]
 shader = ExtResource("10_nfgmo")
@@ -98,7 +106,7 @@ font_size = 32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfgmo"]
 shader = ExtResource("10_nfgmo")
-shader_parameter/blur_amount = 5.0
+shader_parameter/blur_amount = 4.00000019
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_op3c8"]
 shader = ExtResource("10_nfgmo")
@@ -115,6 +123,16 @@ script/source = "extends VScrollBar
 @onready var play: TextureButton = $\"../Play\"
 @onready var speed_control: HScrollBar = $\"../Options/OptionsMenu/SpeedControl\"
 @onready var speed_val: LineEdit = $\"../Options/OptionsMenu/SpeedVal\"
+@onready var length_label: Label = $\"../Options/OptionsMenu/SongFile/Length Label\"
+var new_max = 0.0
+
+func _process(delta: float) -> void:
+	if new_max != max_value:
+		max_value = float(length_label.length)*float(speed_val.text)
+		new_max = max_value
+		value = max_value
+		LevelController.LevelData[\"Level Info\"][\"Length\"] = max_value
+	max_value = float(length_label.length)*float(speed_val.text)
 "
 
 [sub_resource type="Animation" id="Animation_iis80"]
@@ -341,6 +359,16 @@ position = Vector2(540, 960)
 limit_enabled = false
 script = ExtResource("1_b78su")
 
+[node name="GlungusEasterEgg" type="TextureRect" parent="UI Elements/Camera2D" unique_id=67678264]
+visible = false
+z_index = 999
+offset_left = -536.0
+offset_top = -961.0
+offset_right = 544.0
+offset_bottom = 959.0
+texture = ExtResource("2_6ojly")
+script = ExtResource("3_nypm4")
+
 [node name="Background" type="ColorRect" parent="UI Elements/Camera2D" unique_id=1758927252]
 z_index = -99
 offset_left = -540.0
@@ -401,6 +429,7 @@ offset_right = 722.0
 offset_bottom = 630.0
 theme_override_font_sizes/font_size = 32
 text = "Playtest"
+script = ExtResource("4_ykdnf")
 
 [node name="Save" type="Button" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=1882532337]
 z_index = 20
@@ -411,23 +440,33 @@ offset_bottom = 780.0
 theme_override_font_sizes/font_size = 32
 text = "Save"
 
-[node name="Save and Quit" type="Button" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=783259735]
+[node name="Reset Track" type="Button" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=783259735]
 z_index = 20
 offset_left = 360.0
 offset_top = 810.0
 offset_right = 722.0
 offset_bottom = 930.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
-text = "Save and Quit"
+text = "Reset Track"
+script = ExtResource("7_nypm4")
 
-[node name="Exit Without Saving" type="Button" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=1535640658]
+[node name="ResetDialog" type="ConfirmationDialog" parent="UI Elements/Camera2D/EditorPause/PauseMenu/Reset Track" unique_id=1982315352]
+title = "Are you sure?"
+initial_position = 4
+force_native = true
+dialog_text = "Are you sure you want to reset the track? This cannot be undone!"
+
+[node name="Save and Quit" type="Button" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=1535640658]
 z_index = 20
 offset_left = 360.0
 offset_top = 960.0
 offset_right = 722.0
 offset_bottom = 1080.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
-text = "Exit Without Saving"
+text = "Save and Quit"
+script = ExtResource("4_vmtry")
 
 [node name="Help" type="Button" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=1809767977]
 z_index = 20
@@ -494,8 +533,73 @@ text = "SFX Volume"
 offset_left = 930.0
 offset_right = 1080.0
 offset_bottom = 150.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("9_nfgmo")
 stretch_mode = 5
+script = ExtResource("8_5p5qg")
+
+[node name="EditorPauseMenu" type="Node2D" parent="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions" unique_id=1900256227]
+visible = false
+position = Vector2(-930, 0)
+
+[node name="EditorPauseOptions" type="ColorRect" parent="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu" unique_id=1697387840]
+z_index = 50
+offset_left = 128.0
+offset_top = 224.0
+offset_right = 952.0
+offset_bottom = 1648.0
+color = Color(0.06469653, 0.06469653, 0.06469653, 0.8901961)
+
+[node name="Label" type="Label" parent="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions" unique_id=219841120]
+layout_mode = 0
+offset_right = 832.0
+offset_bottom = 200.0
+text = "Options"
+label_settings = SubResource("LabelSettings_5p5qg")
+horizontal_alignment = 1
+
+[node name="SyncBarFollow" type="CheckButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions" unique_id=639860209]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 101.0
+offset_right = 366.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 32
+text = "Follow Sync Bar"
+
+[node name="SmoothDrag" type="CheckButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions" unique_id=1006358564]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 96.0
+offset_right = 785.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 32
+button_pressed = true
+text = "Smooth Dragging"
+script = ExtResource("8_u1k11")
+
+[node name="TileSnap" type="CheckButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions" unique_id=1312149719]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 162.0
+offset_right = 366.0
+offset_bottom = 222.0
+theme_override_font_sizes/font_size = 32
+button_pressed = true
+text = "Snap Tiles on Y"
+script = ExtResource("8_6rfi4")
+
+[node name="TileSnapX" type="CheckButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions" unique_id=601782522]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 160.0
+offset_right = 750.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 32
+button_pressed = true
+text = "Snap Tiles on X
+(Experimental)"
+script = ExtResource("12_5p5qg")
 
 [node name="PauseEditorChangeLog" type="TextureButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=1970445741]
 offset_right = 150.0
@@ -505,45 +609,6 @@ texture_normal = ExtResource("8_vrol2")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_ahqwb")
-
-[node name="SyncBarFollow" type="CheckButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=639860209]
-offset_left = 630.0
-offset_top = 1410.0
-offset_right = 932.0
-offset_bottom = 1470.0
-theme_override_font_sizes/font_size = 32
-text = "Follow Sync Bar"
-
-[node name="SmoothDrag" type="CheckButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=1006358564]
-offset_left = 150.0
-offset_top = 1410.0
-offset_right = 487.0
-offset_bottom = 1470.0
-theme_override_font_sizes/font_size = 32
-button_pressed = true
-text = "Smooth Dragging"
-script = ExtResource("8_u1k11")
-
-[node name="TileSnap" type="CheckButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=1312149719]
-offset_left = 180.0
-offset_top = 1470.0
-offset_right = 482.0
-offset_bottom = 1530.0
-theme_override_font_sizes/font_size = 32
-button_pressed = true
-text = "Snap Tiles on Y"
-script = ExtResource("8_6rfi4")
-
-[node name="TileSnapX" type="CheckButton" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=601782522]
-offset_left = 630.0
-offset_top = 1470.0
-offset_right = 932.0
-offset_bottom = 1558.0
-theme_override_font_sizes/font_size = 32
-button_pressed = true
-text = "Snap Tiles on X
-(Experimental)"
-script = ExtResource("12_5p5qg")
 
 [node name="ChangeLogBase" type="ColorRect" parent="UI Elements/Camera2D/EditorPause/PauseMenu" unique_id=1553475387]
 visible = false
@@ -579,23 +644,46 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0.61)
 
 [node name="Changelog" type="Label" parent="UI Elements/Camera2D/EditorPause/PauseMenu/ChangeLogBase" unique_id=1365577775]
+visible = false
 z_index = 30
 layout_mode = 0
 offset_right = 721.0
 offset_bottom = 1050.0
-text = "Changelog v0.0.10
+text = "Changelog v0.1.0
 Additions:
- - Subtle haptics on mobile
+ - Added a use for the options menu by moving the various options into it.
+ - New home page! This now takes priority over the editor.
+ - New Playtesting Option!
+ - Implimented a somewhat basic login / sign up page. While this doesn't save any of your data, it allows for future updates to add many things, such as friends lists, messaging, and more!
+ - The track length now dynamically changes based on the length of the song!
+ - New \"Reset Track\" Button!
 Bug Fixes:
- - Fixed scroll bar on mobile
- - Fixed the debug label's positioning
- - Fixed sync issues
- - Fixed an issue in which pausing would not accurately seek
- - Fixed reset button behavior
- - Adjusted the slider tile to allow for more precise lengths
- - Fixed slider tile not playing sound effects"
+ - Fixed mobile haptics
+ - Removed \"SignalBus\" addon
+ - Fixed some issues with the Slider Tile
+ - Fixed a bug in which the default song would not acccurately load; the default song is now displayed in the settings menu."
 label_settings = SubResource("LabelSettings_2h0k7")
 autowrap_mode = 2
+
+[node name="ChangeLogRich" type="RichTextLabel" parent="UI Elements/Camera2D/EditorPause/PauseMenu/ChangeLogBase" unique_id=1803462898]
+z_index = 99
+layout_mode = 0
+offset_right = 712.0
+offset_bottom = 914.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Changelog v0.1.0
+Additions:
+ - Added a use for the options menu by moving the various options into it.
+ - New home page! This now takes priority over the editor.
+ - New Playtesting Option!
+ - Implimented a somewhat basic login / sign up page. While this doesn't save any of your data, it allows for future updates to add many things, such as friends lists, messaging, and more!
+ - The track length now dynamically changes based on the length of the song!
+ - New \"Reset Track\" Button!
+Bug Fixes:
+ - Fixed mobile haptics
+ - Removed \"SignalBus\" addon
+ - Fixed some issues with the Slider Tile
+ - Fixed a bug in which the default song would not acccurately load; the default song is now displayed in the settings menu."
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UI Elements/Camera2D" unique_id=1931328057]
 position = Vector2(-989.99994, -60)
@@ -615,7 +703,6 @@ color = Color(0.47079715, 0.47079715, 0.47079715, 0.25)
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBlur" type="ColorRect" parent="UI Elements/Camera2D" unique_id=2094286772]
-visible = false
 z_index = 10
 material = SubResource("ShaderMaterial_nfgmo")
 offset_left = -540.0
@@ -624,7 +711,7 @@ offset_right = 540.0
 offset_bottom = 960.0
 mouse_behavior_recursive = 2
 color = Color(0.47058824, 0.47058824, 0.47058824, 1)
-script = ExtResource("12_asgqx")
+metadata/_edit_use_anchors_ = true
 
 [node name="Play" type="TextureButton" parent="UI Elements/Camera2D" unique_id=260923295]
 z_index = 10
@@ -1021,17 +1108,16 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 visibility_layer = 1023
 z_index = 10
-offset_left = 480.0
-offset_top = -930.0
-offset_right = 504.0
-offset_bottom = 170.0
-scale = Vector2(1.5, 1.5)
+offset_left = 474.0
+offset_top = -900.0
+offset_right = 486.0
+offset_bottom = -375.0
+scale = Vector2(3, 3)
 tooltip_text = "Level Position"
 mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
 max_value = 10000.0
 value = 10000.0
-rounded = true
 custom_step = -0.1
 script = SubResource("GDScript_hppm4")
 metadata/_edit_use_anchors_ = true
@@ -1197,7 +1283,7 @@ offset_right = 181.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 6
+mouse_default_cursor_shape = 13
 texture_normal = ExtResource("18_pee1p")
 ignore_texture_size = true
 stretch_mode = 5
@@ -1339,21 +1425,24 @@ script = ExtResource("42_dmbb2")
 [connection signal="pressed" from="UI Elements/Camera2D/EditorPause" to="UI Elements/Camera2D/EditorPause" method="_on_pressed"]
 [connection signal="button_down" from="UI Elements/Camera2D/EditorPause/PauseMenu/Unpause" to="UI Elements/Camera2D/EditorPause" method="_on_unpause_button_down"]
 [connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/Unpause" to="UI Elements/Camera2D/EditorPause" method="_on_unpause_pressed"]
+[connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/Playtest" to="UI Elements/Camera2D/EditorPause/PauseMenu/Playtest" method="_on_pressed"]
+[connection signal="scene_loaded" from="UI Elements/Camera2D/EditorPause/PauseMenu/Playtest" to="UI Elements/Camera2D/EditorPause/PauseMenu/Playtest" method="_on_scene_loaded"]
+[connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/Reset Track" to="UI Elements/Camera2D/EditorPause/PauseMenu/Reset Track" method="_on_pressed"]
+[connection signal="confirmed" from="UI Elements/Camera2D/EditorPause/PauseMenu/Reset Track/ResetDialog" to="UI Elements/Camera2D/EditorPause/PauseMenu/Reset Track" method="_on_reset_dialog_confirmed"]
+[connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/Save and Quit" to="UI Elements/Camera2D/EditorPause/PauseMenu/Save and Quit" method="_on_pressed"]
+[connection signal="scene_loaded" from="UI Elements/Camera2D/EditorPause/PauseMenu/Save and Quit" to="UI Elements/Camera2D/EditorPause/PauseMenu/Save and Quit" method="_on_scene_loaded"]
 [connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/Help" to="UI Elements/Camera2D/EditorPause/PauseMenu/Help" method="_on_pressed"]
 [connection signal="confirmed" from="UI Elements/Camera2D/EditorPause/PauseMenu/Help/AcceptDialog" to="UI Elements/Camera2D/EditorPause/PauseMenu/Help" method="_on_accept_dialog_confirmed"]
 [connection signal="drag_ended" from="UI Elements/Camera2D/EditorPause/PauseMenu/Music Volume" to="UI Elements/Camera2D/EditorPause/PauseMenu/Music Volume" method="_on_drag_ended"]
 [connection signal="drag_ended" from="UI Elements/Camera2D/EditorPause/PauseMenu/SFX Volume" to="UI Elements/Camera2D/EditorPause/PauseMenu/SFX Volume" method="_on_drag_ended"]
+[connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions" to="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions" method="_on_pressed"]
+[connection signal="toggled" from="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions/SmoothDrag" to="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions/SmoothDrag" method="_on_toggled"]
+[connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions/TileSnap" to="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions/TileSnap" method="_on_pressed"]
+[connection signal="toggled" from="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions/TileSnap" to="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions/TileSnap" method="_on_toggled"]
+[connection signal="toggled" from="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions/TileSnapX" to="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorOptions/EditorPauseMenu/EditorPauseOptions/TileSnapX" method="_on_toggled"]
 [connection signal="button_down" from="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorChangeLog" to="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorChangeLog" method="_on_button_down"]
 [connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorChangeLog" to="UI Elements/Camera2D/EditorPause/PauseMenu/PauseEditorChangeLog" method="_on_pressed"]
-[connection signal="toggled" from="UI Elements/Camera2D/EditorPause/PauseMenu/SmoothDrag" to="UI Elements/Camera2D/EditorPause/PauseMenu/SmoothDrag" method="_on_toggled"]
-[connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/TileSnap" to="UI Elements/Camera2D/EditorPause/PauseMenu/TileSnap" method="_on_pressed"]
-[connection signal="toggled" from="UI Elements/Camera2D/EditorPause/PauseMenu/TileSnap" to="UI Elements/Camera2D/EditorPause/PauseMenu/TileSnap" method="_on_toggled"]
-[connection signal="toggled" from="UI Elements/Camera2D/EditorPause/PauseMenu/TileSnapX" to="UI Elements/Camera2D/EditorPause/PauseMenu/TileSnapX" method="_on_toggled"]
 [connection signal="pressed" from="UI Elements/Camera2D/EditorPause/PauseMenu/ChangeLogBase/Close" to="UI Elements/Camera2D/EditorPause/PauseMenu/ChangeLogBase/Close" method="_on_pressed"]
-[connection signal="mouse_entered" from="UI Elements/Camera2D/ButtonBlur" to="UI Elements/Camera2D/ButtonBlur" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="UI Elements/Camera2D/ButtonBlur" to="TilePlacer" method="_on_button_blur_mouse_entered"]
-[connection signal="mouse_exited" from="UI Elements/Camera2D/ButtonBlur" to="UI Elements/Camera2D/ButtonBlur" method="_on_mouse_exited"]
-[connection signal="mouse_exited" from="UI Elements/Camera2D/ButtonBlur" to="TilePlacer" method="_on_button_blur_mouse_exited"]
 [connection signal="pressed" from="UI Elements/Camera2D/Play" to="UI Elements/Camera2D/Play" method="_on_pressed"]
 [connection signal="pressed" from="UI Elements/Camera2D/Play" to="UI Elements/PlayPosition" method="_on_play_pressed"]
 [connection signal="pressed" from="UI Elements/Camera2D/Reset" to="UI Elements/Camera2D/Reset" method="_on_pressed"]
@@ -1396,6 +1485,7 @@ script = ExtResource("42_dmbb2")
 [connection signal="button_down" from="TilePlacerSlider/SlideTileBase" to="TilePlacerSlider" method="_on_slide_tile_base_button_down"]
 [connection signal="button_up" from="TilePlacerSlider/SlideTileBase" to="TilePlacerSlider" method="_on_slide_tile_base_button_up"]
 [connection signal="changed" from="TilePlacerSlider/ScaleControl" to="TilePlacerSlider" method="_on_scale_control_changed"]
+[connection signal="value_changed" from="TilePlacerSlider/ScaleControl" to="TilePlacerSlider" method="_on_scale_control_value_changed"]
 [connection signal="delete" from="TilePlacerFlick" to="TileDelete" method="_on_tile_placer_flick_delete"]
 [connection signal="place" from="TilePlacerFlick" to="TilePlace" method="_on_tile_placer_flick_place"]
 [connection signal="button_down" from="TilePlacerFlick/Base" to="TilePlacerFlick" method="_on_base_button_down"]

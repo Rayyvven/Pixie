@@ -1,0 +1,303 @@
+[gd_scene format=3 uid="uid://c00ai0mypkf71"]
+
+[ext_resource type="Script" uid="uid://oh6kwrwiyrwp" path="res://Scripts/CameraMovePlaytest.gd" id="1_j05w3"]
+[ext_resource type="Script" uid="uid://bwatsubex5qsh" path="res://Scripts/tile_loader.gd" id="2_2iy5o"]
+[ext_resource type="Script" uid="uid://cx5a1xu3i1fm8" path="res://Scripts/playtest_pause.gd" id="2_nwo0d"]
+[ext_resource type="Script" uid="uid://dof54opi050nj" path="res://Scripts/editorreturnbuttonplaytest.gd" id="3_bwaqm"]
+[ext_resource type="Texture2D" uid="uid://dhp85sqxg2sne" path="res://Assets/TileNoBG.png" id="3_j05w3"]
+[ext_resource type="Texture2D" uid="uid://utygqnrt6c2k" path="res://Assets/PixieAssets/SliderTileBottom.png" id="4_nwo0d"]
+[ext_resource type="Texture2D" uid="uid://1quwrunsot66" path="res://Assets/PixieAssets/SliderTileMiddle.png" id="5_bwaqm"]
+[ext_resource type="Script" uid="uid://cf4ga8g2i0vy8" path="res://Scripts/PlayTestTile.gd" id="5_qfj4p"]
+[ext_resource type="Script" uid="uid://coklh2w4cturr" path="res://Scripts/middle.gd" id="6_qfj4p"]
+[ext_resource type="Texture2D" uid="uid://dtkgbrkbewir5" path="res://Assets/PixieAssets/SliderTileTop.png" id="7_gjpc3"]
+[ext_resource type="Script" uid="uid://bih328tku6pgn" path="res://Scripts/top.gd" id="8_i4jfe"]
+[ext_resource type="Texture2D" uid="uid://dlf1diwi0vpxq" path="res://Assets/PixieAssets/TileNoDetail.png" id="9_rfyc0"]
+[ext_resource type="Texture2D" uid="uid://b5ibbtybnygi5" path="res://Assets/PixieAssets/FlickTileDirection.png" id="10_4sevv"]
+[ext_resource type="Script" uid="uid://cv5ay0ka5lk7c" path="res://Scripts/FlickTop.gd" id="11_1hcfw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_78ihk"]
+load_path = "res://.godot/imported/PauseButtonNoBG.png-32f21b1fe91d6d17fc4efbdf6b6c0456.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwaqm"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_qfj4p"]
+font_size = 48
+
+[node name="Playtest" type="Node2D" unique_id=1124555679]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=713568121]
+position = Vector2(544, 960)
+script = ExtResource("1_j05w3")
+
+[node name="GridLine1" type="ColorRect" parent="Camera2D" unique_id=1657386987]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -960.0
+offset_right = -178.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5006195, 0.5006196, 0.5006196, 0.46300003)
+metadata/_edit_use_anchors_ = true
+
+[node name="GridLine2" type="ColorRect" parent="Camera2D" unique_id=386148078]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = -960.0
+offset_right = 185.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5006195, 0.5006196, 0.5006196, 0.46300003)
+metadata/_edit_use_anchors_ = true
+
+[node name="GridLine3" type="ColorRect" parent="Camera2D" unique_id=1640290717]
+z_index = 10
+offset_left = -540.0
+offset_top = 570.0
+offset_right = 540.0
+offset_bottom = 610.0
+color = Color(1, 0.7598514, 1, 0.462)
+metadata/_edit_use_anchors_ = true
+
+[node name="PlaytestPause" type="TextureButton" parent="Camera2D" unique_id=56880051]
+show_behind_parent = true
+z_index = 25
+offset_left = -544.0
+offset_top = -960.0
+offset_right = -394.0
+offset_bottom = -810.0
+tooltip_text = "Pause"
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("CompressedTexture2D_78ihk")
+stretch_mode = 5
+script = ExtResource("2_nwo0d")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="Panel" parent="Camera2D/PlaytestPause" unique_id=1212546882]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 568.0
+offset_right = 960.0
+offset_bottom = 1344.0
+pivot_offset = Vector2(416, 388)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/PlaytestPause/PauseMenu" unique_id=2039914162]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
+offset_bottom = 72.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Camera2D/PlaytestPause/PauseMenu/HBoxContainer" unique_id=1356647639]
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_bwaqm")
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Camera2D/PlaytestPause/PauseMenu" unique_id=1718865567]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 387.5
+offset_top = 128.0
+offset_right = -387.5
+offset_bottom = 184.0
+grow_horizontal = 2
+
+[node name="Button" type="Button" parent="Camera2D/PlaytestPause/PauseMenu/HBoxContainer2" unique_id=1834900833]
+layout_mode = 2
+text = "Editor"
+script = ExtResource("3_bwaqm")
+
+[node name="TileLoader" type="Node" parent="." unique_id=524001487]
+script = ExtResource("2_2iy5o")
+
+[node name="TilePlacer" type="Node2D" parent="." unique_id=938408170]
+z_as_relative = false
+script = ExtResource("5_qfj4p")
+
+[node name="BasicTile" type="TextureButton" parent="TilePlacer" unique_id=735041648]
+visibility_layer = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.0
+offset_top = -270.0
+offset_right = 181.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 13
+texture_normal = ExtResource("3_j05w3")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TilePlacerSlider" type="Node2D" parent="." unique_id=902193207]
+
+[node name="SlideTileBase" type="Button" parent="TilePlacerSlider" unique_id=1067590732]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -210.0
+offset_right = 165.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(165, 420)
+mouse_default_cursor_shape = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="Bottom" type="TextureButton" parent="TilePlacerSlider" unique_id=948471479]
+offset_left = -165.0
+offset_top = 30.0
+offset_right = 165.0
+offset_bottom = 240.0
+mouse_filter = 2
+texture_normal = ExtResource("4_nwo0d")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Middle" type="TextureButton" parent="TilePlacerSlider" unique_id=1734631077]
+offset_left = -165.0
+offset_top = 64.0
+offset_right = 165.0
+offset_bottom = 274.0
+scale = Vector2(1, -1)
+mouse_filter = 2
+texture_normal = ExtResource("5_bwaqm")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_qfj4p")
+metadata/_edit_use_anchors_ = true
+
+[node name="Top" type="TextureButton" parent="TilePlacerSlider" unique_id=1148898169]
+offset_left = -165.0
+offset_top = -325.0
+offset_right = 165.0
+offset_bottom = -115.0
+mouse_filter = 2
+texture_normal = ExtResource("7_gjpc3")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("8_i4jfe")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScaleControl" type="VSlider" parent="TilePlacerSlider" unique_id=1133992207]
+visible = false
+offset_left = 165.0
+offset_top = -180.0
+offset_right = 195.0
+offset_bottom = 180.0
+min_value = 0.25
+max_value = 25.0
+step = 0.1
+value = 1.25
+metadata/_edit_use_anchors_ = true
+
+[node name="TilePlacerFlick" type="Node2D" parent="." unique_id=1869825975]
+
+[node name="Base" type="TextureButton" parent="TilePlacerFlick" unique_id=144385696]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -240.0
+offset_right = 180.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 6
+texture_normal = ExtResource("9_rfyc0")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Top" type="TextureRect" parent="TilePlacerFlick" unique_id=1705439202]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.2831855
+pivot_offset = Vector2(150, 150)
+mouse_filter = 2
+texture = ExtResource("10_4sevv")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("11_1hcfw")
+metadata/_edit_use_anchors_ = true
+
+[node name="Rotate" type="HSlider" parent="TilePlacerFlick" unique_id=840033944]
+visible = false
+offset_left = -150.0
+offset_top = 180.0
+offset_right = 150.0
+offset_bottom = 270.0
+max_value = 360.0
+step = 45.0
+tick_count = 8
+ticks_position = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VScrollBar" type="VScrollBar" parent="." unique_id=725164636]
+unique_name_in_owner = true
+visible = false
+visibility_layer = 1023
+z_index = 10
+offset_left = 1184.0
+offset_top = 160.0
+offset_right = 1196.0
+offset_bottom = 685.0
+scale = Vector2(3, 3)
+tooltip_text = "Level Position"
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+max_value = 10000.0
+value = 10000.0
+rounded = true
+custom_step = -0.1
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="." unique_id=56664977]
+offset_right = 1072.0
+offset_bottom = 21.0
+text = "0"
+label_settings = SubResource("LabelSettings_qfj4p")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Camera2D/PlaytestPause" to="Camera2D/PlaytestPause" method="_on_pressed"]
+[connection signal="pressed" from="Camera2D/PlaytestPause/PauseMenu/HBoxContainer2/Button" to="Camera2D/PlaytestPause/PauseMenu/HBoxContainer2/Button" method="_on_pressed"]
+[connection signal="scene_loaded" from="Camera2D/PlaytestPause/PauseMenu/HBoxContainer2/Button" to="Camera2D/PlaytestPause/PauseMenu/HBoxContainer2/Button" method="_on_scene_loaded"]
+[connection signal="button_down" from="TilePlacer/BasicTile" to="TilePlacer" method="_on_basic_tile_button_down"]

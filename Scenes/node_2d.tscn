@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://mpa5pr6wan38"]
+
+[ext_resource type="PackedScene" uid="uid://b6bhusc2w1uvx" path="res://Scenes/tile.tscn" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://oq05y0e8gjey" path="res://Scenes/particle_click.tscn" id="2_epypp"]
+[ext_resource type="Script" uid="uid://d1tlwxklmspq" path="res://Scripts/particle_click.gd" id="3_0hol4"]
+[ext_resource type="Script" uid="uid://caepederkhv7r" path="res://Scripts/LevelLoader.gd" id="4_0hol4"]
+
+[node name="Game" type="Node2D" unique_id=1656182024]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=448818898]
+position = Vector2(544, 952)
+
+[node name="Tile" parent="." unique_id=1008328882 instance=ExtResource("1_wtcfe")]
+position = Vector2(-899.9999, -540.00006)
+
+[node name="ParticleClick" parent="." unique_id=1599191970 instance=ExtResource("2_epypp")]
+script = ExtResource("3_0hol4")
+particle_click = ExtResource("2_epypp")
+
+[node name="Node" type="Node" parent="." unique_id=1077402547]
+script = ExtResource("4_0hol4")
+
+[node name="Label" type="Label" parent="." unique_id=1783571319]
+offset_left = -990.0
+offset_top = -300.0
+offset_right = -828.0
+offset_bottom = -277.0
+text = "Hidden, unused Tile. "

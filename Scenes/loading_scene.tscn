@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dohy0wsrbc5a1"]
+
+[ext_resource type="Script" uid="uid://dhkibuebteejh" path="res://label.gd" id="1_3wrsp"]
+[ext_resource type="Script" uid="uid://c1aql1qh7c4hg" path="res://Scripts/tip_label.gd" id="1_nbifo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpkal"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_3wrsp"]
+font_size = 32
+
+[node name="LoadingScene" type="Node2D" unique_id=232187658]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1402828433]
+position = Vector2(540, 960)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1080661518]
+offset_right = 1080.0
+offset_bottom = 1920.0
+mouse_default_cursor_shape = 5
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1928954346]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 914.0
+offset_right = 726.0
+offset_bottom = 1004.0
+pivot_offset = Vector2(195, 45)
+text = "Loading..."
+label_settings = SubResource("LabelSettings_jpkal")
+horizontal_alignment = 1
+script = ExtResource("1_3wrsp")
+
+[node name="TipLabel" type="Label" parent="ColorRect" unique_id=977865963]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 1032.0
+offset_right = 816.0
+offset_bottom = 1368.0
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+label_settings = SubResource("LabelSettings_3wrsp")
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("1_nbifo")
