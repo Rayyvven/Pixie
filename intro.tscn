@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://yj05hbcp2r8s"]
+
+[ext_resource type="Script" uid="uid://7hds6dv74ux0" path="res://intro_text.gd" id="1_s2ta7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ayt76"]
+font_size = 64
+
+[node name="Intro" type="Node2D" unique_id=1944480578]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2058960728]
+
+[node name="Back" type="ColorRect" parent="." unique_id=424507768]
+offset_left = -552.0
+offset_top = -960.0
+offset_right = 552.0
+offset_bottom = 960.0
+color = Color(0, 0, 0, 1)
+
+[node name="IntroText" type="Label" parent="." unique_id=249420878]
+offset_left = -176.0
+offset_top = -40.0
+offset_right = 177.0
+offset_bottom = 39.0
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(176.5, 39.5)
+text = "Tobylerone"
+label_settings = SubResource("LabelSettings_ayt76")
+script = ExtResource("1_s2ta7")

@@ -4,7 +4,7 @@ var scene_path = ""
 var time_elapsed = 0.0
 signal scene_loaded
 var scene_to_be_loaded = ""
-
+@onready var editor: TextureButton = $"."
 
 func Load_Scene(scene : String):
 	scene_path = scene
@@ -29,6 +29,17 @@ func _process(delta: float) -> void:
 func _on_scene_loaded() -> void:
 	get_tree().change_scene_to_packed(scene_to_be_loaded)
 
-
 func _on_pressed() -> void:
-	Load_Scene("res://Scenes/editor.tscn")
+	Load_Scene("res://Scenes/editor_levels.tscn")
+
+
+var tween := Tween.new()
+func _on_mouse_entered() -> void:
+	tween.kill()
+	var tween := get_tree().create_tween()
+	tween.tween_property(editor, "scale", Vector2(1.1, 1.1), .25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func _on_mouse_exited() -> void:
+	tween.kill()
+	var tween := get_tree().create_tween()
+	tween.tween_property(editor, "scale", Vector2(1, 1), .25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

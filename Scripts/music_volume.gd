@@ -1,5 +1,5 @@
 extends HSlider
-
+### TODO: Convert to a .CFG (Converted, to remove)
 func _on_drag_ended(value_changed: bool) -> void:
 	AudioServer.set_bus_volume_db(3, value)
 	AudioServer.set_bus_volume_db(2, value)

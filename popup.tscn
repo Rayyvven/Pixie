@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c1mubqt6kcegi"]
+
+[ext_resource type="Script" uid="uid://okxl21vx1qmf" path="res://popup.gd" id="1_6nc67"]
+[ext_resource type="Theme" uid="uid://bm1n35hpxhw8k" path="res://BaseTheme.tres" id="2_87bur"]
+[ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="3_uv27m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7gsq2"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_r7vyp"]
+font_size = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7vyp"]
+shader = ExtResource("3_uv27m")
+shader_parameter/blur_amount = 2.000000095
+
+[node name="Popup" type="Control" unique_id=619205379]
+z_index = 999
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6nc67")
+
+[node name="Panel" type="Panel" parent="." unique_id=2139449019]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -484.0
+offset_top = -272.0
+offset_right = 484.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_87bur")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1553980365]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "This is a header"
+label_settings = SubResource("LabelSettings_7gsq2")
+
+[node name="Body" type="Label" parent="Panel" unique_id=1740988857]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -32.0
+offset_right = 476.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is a sample popup. It should not last very long. It should only be used when errors are thrown."
+label_settings = SubResource("LabelSettings_r7vyp")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Blur" type="ColorRect" parent="Panel" unique_id=1419435400]
+material = SubResource("ShaderMaterial_r7vyp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

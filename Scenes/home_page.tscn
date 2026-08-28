@@ -1,21 +1,27 @@
 [gd_scene format=3 uid="uid://bptobiae1wckq"]
 
+[ext_resource type="Script" uid="uid://dhhpj1ywgqowb" path="res://Scenes/Discord_Manager.gd" id="1_ch5ow"]
 [ext_resource type="Texture2D" uid="uid://d3hcrw54n06ck" path="res://Assets/PlayButton.png" id="1_sc02a"]
 [ext_resource type="Texture2D" uid="uid://d3wrbinrx7i17" path="res://Assets/SunsetBackgroundPix.jpg" id="1_tjbaj"]
-[ext_resource type="Script" uid="uid://dkuv86bnluat5" path="res://Scripts/texture_rect_2.gd" id="2_xut5l"]
 [ext_resource type="Texture2D" uid="uid://baq0jqdkd2qku" path="res://Assets/NotAtAllStolenOnlineButton.png" id="3_4eu37"]
 [ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="3_45kqk"]
 [ext_resource type="Texture2D" uid="uid://cehdnjlk0qwls" path="res://Assets/EditorButtonBetter.png" id="3_k3ry7"]
 [ext_resource type="Script" uid="uid://cxaosy1jeyiwk" path="res://Scripts/editor.gd" id="3_ou0my"]
 [ext_resource type="Texture2D" uid="uid://0tsotac38awb" path="res://Assets/LiterallyAFuckingCircle.png" id="3_xut5l"]
 [ext_resource type="Texture2D" uid="uid://ckw0kqiofapb4" path="res://Assets/PixieAssets/PixieLogoReducedKerning.png" id="5_6pc04"]
+[ext_resource type="Script" uid="uid://b1vhnnfrgcea2" path="res://Scenes/playbutton.gd" id="7_tp8vw"]
+[ext_resource type="Script" uid="uid://co6xax7m42n1u" path="res://Scenes/options.gd" id="9_cfhav"]
 [ext_resource type="Texture2D" uid="uid://dhnwluyatu58s" path="res://Assets/CurnoxCogWheelWithOutLineThankYouTwin.png" id="10_45kqk"]
 [ext_resource type="Texture2D" uid="uid://cjndvhuqi6fic" path="res://Assets/DiscordThing.png" id="11_idhnx"]
+[ext_resource type="Script" uid="uid://b74o63ri78m04" path="res://Scenes/onlinebutton.gd" id="11_wg4i0"]
 [ext_resource type="Texture2D" uid="uid://cihahuewh1lhf" path="res://Assets/Githubthing.png" id="12_0pryr"]
 [ext_resource type="Script" uid="uid://fn4bxim4qjvp" path="res://Scripts/discord_button.gd" id="12_734iq"]
 [ext_resource type="Texture2D" uid="uid://bk2m5x15qlv1o" path="res://Assets/YouTubeThing.png" id="13_6pc04"]
 [ext_resource type="Script" uid="uid://bdj8cf87fcf1e" path="res://Scripts/git_hub_backing.gd" id="13_734iq"]
 [ext_resource type="Script" uid="uid://fnry734esafr" path="res://Scripts/you_tube_button.gd" id="14_guvn3"]
+[ext_resource type="Script" uid="uid://bpm34n0rep4gw" path="res://Scenes/splash_label.gd" id="17_w5jns"]
+[ext_resource type="Texture2D" uid="uid://dex87x572pl3g" path="res://Assets/PixieAssets/ImportButton.png" id="18_fg10g"]
+[ext_resource type="Script" uid="uid://c5rdds0v12i7o" path="res://Scenes/logout_button.gd" id="19_nwp2f"]
 
 [sub_resource type="Gradient" id="Gradient_45kqk"]
 offsets = PackedFloat32Array(0, 0.084980235, 0.756917, 1)
@@ -25,25 +31,78 @@ colors = PackedColorArray(0.4666667, 0, 1, 0, 0.4666667, 0, 1, 1, 0.8613334, 0.7
 shader = ExtResource("3_45kqk")
 shader_parameter/blur_amount = 5.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_fg10g"]
+font_size = 48
+font_color = Color(1, 0.5254902, 1, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 0.54509807)
+
+[sub_resource type="Animation" id="Animation_nwp2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HomeButtons/Logo/SplashText/SplashLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ch6sb"]
+resource_name = "SplashTextLoop"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HomeButtons/Logo/SplashText/SplashLabel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.25, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tp8vw"]
+_data = {
+&"RESET": SubResource("Animation_nwp2f"),
+&"SplashTextLoop": SubResource("Animation_ch6sb")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_734iq"]
 font_size = 32
 
 [node name="HomePage" type="Node2D" unique_id=1687297617]
+script = ExtResource("1_ch5ow")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=679878967]
-position = Vector2(540, 960)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=704128513]
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1528911658]
-offset_left = -780.0
-offset_top = -1410.0
-offset_right = 1890.0
-offset_bottom = 3336.0
-pivot_offset = Vector2(1335, 2378)
+[node name="BackgroundImage" type="TextureRect" parent="CanvasLayer" unique_id=1528911658]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2732.0
+offset_top = -3440.0
+offset_right = 2732.0
+offset_bottom = 3440.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(2732, 3440)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("1_tjbaj")
-script = ExtResource("2_xut5l")
+stretch_mode = 6
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1436363629]
-position = Vector2(570, 960)
+[node name="BackgroundParticles" type="CPUParticles2D" parent="CanvasLayer/BackgroundImage" unique_id=1436363629]
+position = Vector2(2732, 3440)
 amount = 30
 texture = ExtResource("3_xut5l")
 lifetime = 19.12
@@ -67,117 +126,207 @@ color_ramp = SubResource("Gradient_45kqk")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=376485177]
+[node name="Blur" type="ColorRect" parent="CanvasLayer" unique_id=376485177]
 material = SubResource("ShaderMaterial_id0my")
-offset_right = 1080.0
-offset_bottom = 1920.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Logo" type="TextureRect" parent="." unique_id=797450462]
-offset_left = 48.0
-offset_top = 596.0
-offset_right = 1032.0
-offset_bottom = 904.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=93084481]
+propagate_maximum_size = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -304.0
+offset_bottom = 150.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="LogoutButton" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=1748292064]
+z_index = 1
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_rotation = 1.5707964
+tooltip_text = "Logout"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("18_fg10g")
+script = ExtResource("19_nwp2f")
+
+[node name="LogoutConfirm" type="ConfirmationDialog" parent="CanvasLayer/HBoxContainer/LogoutButton" unique_id=411729666]
+oversampling_override = 1.0
+title = "Confirm Logout"
+initial_position = 2
+size = Vector2i(245, 100)
+force_native = true
+dialog_text = "Are you sure you want to log out?"
+
+[node name="Options" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=639479668]
+z_index = 5
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("10_45kqk")
+script = ExtResource("9_cfhav")
+
+[node name="HomeButtons" type="VBoxContainer" parent="CanvasLayer" unique_id=700844212]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.0
+offset_top = -120.0
+offset_right = 364.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="CanvasLayer/HomeButtons" unique_id=797450462]
+custom_minimum_size = Vector2(984, 308)
+layout_mode = 2
 texture = ExtResource("5_6pc04")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Play" type="TextureButton" parent="." unique_id=1247873190]
+[node name="SplashText" type="Node" parent="CanvasLayer/HomeButtons/Logo" unique_id=1384284921]
+
+[node name="SplashLabel" type="Label" parent="CanvasLayer/HomeButtons/Logo/SplashText" unique_id=490685253]
 anchors_preset = -1
-offset_left = 450.0
-offset_top = 1140.0
-offset_right = 690.0
-offset_bottom = 1380.0
+anchor_left = 0.526
+anchor_top = 0.437
+anchor_right = 0.526
+anchor_bottom = 0.437
+offset_left = -208.07999
+offset_top = -87.04004
+offset_right = 549.92
+offset_bottom = 204.95996
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.17453292
+pivot_offset = Vector2(379, 146)
+text = "This is a Splash Text!"
+label_settings = SubResource("LabelSettings_fg10g")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("17_w5jns")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HomeButtons/Logo/SplashText" unique_id=28917931]
+root_node = NodePath("../../../../..")
+libraries/ = SubResource("AnimationLibrary_tp8vw")
+
+[node name="MenuButtons" type="HBoxContainer" parent="CanvasLayer/HomeButtons" unique_id=2053486185]
+layout_mode = 2
+alignment = 1
+
+[node name="Online" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=417017349]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("3_4eu37")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("11_wg4i0")
+
+[node name="Play" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=1247873190]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+offset_transform_enabled = true
 texture_normal = ExtResource("1_sc02a")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("7_tp8vw")
 
-[node name="Editor" type="TextureButton" parent="." unique_id=741314075]
-anchors_preset = -1
-offset_left = 750.0
-offset_top = 1170.0
-offset_right = 930.0
-offset_bottom = 1350.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Editor" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=741314075]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_k3ry7")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("3_ou0my")
 
-[node name="Online" type="TextureButton" parent="." unique_id=417017349]
-anchors_preset = -1
-offset_left = 150.0
-offset_top = 1170.0
-offset_right = 330.0
-offset_bottom = 1350.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("3_4eu37")
-ignore_texture_size = true
-stretch_mode = 5
+[node name="CornerSocials" type="HBoxContainer" parent="CanvasLayer" unique_id=1423616928]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+offset_right = 320.0
+grow_vertical = 0
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=639479668]
-offset_left = 930.0
-offset_right = 1080.0
-offset_bottom = 150.0
-texture_normal = ExtResource("10_45kqk")
-
-[node name="DiscordButton" type="TextureButton" parent="." unique_id=1461385387]
-offset_left = 24.0
-offset_top = 1800.0
-offset_right = 120.0
-offset_bottom = 1896.0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("11_idhnx")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("12_734iq")
-
-[node name="YouTubeButton" type="TextureButton" parent="." unique_id=1469863378]
-offset_left = 136.0
-offset_top = 1800.0
-offset_right = 232.0
-offset_bottom = 1896.0
+[node name="YouTubeButton" type="TextureButton" parent="CanvasLayer/CornerSocials" unique_id=1469863378]
+custom_minimum_size = Vector2(96, 50)
+layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("13_6pc04")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("14_guvn3")
 
-[node name="GitHubBacking" type="TextureRect" parent="." unique_id=689835003]
-offset_left = 200.0
-offset_top = 1736.0
-offset_right = 376.0
-offset_bottom = 1960.0
-texture = ExtResource("3_xut5l")
-expand_mode = 1
-stretch_mode = 5
-script = ExtResource("13_734iq")
-
-[node name="GitHubButton" type="TextureButton" parent="GitHubBacking" unique_id=2029125727]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 66.0
-offset_right = 136.0
-offset_bottom = 154.0
+[node name="GitHubButton" type="TextureButton" parent="CanvasLayer/CornerSocials" unique_id=2029125727]
+z_index = 1
+custom_minimum_size = Vector2(96, 50)
+layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("12_0pryr")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Version" type="Label" parent="." unique_id=515740514]
-offset_left = 994.0
-offset_top = 1882.0
-offset_right = 1078.0
-offset_bottom = 1922.0
-text = "v0.1.0"
-label_settings = SubResource("LabelSettings_734iq")
+[node name="GitHubBacking" type="TextureRect" parent="CanvasLayer/CornerSocials/GitHubButton" unique_id=689835003]
+z_index = -1
+custom_minimum_size = Vector2(96, 88)
+layout_mode = 0
+offset_left = -64.0
+offset_top = -48.0
+offset_right = 160.0
+offset_bottom = 146.0
+size_flags_stretch_ratio = 0.0
+offset_transform_scale = Vector2(1.19, 1.19)
+texture = ExtResource("3_xut5l")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("13_734iq")
 
-[connection signal="pressed" from="Editor" to="Editor" method="_on_pressed"]
-[connection signal="scene_loaded" from="Editor" to="Editor" method="_on_scene_loaded"]
-[connection signal="pressed" from="DiscordButton" to="DiscordButton" method="_on_pressed"]
-[connection signal="pressed" from="YouTubeButton" to="YouTubeButton" method="_on_pressed"]
-[connection signal="pressed" from="GitHubBacking/GitHubButton" to="GitHubBacking" method="_on_git_hub_button_pressed"]
+[node name="DiscordButton" type="TextureButton" parent="CanvasLayer/CornerSocials" unique_id=1461385387]
+custom_minimum_size = Vector2(96, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_idhnx")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("12_734iq")
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer" unique_id=515740514]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0.1.1b"
+label_settings = SubResource("LabelSettings_734iq")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/LogoutButton" to="CanvasLayer/HBoxContainer/LogoutButton" method="_on_pressed"]
+[connection signal="confirmed" from="CanvasLayer/HBoxContainer/LogoutButton/LogoutConfirm" to="CanvasLayer/HBoxContainer/LogoutButton" method="_on_logout_confirm_confirmed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Options" to="CanvasLayer/HBoxContainer/Options" method="_on_pressed"]
+[connection signal="toggled" from="CanvasLayer/HBoxContainer/Options" to="CanvasLayer/HBoxContainer/Options" method="_on_toggled"]
+[connection signal="mouse_entered" from="CanvasLayer/HomeButtons/MenuButtons/Online" to="CanvasLayer/HomeButtons/MenuButtons/Online" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HomeButtons/MenuButtons/Online" to="CanvasLayer/HomeButtons/MenuButtons/Online" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/HomeButtons/MenuButtons/Play" to="CanvasLayer/HomeButtons/MenuButtons/Play" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HomeButtons/MenuButtons/Play" to="CanvasLayer/HomeButtons/MenuButtons/Play" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/HomeButtons/MenuButtons/Play" to="CanvasLayer/HomeButtons/MenuButtons/Play" method="_on_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HomeButtons/MenuButtons/Editor" to="CanvasLayer/HomeButtons/MenuButtons/Editor" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HomeButtons/MenuButtons/Editor" to="CanvasLayer/HomeButtons/MenuButtons/Editor" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/HomeButtons/MenuButtons/Editor" to="CanvasLayer/HomeButtons/MenuButtons/Editor" method="_on_pressed"]
+[connection signal="scene_loaded" from="CanvasLayer/HomeButtons/MenuButtons/Editor" to="CanvasLayer/HomeButtons/MenuButtons/Editor" method="_on_scene_loaded"]
+[connection signal="pressed" from="CanvasLayer/CornerSocials/YouTubeButton" to="CanvasLayer/CornerSocials/YouTubeButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/CornerSocials/GitHubButton" to="CanvasLayer/CornerSocials/GitHubButton/GitHubBacking" method="_on_git_hub_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CornerSocials/DiscordButton" to="CanvasLayer/CornerSocials/DiscordButton" method="_on_pressed"]

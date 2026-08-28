@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://d00jq3gv14kag"]
+
+[ext_resource type="Texture2D" uid="uid://prck88gg7ne5" path="res://Assets/Arrow.png" id="1_31v5r"]
+[ext_resource type="Script" uid="uid://blpeldvtl6omm" path="res://Scenes/editor_levels.gd" id="1_q3imu"]
+[ext_resource type="Texture2D" uid="uid://d3wrbinrx7i17" path="res://Assets/SunsetBackgroundPix.jpg" id="2_6m2kq"]
+[ext_resource type="Script" uid="uid://7jarq7fcv026" path="res://back_button.gd" id="2_hldwc"]
+[ext_resource type="Theme" uid="uid://bm1n35hpxhw8k" path="res://BaseTheme.tres" id="3_hldwc"]
+[ext_resource type="Script" uid="uid://dkuv86bnluat5" path="res://Scripts/texture_rect_2.gd" id="3_y01l6"]
+[ext_resource type="Texture2D" uid="uid://cehdnjlk0qwls" path="res://Assets/EditorButtonBetter.png" id="4_oh76i"]
+[ext_resource type="Texture2D" uid="uid://0tsotac38awb" path="res://Assets/LiterallyAFuckingCircle.png" id="4_r2kxd"]
+[ext_resource type="Script" uid="uid://dnbqp136o1w61" path="res://Scenes/level_name.gd" id="5_hrcgd"]
+[ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="5_y01l6"]
+[ext_resource type="Script" uid="uid://cyu41iqne0h4x" path="res://Scenes/create_track.gd" id="6_33e6r"]
+[ext_resource type="Texture2D" uid="uid://dex87x572pl3g" path="res://Assets/PixieAssets/ImportButton.png" id="8_2q35t"]
+[ext_resource type="Script" uid="uid://cpysumla62qie" path="res://Scenes/edit_level.gd" id="11_r2kxd"]
+[ext_resource type="Script" uid="uid://cdyhac86cvdnn" path="res://Scenes/import_track.gd" id="14_h7j62"]
+
+[sub_resource type="Gradient" id="Gradient_h7j62"]
+offsets = PackedFloat32Array(0, 0.084980235, 0.756917, 1)
+colors = PackedColorArray(0.4666667, 0, 1, 0, 0.4666667, 0, 1, 1, 0.8613334, 0.74, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tb2id"]
+shader = ExtResource("5_y01l6")
+shader_parameter/blur_amount = 5.0
+
+[node name="EditorLevels" type="Control" unique_id=196386485]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q3imu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=667917491]
+
+[node name="BackgroundImage2" type="TextureRect" parent="CanvasLayer" unique_id=596087321]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2732.0
+offset_top = -3440.0
+offset_right = 2732.0
+offset_bottom = 3440.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(2732, 3440)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_6m2kq")
+stretch_mode = 6
+script = ExtResource("3_y01l6")
+
+[node name="BackgroundParticles" type="CPUParticles2D" parent="CanvasLayer/BackgroundImage2" unique_id=1184228166]
+position = Vector2(2732, 3440)
+amount = 30
+texture = ExtResource("4_r2kxd")
+lifetime = 19.12
+randomness = 1.0
+lifetime_randomness = 1.0
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 1920)
+spread = 94.47
+gravity = Vector2(0, 0)
+initial_velocity_max = 291.39
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_max = 0.01
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 3.0
+color = Color(1, 0.050000012, 0.47749984, 0.6)
+color_ramp = SubResource("Gradient_h7j62")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Blur" type="ColorRect" parent="CanvasLayer" unique_id=1211486287]
+material = SubResource("ShaderMaterial_tb2id")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1109738134]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 256.0
+grow_horizontal = 0
+
+[node name="ImportTrack" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=1846549137]
+z_index = 5
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_2q35t")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("14_h7j62")
+
+[node name="ImportFile" type="FileDialog" parent="CanvasLayer/VBoxContainer/ImportTrack" unique_id=836848998]
+title = "Open a Directory"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="ErrorDialog" type="AcceptDialog" parent="CanvasLayer/VBoxContainer/ImportTrack" unique_id=1473083872]
+oversampling_override = 1.0
+title = "Warning"
+initial_position = 1
+size = Vector2i(140, 100)
+force_native = true
+ok_button_text = "Oh, okay :("
+dialog_text = "An error occurred."
+
+[node name="CreateTrack" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=651572776]
+z_index = 5
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_oh76i")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("6_33e6r")
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1806407211]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -832.0
+offset_right = 412.0
+offset_bottom = 832.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_hldwc")
+
+[node name="TrackHeader" type="Label" parent="CanvasLayer/Panel" unique_id=1813554160]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 816.0
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 64
+text = "Browse Created Tracks"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel" unique_id=1286452140]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 816.0
+offset_bottom = 1656.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/ScrollContainer" unique_id=1163174818]
+propagate_maximum_size = false
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+offset_transform_visual_only = false
+
+[node name="TestContainer" type="HBoxContainer" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer" unique_id=125568592]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="LevelName" type="LineEdit" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=997007513]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 74
+text = "Level One"
+placeholder_text = "Level Name"
+alignment = 1
+max_length = 32
+emoji_menu_enabled = false
+script = ExtResource("5_hrcgd")
+
+[node name="EditTrack" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=1257464364]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_oh76i")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("11_r2kxd")
+
+[node name="PlayLevel" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=604533440]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_31v5r")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer" unique_id=637216129]
+offset_right = 100.0
+offset_bottom = 100.0
+rotation = 3.1415927
+pivot_offset = Vector2(50, 50)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_31v5r")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_hldwc")
+
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_pressed"]
+[connection signal="dir_selected" from="CanvasLayer/VBoxContainer/ImportTrack/ImportFile" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_import_file_dir_selected"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_pressed"]
+[connection signal="scene_loaded" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_scene_loaded"]
+[connection signal="text_changed" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/LevelName" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/LevelName" method="_on_text_changed"]
+[connection signal="pressed" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" method="_on_pressed"]
+[connection signal="scene_loaded" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" method="_on_scene_loaded"]
+[connection signal="pressed" from="CanvasLayer/BackButton" to="CanvasLayer/BackButton" method="_on_pressed"]
+[connection signal="scene_loaded" from="CanvasLayer/BackButton" to="CanvasLayer/BackButton" method="_on_scene_loaded"]

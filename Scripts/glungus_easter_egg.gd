@@ -1,15 +1,11 @@
 extends TextureRect
-@onready var speed_val: LineEdit = $"../Options/OptionsMenu/SpeedVal"
+
+@onready var speed_val: LineEdit = $"../OptionsMenu/OptionsPanel/MainVerticalContainer/Row 5/SpeedVal"
+@onready var bpm_val: LineEdit = $"../OptionsMenu/OptionsPanel/MainVerticalContainer/Row 5/BPMVal"
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if speed_val.text == "0":
+	if speed_val.text == "0" or int(bpm_val.text) < 0:
 		visible = true
 	else:
 		visible = false

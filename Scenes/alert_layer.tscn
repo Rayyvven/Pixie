@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cbhw8k81yclak"]
+
+[ext_resource type="Script" uid="uid://duopwd7q4yy40" path="res://alert.gd" id="1_m5afe"]
+[ext_resource type="Theme" uid="uid://bm1n35hpxhw8k" path="res://BaseTheme.tres" id="2_tn84v"]
+
+[node name="AlertLayer" type="Control" unique_id=266181125]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m5afe")
+
+[node name="AlertPanel" type="Panel" parent="." unique_id=1949709868]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -412.0
+offset_top = -240.0
+offset_right = 412.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(412, 272)
+theme = ExtResource("2_tn84v")
+
+[node name="Title" type="Label" parent="AlertPanel" unique_id=1007120924]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Alert Title"
+
+[node name="Contents" type="Label" parent="AlertPanel" unique_id=420603219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "This is the default alert text."

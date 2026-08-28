@@ -7,7 +7,8 @@ func _ready() -> void:
 	Firebase.Auth.signup_succeeded.connect(on_signup_succeeded)
 	Firebase.Auth.login_failed.connect(on_login_failed)
 	Firebase.Auth.signup_failed.connect(on_signup_failed)
-	get_tree().change_scene_to_file("res://home_page.tscn")
+	get_tree().change_scene_to_file("res://Scenes/home_page.tscn")
+	
 	
 	if Firebase.Auth.check_auth_file():
 		$StateLabel.text = "Successfully logged in!"

@@ -4,4 +4,4 @@ extends TextureButton
 
 func _process(delta: float) -> void:
 	scale.y = scale_control.value * -1
-	slide_tile_base.scale.y = (scale_control.value/2) +.6
+	slide_tile_base.scale.y = (scale_control.value/2) +.6 #-90

@@ -1,6 +1,5 @@
 extends TextureButton
 
-
 func _process(delta: float) -> void:
 	if SelectedTile.TileSelect == 4:
 		modulate.r = 0.5

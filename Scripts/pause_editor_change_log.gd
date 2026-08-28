@@ -1,4 +1,5 @@
 extends TextureButton
+
 @onready var changelog: ColorRect = $"../ChangeLogBase"
 
 func _on_pressed() -> void:

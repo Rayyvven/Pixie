@@ -1,7 +1,8 @@
 extends TextureButton
+
 @onready var v_scroll_bar: VScrollBar = %VScrollBar
-@onready var play: TextureButton = $"../Play"
-@onready var music: AudioStreamPlayer2D = $"../AudioStreamPlayer2D"
+@onready var play: TextureButton = $"../Yikes/Play"
+@onready var music: AudioStreamPlayer = $"../../Music"
 @onready var play_position: Button = $"../../PlayPosition"
 
 func _on_pressed() -> void:

@@ -1,10 +1,10 @@
 extends Button
-var scene_path = ""
+@onready var speed_val: LineEdit = $"../../../../OptionsMenu/OptionsPanel/MainVerticalContainer/Row 5/SpeedVal"
 @export var scene_loading = false
 var time_elapsed = 0.0
 signal scene_loaded
 var scene_to_be_loaded = ""
-
+var scene_path = ""
 
 func Load_Scene(scene : String):
 	scene_path = scene
@@ -29,6 +29,6 @@ func _process(delta: float) -> void:
 func _on_scene_loaded() -> void:
 	get_tree().change_scene_to_packed(scene_to_be_loaded)
 
-
 func _on_pressed() -> void:
-	Load_Scene("res://playtest.tscn")
+	Load_Scene("res://Scenes/playtest.tscn")
+	LevelController.LevelData["Level Info"]["Speed"] = speed_val.text ## HOPEFULLY provides a last-minute fix. I still just have no fucking clue why this doesn't work

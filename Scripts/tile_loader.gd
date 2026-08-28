@@ -20,6 +20,7 @@ func _ready() -> void:
 				B = tile_placer_slider.duplicate()
 				B.get_child(2).scale.y = LevelController.LevelData["Level Data"]["Tile" + str(i)] [1]
 				print(B.get_child(4).name)
+				B.rotation_degrees = LevelController.LevelData["Level Data"]["Tile" + str(i)] [4]
 				B.get_child(4).value = LevelController.LevelData["Level Data"]["Tile" + str(i)] [1]
 				print("Scale: ", LevelController.LevelData["Level Data"]["Tile" + str(i)] [1])
 			elif LevelController.LevelData["Level Data"]["Tile" + str(i)] [0] == 3:

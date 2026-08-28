@@ -1,4 +1,5 @@
 extends Button
+
 @onready var accept_dialog: AcceptDialog = $AcceptDialog
 
 func _on_accept_dialog_confirmed() -> void:

@@ -5,7 +5,7 @@ func _on_file_dialog_dir_selected(dir: String) -> void:
 	#get_tree().reload_current_scene()
 	print("Emitted Signal!")
 	LoadLevel.emit(dir)
-
+			### Remove this node ASAP
 
 func _on_pressed() -> void:
 	if $FileDialog.visible == false:
