@@ -71,7 +71,6 @@
 [ext_resource type="Script" uid="uid://dfn7x63tnlb3b" path="res://Scripts/tile_select_level_end.gd" id="42_42lpt"]
 [ext_resource type="Script" uid="uid://pfgyte504mcx" path="res://Scripts/tile_delete.gd" id="42_dmbb2"]
 [ext_resource type="Script" uid="uid://bl0y66y1y541c" path="res://Scripts/tile_select_color.gd" id="44_jr8do"]
-[ext_resource type="Script" uid="uid://lsved4adqugb" path="res://SharePlugin/Share.gd" id="45_dijpx"]
 [ext_resource type="Texture2D" uid="uid://utygqnrt6c2k" path="res://Assets/PixieAssets/SliderTileBottom.png" id="50_ij0l5"]
 [ext_resource type="Script" uid="uid://dnrov6nwo71mi" path="res://Scripts/tile_placer_slider.gd" id="51_42lpt"]
 [ext_resource type="Texture2D" uid="uid://dtkgbrkbewir5" path="res://Assets/PixieAssets/SliderTileTop.png" id="51_ekxub"]
@@ -143,6 +142,124 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_dijpx"]
 font_size = 32
+
+[sub_resource type="GDScript" id="GDScript_r3d53"]
+script/source = "#
+# © 2024-present https://github.com/cengiz-pz
+#
+
+@tool
+@icon(\"icon.png\")
+class_name Share extends Node
+
+const PLUGIN_SINGLETON_NAME: String = \"SharePlugin\"
+
+signal share_completed(activity_type: String)
+signal share_failed(error_message: String)
+signal share_canceled()
+
+const MIME_TYPE_TEXT: String = \"text/plain\"
+const MIME_TYPE_IMAGE: String = \"image/*\"
+
+const SIGNAL_NAME_SHARE_COMPLETED: String = \"share_completed\";
+const SIGNAL_NAME_SHARE_FAILED: String = \"share_failed\";
+const SIGNAL_NAME_SHARE_CANCELED: String = \"share_canceled\";
+
+@onready var _temp_image_path: String = OS.get_user_data_dir() + \"/tmp_share_img_path.png\"
+
+var _plugin_singleton: Object
+
+
+func _ready() -> void:
+	_update_plugin()
+
+
+func _notification(a_what: int) -> void:
+	if a_what == NOTIFICATION_APPLICATION_RESUMED:
+		_update_plugin()
+
+
+func _update_plugin() -> void:
+	if _plugin_singleton == null:
+		if Engine.has_singleton(PLUGIN_SINGLETON_NAME):
+			_plugin_singleton = Engine.get_singleton(PLUGIN_SINGLETON_NAME)
+			_connect_signals()
+		elif not OS.has_feature(\"editor_hint\"):
+			log_error(\"%s singleton not found!\" % PLUGIN_SINGLETON_NAME)
+
+
+func _connect_signals() -> void:
+	_plugin_singleton.connect(SIGNAL_NAME_SHARE_COMPLETED, _on_share_completed)
+	_plugin_singleton.connect(SIGNAL_NAME_SHARE_FAILED, _on_share_failed)
+	_plugin_singleton.connect(SIGNAL_NAME_SHARE_CANCELED, _on_share_canceled)
+
+
+func share_text(a_title: String, a_subject: String, a_content: String) -> void:
+	if _plugin_singleton != null:
+		_plugin_singleton.share(
+			SharedData.new()
+				.set_title(a_title)
+				.set_subject(a_subject)
+				.set_content(a_content)
+				.set_mime_type(MIME_TYPE_TEXT)
+				.get_raw_data()
+		)
+	else:
+		log_error(\"%s plugin not initialized\" % PLUGIN_SINGLETON_NAME)
+
+
+func share_image(a_path: String, a_title: String, a_subject: String, a_content: String) -> void:
+	share_file(a_path, MIME_TYPE_IMAGE, a_title, a_subject, a_content)
+
+
+func share_texture(a_texture: Texture2D, a_title: String, a_subject: String, a_content: String) -> void:
+	var __image: Image = a_texture.get_image()
+	__image.save_png(_temp_image_path)
+	share_file(_temp_image_path, MIME_TYPE_IMAGE, a_title, a_subject, a_content)
+
+
+func share_viewport(a_viewport: Viewport, a_title: String, a_subject: String, a_content: String, a_flip_y: bool = false) -> void:
+	var __image: Image = a_viewport.get_texture().get_image()
+	if a_flip_y:
+		__image.flip_y()
+	__image.save_png(_temp_image_path)
+	share_file(_temp_image_path, MIME_TYPE_IMAGE, a_title, a_subject, a_content)
+
+
+func share_file(a_path: String, a_mime_type: String, a_title: String, a_subject: String, a_content: String) -> void:
+	if _plugin_singleton != null:
+		_plugin_singleton.share(
+			SharedData.new()
+				.set_title(a_title)
+				.set_subject(a_subject)
+				.set_content(a_content)
+				.set_mime_type(a_mime_type)
+				.set_file_path(a_path)
+				.get_raw_data()
+		)
+	else:
+		log_error(\"%s plugin not initialized\" % PLUGIN_SINGLETON_NAME)
+
+
+func _on_share_completed(a_activity_type: String) -> void:
+	emit_signal(SIGNAL_NAME_SHARE_COMPLETED, a_activity_type)
+
+
+func _on_share_failed(a_error_message: String) -> void:
+	emit_signal(SIGNAL_NAME_SHARE_FAILED, a_error_message)
+
+
+func _on_share_canceled() -> void:
+	emit_signal(SIGNAL_NAME_SHARE_CANCELED)
+
+
+static func log_error(a_description: String) -> void:
+	push_error(a_description)
+
+
+static func log_info(a_description: String) -> void:
+	print_rich(\"[color=cyan]INFO: %s[/color]\" % a_description)
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_5lu7h"]
 font_size = 48
@@ -679,7 +796,6 @@ visible = false
 position = Vector2(-930, 0)
 
 [node name="EditorPauseSettingsPanel" type="Panel" parent="CanvasLayer/PauseMenu/PauseEditorOptions/EditorPauseMenu" unique_id=116617567]
-visible = false
 z_index = 50
 offset_left = 129.0
 offset_top = 224.0
@@ -840,27 +956,15 @@ layout_mode = 0
 offset_right = 712.0
 offset_bottom = 914.0
 theme_override_font_sizes/normal_font_size = 32
-text = "Changelog v0.1.1
+bbcode_enabled = true
+text = "Changelog v0.1.1b
 Additions:
- - New rotate ability for slide tiles!
- - New background video feature for tracks
- - New created level browser
- - New themed buttons, fonts, icons, colors & more!
- - New save & import systems!
- - Adjusted the game such that it can now run on any aspect ratio. Please report any issues directly!
- - Implimented a very basic Discord RPC system.
- - Revamped the options menu, introducing Scroll Strength, Background Blur, Max FPS, VSync, and fullscreen options! The options menu will now be the same no matter where you are in Pixie.
+ - New folder button in the track browser which allows you to easily locate your real, saved files
+ - New trash button next to your created tracks which will allow you to easily delete your tracks, rather than removing them via your save file.
 Bug Fixes & Improvements:
- - A lot of under the hood changes to how slide tiles work
- - Fixed a bug in which track names would not save
- - Script optimizations, junk removal, file reduction
- - Fixed speed, description, artist, BPM and more values not saving properly.
- - With the new track saving system, users on Android will no longer have to use the old, copy and paste based system to save their tracks.
- - Fixed options saving logic
- - The background color now accurately exports and imports.
- - \"Row Control\" is now only visible when the \"Updated Row Calculation\" experimental option is enabled.
- - Background videos now accurately save & load
-"
+ -Removed Discord RPC due to instability
+ - Removed \"SharePlugin\" due to lack of usage
+ - Converted all Splash Texts to use a .txt file rather than being coded manually"
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer" unique_id=1043028808]
 position = Vector2(540, 960)
@@ -1208,7 +1312,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Share" type="Node" parent="CanvasLayer/OptionsMenu/OptionsPanel/HBoxContainer/Export/Export" unique_id=72618672]
-script = ExtResource("45_dijpx")
+script = SubResource("GDScript_r3d53")
 metadata/_custom_type_script = "uid://lsved4adqugb"
 
 [node name="ExportDir" type="FileDialog" parent="CanvasLayer/OptionsMenu/OptionsPanel/HBoxContainer/Export" unique_id=94096495]

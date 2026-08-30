@@ -12,7 +12,10 @@
 [ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="5_y01l6"]
 [ext_resource type="Script" uid="uid://cyu41iqne0h4x" path="res://Scenes/create_track.gd" id="6_33e6r"]
 [ext_resource type="Texture2D" uid="uid://dex87x572pl3g" path="res://Assets/PixieAssets/ImportButton.png" id="8_2q35t"]
+[ext_resource type="Texture2D" uid="uid://c4fgxfhqehwme" path="res://Assets/FileBright.png" id="10_tb2id"]
+[ext_resource type="Script" uid="uid://djy51m15o644p" path="res://Scenes/track_folder.gd" id="11_6tpsf"]
 [ext_resource type="Script" uid="uid://cpysumla62qie" path="res://Scenes/edit_level.gd" id="11_r2kxd"]
+[ext_resource type="Texture2D" uid="uid://bkt5luyfpdxyw" path="res://Assets/TrashIcon.png" id="14_dxh3j"]
 [ext_resource type="Script" uid="uid://cdyhac86cvdnn" path="res://Scenes/import_track.gd" id="14_h7j62"]
 
 [sub_resource type="Gradient" id="Gradient_h7j62"]
@@ -135,6 +138,18 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("6_33e6r")
 
+[node name="TrackFolder" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=1933767242]
+z_index = 5
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_tb2id")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("11_6tpsf")
+
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1806407211]
 clip_contents = true
 anchors_preset = 8
@@ -177,7 +192,6 @@ size_flags_stretch_ratio = 0.0
 offset_transform_visual_only = false
 
 [node name="TestContainer" type="HBoxContainer" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer" unique_id=125568592]
-visible = false
 layout_mode = 2
 size_flags_vertical = 0
 
@@ -193,6 +207,15 @@ max_length = 32
 emoji_menu_enabled = false
 script = ExtResource("5_hrcgd")
 
+[node name="DeleteTrack" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=1073295799]
+custom_minimum_size = Vector2(85, 45)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_dxh3j")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="EditTrack" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=1257464364]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -203,7 +226,7 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("11_r2kxd")
 
-[node name="PlayLevel" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=604533440]
+[node name="PlayTrack" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=604533440]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -231,6 +254,9 @@ script = ExtResource("2_hldwc")
 [connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_pressed"]
 [connection signal="scene_loaded" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_scene_loaded"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/TrackFolder" to="CanvasLayer/VBoxContainer/TrackFolder" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/TrackFolder" to="CanvasLayer/VBoxContainer/TrackFolder" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/TrackFolder" to="CanvasLayer/VBoxContainer/TrackFolder" method="_on_pressed"]
 [connection signal="text_changed" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/LevelName" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/LevelName" method="_on_text_changed"]
 [connection signal="pressed" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" method="_on_pressed"]
 [connection signal="scene_loaded" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" method="_on_scene_loaded"]

@@ -7,6 +7,7 @@ func _ready() -> void:
 	s.old_text = text
 	print("Old Text:", old_text)
 	print("ID: ", s.ID)
+
 func _on_text_changed(new_text: String) -> void:
 	print(new_text)
 	var Config = ConfigFile.new()

@@ -2,10 +2,10 @@ extends Panel
 
 
 func _ready() -> void:
-	await get_tree().create_timer(.1).timeout
+	#await get_tree().create_timer(.05).timeout
 	var Options = ConfigFile.new()
 	var err = Options.load("user://options.cfg")
-	print("err:", err)
+	if err != 0: print("err:", err)
 	
 	$OptionsVBox/MusicVolumeHBox/MusicVolume.value = Options.get_value("Global", "MusicVolume")
 	$OptionsVBox/SFXVolumeHBox/SFXVolume.value = Options.get_value("Global", "SFXVolume")

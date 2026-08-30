@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rx3yg8kvrsic"]
 
 [ext_resource type="Theme" uid="uid://bm1n35hpxhw8k" path="res://BaseTheme.tres" id="1_663nc"]
+[ext_resource type="Script" uid="uid://c6pwapdov4rfl" path="res://Scenes/optionsscene.gd" id="1_fpdr8"]
 [ext_resource type="Script" uid="uid://bmp6dx8y4idvr" path="res://Scenes/options_panel.gd" id="2_hvj8k"]
 [ext_resource type="Script" uid="uid://1et8w8q8jco3" path="res://Scenes/music_volume.gd" id="3_38txh"]
 [ext_resource type="Script" uid="uid://dxvk4v62if4jd" path="res://Scenes/max_framerate.gd" id="4_5a0sy"]
@@ -35,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fpdr8")
 
 [node name="OptionsPanel" type="Panel" parent="." unique_id=1292662545]
 layout_mode = 1
@@ -302,7 +304,7 @@ theme_override_font_sizes/font_size = 32
 text = "Updated Row Calculation"
 script = ExtResource("7_hvj8k")
 
-[node name="Close" type="Button" parent="OptionsPanel" unique_id=511496634]
+[node name="ApplyChanges" type="Button" parent="OptionsPanel" unique_id=511496634]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
 anchors_preset = 7
@@ -317,9 +319,12 @@ offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
-text = "Close"
+text = "Apply Changes"
 
+[connection signal="changed" from="OptionsPanel/OptionsVBox/MusicVolumeHBox/MusicVolume" to="." method="_on_music_volume_changed"]
+[connection signal="drag_ended" from="OptionsPanel/OptionsVBox/MusicVolumeHBox/MusicVolume" to="." method="_on_music_volume_drag_ended"]
 [connection signal="drag_ended" from="OptionsPanel/OptionsVBox/MusicVolumeHBox/MusicVolume" to="OptionsPanel/OptionsVBox/MusicVolumeHBox/MusicVolume" method="_on_drag_ended"]
+[connection signal="value_changed" from="OptionsPanel/OptionsVBox/MusicVolumeHBox/MusicVolume" to="." method="_on_music_volume_value_changed"]
 [connection signal="drag_ended" from="OptionsPanel/OptionsVBox/SFXVolumeHBox/SFXVolume" to="OptionsPanel/OptionsVBox/SFXVolumeHBox/SFXVolume" method="_on_drag_ended"]
 [connection signal="text_submitted" from="OptionsPanel/OptionsVBox/VideoOptionsHbox/MaxFramerate" to="OptionsPanel/OptionsVBox/VideoOptionsHbox/MaxFramerate" method="_on_text_submitted"]
 [connection signal="item_selected" from="OptionsPanel/OptionsVBox/VideoOptionsHbox/VsyncSel" to="OptionsPanel/OptionsVBox/VideoOptionsHbox/VsyncSel" method="_on_item_selected"]
@@ -332,4 +337,4 @@ text = "Close"
 [connection signal="drag_ended" from="OptionsPanel/OptionsVBox/EditorHbox2/BackgroundBlur" to="OptionsPanel/OptionsVBox/EditorHbox2/BackgroundBlur" method="_on_drag_ended"]
 [connection signal="toggled" from="OptionsPanel/OptionsVBox/ExperimentalHBox/SnapBPM" to="OptionsPanel/OptionsVBox/ExperimentalHBox/SnapBPM" method="_on_toggled"]
 [connection signal="toggled" from="OptionsPanel/OptionsVBox/ExperimentalHBox/UpdatedRowCalculation" to="OptionsPanel/OptionsVBox/ExperimentalHBox/UpdatedRowCalculation" method="_on_toggled"]
-[connection signal="pressed" from="OptionsPanel/Close" to="OptionsPanel" method="_on_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/ApplyChanges" to="OptionsPanel" method="_on_button_pressed"]

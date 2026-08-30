@@ -21,9 +21,10 @@ func _ready() -> void:
 		if "Version" not in NM["Level Info"] or NM["Level Info"]["Version"] != "0.1.1b":
 			Dupe.get_child(0).modulate = Color(1.0, 0.84, 0.877, 0.478)
 		
-		Dupe.get_child(0).text = NM["Level Info"]["Name"]
-		Dupe.get_child(0).ID = i
-		Dupe.get_child(1).ID = i ## Such that you can edit tracks I think
+		Dupe.get_child(0).text = NM["Level Info"]["Name"] ## Level Name
+		Dupe.get_child(1) ## DeleteTrack
+		Dupe.get_child(2).ID = i
+		#Dupe.get_child(3).ID = i ## Such that you can edit tracks I think
 		Dupe.visible = true
 		VC.add_child(Dupe)
 		VC.move_child(Dupe, 0)

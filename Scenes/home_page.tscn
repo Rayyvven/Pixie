@@ -196,6 +196,7 @@ stretch_mode = 5
 [node name="SplashText" type="Node" parent="CanvasLayer/HomeButtons/Logo" unique_id=1384284921]
 
 [node name="SplashLabel" type="Label" parent="CanvasLayer/HomeButtons/Logo/SplashText" unique_id=490685253]
+custom_minimum_size = Vector2(5, 0)
 anchors_preset = -1
 anchor_left = 0.526
 anchor_top = 0.437
