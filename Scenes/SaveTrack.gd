@@ -10,11 +10,7 @@ func _on_pressed() -> void:
 	var err = Config.load("user://SavedLevels.cfg")
 	#if err != OK:
 	#	return
-	if LevelController.LevelData["Level Info"]["ID"] == -1:
-		LevelController.LevelData["Level Info"]["ID"] = len(Config.get_sections())
-		Config.set_value(str(len(Config.get_sections())), "Level", LevelController.LevelData)
-	else:
-		Config.set_value(str(LevelController.LevelData["Level Info"]["ID"]), "Level", LevelController.LevelData)
+	Config.set_value(LevelController.LevelData["Level Info"]["Name"], "Level", LevelController.LevelData)
 	print("Set Value")
 	Config.save("user://SavedLevels.cfg")
 	## Music Saving

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diiyogstvd85k"
-path="res://.godot/imported/CurnoxCogWheelThanksTwin.png-65b360e98a8b8deecdbdb0e4803504f6.ctex"
+uid="uid://dsckrtyq7uasp"
+path="res://.godot/imported/Featured.png-c2e690706aa485072548fd15fa65470a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PixieAssets/CurnoxCogWheelThanksTwin.png"
-dest_files=["res://.godot/imported/CurnoxCogWheelThanksTwin.png-65b360e98a8b8deecdbdb0e4803504f6.ctex"]
+source_file="res://Assets/Featured.png"
+dest_files=["res://.godot/imported/Featured.png-c2e690706aa485072548fd15fa65470a.ctex"]
 
 [params]
 

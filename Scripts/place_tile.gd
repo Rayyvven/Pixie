@@ -43,12 +43,10 @@ func _ready() -> void:
 	print("hi")
 	LevelController.Loading = true
 	print("Loading:", LevelController.Loading)
-	id_label.text = str(LevelController.LevelData["Level Info"]["ID"])
-	if LevelController.LevelData["Level Info"]["ID"] != -1:
-		LoadFromTrackController.emit()
+	LoadFromTrackController.emit()
 
 func _process(delta: float) -> void:
-	if drag_screen == true:
+	if drag_screen == true and InputEventMouseButton:
 		v_scroll_bar.value -= ((int(get_global_mouse_position().y) - int(location)) * 4) * delta
 
 func _unhandled_input(event):
@@ -57,7 +55,7 @@ func _unhandled_input(event):
 			location = get_global_mouse_position().y
 			drag_screen = true
 	if event is InputEventMouseButton and event.is_released():
-		if not (get_global_mouse_position().x >= 1000 or EditorOptionsGlobal.Shown == true or get_viewport().get_mouse_position().y >= 1500 or get_viewport().get_mouse_position().y <= 150 and get_viewport().get_mouse_position().x <= 150 or EditorOptionsGlobal.Shown):
+		if not (get_global_mouse_position().x >= 1000 or EditorOptionsGlobal.Shown == true or get_viewport().get_mouse_position().y <= 150 and get_viewport().get_mouse_position().x <= 150 or EditorOptionsGlobal.Shown):
 			if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 				drag_screen = false
 				if not location <= get_global_mouse_position().y - 10 and not location >= get_global_mouse_position().y + 10:
@@ -169,15 +167,16 @@ func _on_load_from_track_controller():
 	
 	## Music Loader
 	DirAccess.make_dir_absolute("user://music")
-	var file = FileAccess.open("user://music/" + LevelController.SavedLevelData["Level Info"]["SongFile"], FileAccess.READ)
-	var sound = AudioStreamMP3.new()
-	sound.data = file.get_buffer(file.get_length())
-	music.stream = sound
-	file_dialog.set_current_path("user://music/" + LevelController.SavedLevelData["Level Info"]["SongFile"])
-	print("FileDialog: ", file_dialog.get_current_path())
+	if LevelController.SavedLevelData["Level Info"]["SongFile"] != "N/A":
+		var file = FileAccess.open("user://music/" + LevelController.SavedLevelData["Level Info"]["SongFile"], FileAccess.READ)
+		var sound = AudioStreamMP3.new()
+		sound.data = file.get_buffer(file.get_length())
+		music.stream = sound
+		file_dialog.set_current_path("user://music/" + LevelController.SavedLevelData["Level Info"]["SongFile"])
+		print("FileDialog: ", file_dialog.get_current_path())
 
-	song_button.text = "Song File: \n" + LevelController.SavedLevelData["Level Info"]["SongFile"]
-	
+		song_button.text = "Song File: \n" + LevelController.SavedLevelData["Level Info"]["SongFile"]
+		
 	## Video Loader
 	DirAccess.make_dir_absolute("user://video")
 	var VideoFile = FileAccess.open("user://video/" + LevelController.SavedLevelData["Level Info"]["VideoFile"], FileAccess.READ)
@@ -189,7 +188,7 @@ func _on_load_from_track_controller():
 	print("VideoDialog: ", video_dialog.get_current_path())
 	video_button.text = "Video File: \n" + LevelController.SavedLevelData["Level Info"]["VideoFile"]
 	
-	var i = 1
+	var i = 0
 	while "Tile"+str(i) in LevelController.SavedLevelData["Level Data"]:
 		if "Tile"+str(i) not in LevelController.SavedLevelData["Level Data"]:
 			pass
@@ -213,7 +212,7 @@ func _on_load_from_track_controller():
 			B.visible = true
 			
 			LevelController.TotalTiles += 1
-			canvas_layer.add_child(B)
+			add_child(B)
 			print("Placed Tile ", i)
 		else:
 			print("Skipping Null Tile")
@@ -223,5 +222,5 @@ func _on_load_from_track_controller():
 		await get_tree().create_timer(0.01).timeout
 	LevelController.Loading = false
 	LevelController.LevelData = LevelController.SavedLevelData
-	print("Level Data: ", LevelController.LevelData)
+	#print("Level Data: ", LevelController.LevelData)
 	print("Loaded Level!")

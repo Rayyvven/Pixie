@@ -1,24 +1,20 @@
 [gd_scene format=3 uid="uid://bptobiae1wckq"]
 
-[ext_resource type="Script" uid="uid://dhhpj1ywgqowb" path="res://Scenes/Discord_Manager.gd" id="1_ch5ow"]
 [ext_resource type="Texture2D" uid="uid://d3hcrw54n06ck" path="res://Assets/PlayButton.png" id="1_sc02a"]
 [ext_resource type="Texture2D" uid="uid://d3wrbinrx7i17" path="res://Assets/SunsetBackgroundPix.jpg" id="1_tjbaj"]
 [ext_resource type="Texture2D" uid="uid://baq0jqdkd2qku" path="res://Assets/NotAtAllStolenOnlineButton.png" id="3_4eu37"]
 [ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="3_45kqk"]
 [ext_resource type="Texture2D" uid="uid://cehdnjlk0qwls" path="res://Assets/EditorButtonBetter.png" id="3_k3ry7"]
-[ext_resource type="Script" uid="uid://cxaosy1jeyiwk" path="res://Scripts/editor.gd" id="3_ou0my"]
 [ext_resource type="Texture2D" uid="uid://0tsotac38awb" path="res://Assets/LiterallyAFuckingCircle.png" id="3_xut5l"]
 [ext_resource type="Texture2D" uid="uid://ckw0kqiofapb4" path="res://Assets/PixieAssets/PixieLogoReducedKerning.png" id="5_6pc04"]
-[ext_resource type="Script" uid="uid://b1vhnnfrgcea2" path="res://Scenes/playbutton.gd" id="7_tp8vw"]
-[ext_resource type="Script" uid="uid://co6xax7m42n1u" path="res://Scenes/options.gd" id="9_cfhav"]
 [ext_resource type="Texture2D" uid="uid://dhnwluyatu58s" path="res://Assets/CurnoxCogWheelWithOutLineThankYouTwin.png" id="10_45kqk"]
 [ext_resource type="Texture2D" uid="uid://cjndvhuqi6fic" path="res://Assets/DiscordThing.png" id="11_idhnx"]
-[ext_resource type="Script" uid="uid://b74o63ri78m04" path="res://Scenes/onlinebutton.gd" id="11_wg4i0"]
 [ext_resource type="Texture2D" uid="uid://cihahuewh1lhf" path="res://Assets/Githubthing.png" id="12_0pryr"]
 [ext_resource type="Script" uid="uid://fn4bxim4qjvp" path="res://Scripts/discord_button.gd" id="12_734iq"]
 [ext_resource type="Texture2D" uid="uid://bk2m5x15qlv1o" path="res://Assets/YouTubeThing.png" id="13_6pc04"]
 [ext_resource type="Script" uid="uid://bdj8cf87fcf1e" path="res://Scripts/git_hub_backing.gd" id="13_734iq"]
 [ext_resource type="Script" uid="uid://fnry734esafr" path="res://Scripts/you_tube_button.gd" id="14_guvn3"]
+[ext_resource type="Script" uid="uid://cqb82ns1aktke" path="res://Scripts/ThemedTextureButton.gd" id="17_dxlao"]
 [ext_resource type="Script" uid="uid://bpm34n0rep4gw" path="res://Scenes/splash_label.gd" id="17_w5jns"]
 [ext_resource type="Texture2D" uid="uid://dex87x572pl3g" path="res://Assets/PixieAssets/ImportButton.png" id="18_fg10g"]
 [ext_resource type="Script" uid="uid://c5rdds0v12i7o" path="res://Scenes/logout_button.gd" id="19_nwp2f"]
@@ -79,7 +75,6 @@ _data = {
 font_size = 32
 
 [node name="HomePage" type="Node2D" unique_id=1687297617]
-script = ExtResource("1_ch5ow")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=704128513]
 
@@ -164,13 +159,14 @@ size = Vector2i(245, 100)
 force_native = true
 dialog_text = "Are you sure you want to log out?"
 
-[node name="Options" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=639479668]
-z_index = 5
+[node name="Options" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=1144972540 node_paths=PackedStringArray("Canvas")]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-toggle_mode = true
 texture_normal = ExtResource("10_45kqk")
-script = ExtResource("9_cfhav")
+script = ExtResource("17_dxlao")
+Options = true
+Canvas = NodePath("../..")
+metadata/_custom_type_script = "uid://cqb82ns1aktke"
 
 [node name="HomeButtons" type="VBoxContainer" parent="CanvasLayer" unique_id=700844212]
 anchors_preset = 8
@@ -225,31 +221,34 @@ libraries/ = SubResource("AnimationLibrary_tp8vw")
 layout_mode = 2
 alignment = 1
 
-[node name="Online" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=417017349]
+[node name="Online" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=1958204894]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 texture_normal = ExtResource("3_4eu37")
 ignore_texture_size = true
 stretch_mode = 5
-script = ExtResource("11_wg4i0")
+script = ExtResource("17_dxlao")
+SceneToLoad = "res://online_landing.tscn"
+metadata/_custom_type_script = "uid://cqb82ns1aktke"
 
-[node name="Play" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=1247873190]
-custom_minimum_size = Vector2(240, 240)
+[node name="Play" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=574557599]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-offset_transform_enabled = true
 texture_normal = ExtResource("1_sc02a")
 ignore_texture_size = true
 stretch_mode = 5
-script = ExtResource("7_tp8vw")
+script = ExtResource("17_dxlao")
+metadata/_custom_type_script = "uid://cqb82ns1aktke"
 
-[node name="Editor" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=741314075]
+[node name="Editor" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=297861726]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_k3ry7")
 ignore_texture_size = true
 stretch_mode = 5
-script = ExtResource("3_ou0my")
+script = ExtResource("17_dxlao")
+SceneToLoad = "res://Scenes/editor_levels.tscn"
+metadata/_custom_type_script = "uid://cqb82ns1aktke"
 
 [node name="CornerSocials" type="HBoxContainer" parent="CanvasLayer" unique_id=1423616928]
 anchors_preset = 2
@@ -317,17 +316,6 @@ horizontal_alignment = 2
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/LogoutButton" to="CanvasLayer/HBoxContainer/LogoutButton" method="_on_pressed"]
 [connection signal="confirmed" from="CanvasLayer/HBoxContainer/LogoutButton/LogoutConfirm" to="CanvasLayer/HBoxContainer/LogoutButton" method="_on_logout_confirm_confirmed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Options" to="CanvasLayer/HBoxContainer/Options" method="_on_pressed"]
-[connection signal="toggled" from="CanvasLayer/HBoxContainer/Options" to="CanvasLayer/HBoxContainer/Options" method="_on_toggled"]
-[connection signal="mouse_entered" from="CanvasLayer/HomeButtons/MenuButtons/Online" to="CanvasLayer/HomeButtons/MenuButtons/Online" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/HomeButtons/MenuButtons/Online" to="CanvasLayer/HomeButtons/MenuButtons/Online" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="CanvasLayer/HomeButtons/MenuButtons/Play" to="CanvasLayer/HomeButtons/MenuButtons/Play" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/HomeButtons/MenuButtons/Play" to="CanvasLayer/HomeButtons/MenuButtons/Play" method="_on_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/HomeButtons/MenuButtons/Play" to="CanvasLayer/HomeButtons/MenuButtons/Play" method="_on_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/HomeButtons/MenuButtons/Editor" to="CanvasLayer/HomeButtons/MenuButtons/Editor" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/HomeButtons/MenuButtons/Editor" to="CanvasLayer/HomeButtons/MenuButtons/Editor" method="_on_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/HomeButtons/MenuButtons/Editor" to="CanvasLayer/HomeButtons/MenuButtons/Editor" method="_on_pressed"]
-[connection signal="scene_loaded" from="CanvasLayer/HomeButtons/MenuButtons/Editor" to="CanvasLayer/HomeButtons/MenuButtons/Editor" method="_on_scene_loaded"]
 [connection signal="pressed" from="CanvasLayer/CornerSocials/YouTubeButton" to="CanvasLayer/CornerSocials/YouTubeButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/CornerSocials/GitHubButton" to="CanvasLayer/CornerSocials/GitHubButton/GitHubBacking" method="_on_git_hub_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CornerSocials/DiscordButton" to="CanvasLayer/CornerSocials/DiscordButton" method="_on_pressed"]

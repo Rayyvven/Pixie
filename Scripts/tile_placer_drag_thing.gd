@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 		position = get_global_mouse_position() - offset
 		if SmoothDrag.DragSmooth == false:
 			print("GridSnapDrag")
-			if Options.get_value("Editor", "SnapX") == true:
+			if Options.get_value("Editor", "SnapX"):
 				position.x = snapped(position.x, 1080/(int(LevelController.LevelData["Level Info"]["Rows"])+1))
 			if Options.get_value("Editor", "SnapY") == true:
 				position.y = snapped(position.y, 100)

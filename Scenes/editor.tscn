@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dj0qeuu7oacob"]
 
-[ext_resource type="Script" uid="uid://bbblqj4epxy8" path="res://Scenes/Discord-manager.gd" id="1_27kt4"]
 [ext_resource type="AudioStream" uid="uid://cpf4sluskwrcb" path="res://Music/Alone With Me - Good Kid.mp3" id="1_32ik4"]
 [ext_resource type="Script" uid="uid://ck3qkqhsan1yr" path="res://Scripts/camera_2d.gd" id="1_b78su"]
 [ext_resource type="Texture2D" uid="uid://cmxjwpoadvh44" path="res://Assets/GlugnusBrokenScreen.png" id="2_6ojly"]
@@ -150,7 +149,7 @@ script/source = "#
 
 @tool
 @icon(\"icon.png\")
-class_name Share extends Node
+extends Node
 
 const PLUGIN_SINGLETON_NAME: String = \"SharePlugin\"
 
@@ -568,7 +567,6 @@ shader = ExtResource("10_nfgmo")
 shader_parameter/blur_amount = 0.0
 
 [node name="Editor" type="Node2D" unique_id=942173898]
-script = ExtResource("1_27kt4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736340037]
 layer = 0
@@ -961,10 +959,16 @@ text = "Changelog v0.1.1b
 Additions:
  - New folder button in the track browser which allows you to easily locate your real, saved files
  - New trash button next to your created tracks which will allow you to easily delete your tracks, rather than removing them via your save file.
+ - Implimented a new loading screen that will hopefully make switching between different menus faster & smoother. Feel free to give feedback!
 Bug Fixes & Improvements:
- -Removed Discord RPC due to instability
+ - Removed Discord RPC due to instability
  - Removed \"SharePlugin\" due to lack of usage
- - Converted all Splash Texts to use a .txt file rather than being coded manually"
+ - Converted all Splash Texts to use a .txt file rather than being coded manually
+ - Under the hood changes to buttons, which should mitigate some lag.
+ - Modified the way tracks are saved, such that they now no longer use an ID based system. Although incompatible with previous versions, this addition should allow for less problematic saving & loading.
+ - Fixed an issue in which loading a track without a song would crash your game
+ - The screen drag now accurately starts & stops
+ - Removed the arbitrary hard-coded Y-position limits to placing tiles"
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer" unique_id=1043028808]
 position = Vector2(540, 960)
@@ -1313,7 +1317,6 @@ stretch_mode = 5
 
 [node name="Share" type="Node" parent="CanvasLayer/OptionsMenu/OptionsPanel/HBoxContainer/Export/Export" unique_id=72618672]
 script = SubResource("GDScript_r3d53")
-metadata/_custom_type_script = "uid://lsved4adqugb"
 
 [node name="ExportDir" type="FileDialog" parent="CanvasLayer/OptionsMenu/OptionsPanel/HBoxContainer/Export" unique_id=94096495]
 title = "Open a Directory"
@@ -2015,14 +2018,11 @@ script = ExtResource("3_fls10")
 [connection signal="button_down" from="CanvasLayer/PauseMenu/PauseButtons/Unpause" to="CanvasLayer/EditorPause" method="_on_unpause_button_down"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseButtons/Unpause" to="CanvasLayer/EditorPause" method="_on_unpause_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseButtons/Playtest" to="CanvasLayer/PauseMenu/PauseButtons/Playtest" method="_on_pressed"]
-[connection signal="scene_loaded" from="CanvasLayer/PauseMenu/PauseButtons/Playtest" to="CanvasLayer/PauseMenu/PauseButtons/Playtest" method="_on_scene_loaded"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseButtons/Reset Track" to="CanvasLayer/PauseMenu/PauseButtons/Reset Track" method="_on_pressed"]
 [connection signal="confirmed" from="CanvasLayer/PauseMenu/PauseButtons/Reset Track/ResetDialog" to="CanvasLayer/PauseMenu/PauseButtons/Reset Track" method="_on_reset_dialog_confirmed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseButtons/Save and Quit" to="CanvasLayer/PauseMenu/PauseButtons/Save and Quit" method="_on_pressed"]
-[connection signal="scene_loaded" from="CanvasLayer/PauseMenu/PauseButtons/Save and Quit" to="CanvasLayer/PauseMenu/PauseButtons/Save and Quit" method="_on_scene_loaded"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseButtons/Save" to="CanvasLayer/PauseMenu/PauseButtons/Save" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseButtons/ExitWithoutSaving" to="CanvasLayer/PauseMenu/PauseButtons/ExitWithoutSaving" method="_on_pressed"]
-[connection signal="scene_loaded" from="CanvasLayer/PauseMenu/PauseButtons/ExitWithoutSaving" to="CanvasLayer/PauseMenu/PauseButtons/ExitWithoutSaving" method="_on_scene_loaded"]
 [connection signal="confirmed" from="CanvasLayer/PauseMenu/PauseButtons/ExitWithoutSaving/ExitDialog" to="CanvasLayer/PauseMenu/PauseButtons/ExitWithoutSaving" method="_on_exit_dialog_confirmed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseButtons/Help" to="CanvasLayer/PauseMenu/PauseButtons/Help" method="_on_pressed"]
 [connection signal="confirmed" from="CanvasLayer/PauseMenu/PauseButtons/Help/AcceptDialog" to="CanvasLayer/PauseMenu/PauseButtons/Help" method="_on_accept_dialog_confirmed"]

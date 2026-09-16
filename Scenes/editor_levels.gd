@@ -3,7 +3,6 @@ extends Control
 @onready var level_det_container: HBoxContainer = $CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var MusicFolder = "user://music"
 	DirAccess.make_dir_absolute(MusicFolder)
@@ -16,12 +15,13 @@ func _ready() -> void:
 	for section in Config.get_sections():
 		var Dupe = level_det_container.duplicate()
 		
-		var NM = Config.get_value(str(i), "Level")
+		var NM = Config.get_value(str(i), "Name")
+		var SectionNames = Config.get_sections()
+		print(SectionNames)
+		#if "Version" not in NM["Level Info"] or NM["Level Info"]["Version"] != "0.1.1b":
+		#	Dupe.get_child(0).modulate = Color(1.0, 0.84, 0.877, 0.478)
 		
-		if "Version" not in NM["Level Info"] or NM["Level Info"]["Version"] != "0.1.1b":
-			Dupe.get_child(0).modulate = Color(1.0, 0.84, 0.877, 0.478)
-		
-		Dupe.get_child(0).text = NM["Level Info"]["Name"] ## Level Name
+		Dupe.get_child(0).text = SectionNames[i]
 		Dupe.get_child(1) ## DeleteTrack
 		Dupe.get_child(2).ID = i
 		#Dupe.get_child(3).ID = i ## Such that you can edit tracks I think

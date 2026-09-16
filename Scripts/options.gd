@@ -2,7 +2,7 @@ extends TextureButton
 @onready var options_menu: Control = %OptionsMenu
 @onready var row_control: LineEdit = $"../../OptionsMenu/OptionsPanel/MainVerticalContainer/Row 5/RowControl"
 @onready var tile_select: TextureButton = $"../../TileSelect"
-@onready var music: AudioStreamPlayer = $"../../../Music"
+@onready var music: AudioStreamPlayer= $"../../../Music"
 @onready var pause_menu: Control = %PauseMenu
 var Shown : bool = false
 

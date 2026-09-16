@@ -34,3 +34,14 @@ Don't let your cat break your laptop...
 Go eat a Toblerone!
 I love adding splash texts instead of bug fixing this game <3
 Don't forget to brush!
+Now with 50 billion colors
+Three Tungs before the Sahur
+I stole all the code from Phoebe Bridgers
+It's currently 75 degrees outside
+Only gay people can read this
+Only lesbians can read this
+Only bisexuals can read this
+IS THAT THE LEVEL WITH THE DOG THAT GETS HIT BY A CAR
+I hate you
+TODO: delete
+extends LineEdit

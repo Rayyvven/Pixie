@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://dmirxuun8en16"]
+
+[ext_resource type="Script" uid="uid://vh5224yornk7" path="res://loading_screen.gd" id="1_74xf4"]
+[ext_resource type="Texture2D" uid="uid://d3wrbinrx7i17" path="res://Assets/SunsetBackgroundPix.jpg" id="2_pa1l2"]
+[ext_resource type="Script" uid="uid://dkuv86bnluat5" path="res://Scripts/texture_rect_2.gd" id="3_401ed"]
+[ext_resource type="Texture2D" uid="uid://0tsotac38awb" path="res://Assets/LiterallyAFuckingCircle.png" id="4_38ncu"]
+[ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="5_jrdmd"]
+[ext_resource type="Script" uid="uid://bjj6qjmjqqby4" path="res://loading_blur.gd" id="6_pa1l2"]
+
+[sub_resource type="Gradient" id="Gradient_qx0w1"]
+offsets = PackedFloat32Array(0, 0.084980235, 0.756917, 1)
+colors = PackedColorArray(0.4666667, 0, 1, 0, 0.4666667, 0, 1, 1, 0.8613334, 0.74, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7vyp"]
+shader = ExtResource("5_jrdmd")
+shader_parameter/blur_amount = 1.0000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0ihe"]
+shader = ExtResource("5_jrdmd")
+shader_parameter/blur_amount = 5.0
+
+[node name="Loading Screen" type="Control" unique_id=135293560]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_74xf4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=121085619]
+
+[node name="BackgroundImage" type="TextureRect" parent="CanvasLayer" unique_id=1374062077]
+modulate = Color(0.52, 0.52, 0.52, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2732.0
+offset_top = -3440.0
+offset_right = 2732.0
+offset_bottom = 3440.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(2732, 3440)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_pa1l2")
+stretch_mode = 6
+script = ExtResource("3_401ed")
+
+[node name="BackgroundParticles" type="CPUParticles2D" parent="CanvasLayer/BackgroundImage" unique_id=2053570822]
+position = Vector2(2732, 3440)
+amount = 30
+texture = ExtResource("4_38ncu")
+lifetime = 19.12
+randomness = 1.0
+lifetime_randomness = 1.0
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 1920)
+spread = 94.47
+gravity = Vector2(0, 0)
+initial_velocity_max = 291.39
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_max = 0.01
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 3.0
+color = Color(1, 0.050000012, 0.47749984, 0.6)
+color_ramp = SubResource("Gradient_qx0w1")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Blur" type="ColorRect" parent="CanvasLayer" unique_id=2133774221]
+material = SubResource("ShaderMaterial_r7vyp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 4
+color = Color(0.00039445335, 0.00039445335, 0.00039445335, 1)
+
+[node name="LoadingBlur" type="ColorRect" parent="CanvasLayer" unique_id=1270522530]
+material = SubResource("ShaderMaterial_a0ihe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1921.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(540, 0)
+pivot_offset_ratio = Vector2(0, 1)
+size_flags_horizontal = 6
+size_flags_vertical = 10
+mouse_default_cursor_shape = 4
+color = Color(0.00039445335, 0.00039445335, 0.00039445335, 1)
+script = ExtResource("6_pa1l2")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1537797367]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -37.5
+offset_right = 130.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Loading..."
+horizontal_alignment = 1
+
+[connection signal="scene_loaded" from="." to="." method="_on_scene_loaded"]

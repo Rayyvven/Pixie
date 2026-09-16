@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://mixp6pr4lv1e"]
+
+[ext_resource type="Texture2D" uid="uid://d3wrbinrx7i17" path="res://Assets/SunsetBackgroundPix.jpg" id="1_s7yxm"]
+[ext_resource type="Script" uid="uid://dkuv86bnluat5" path="res://Scripts/texture_rect_2.gd" id="2_b72yn"]
+[ext_resource type="Texture2D" uid="uid://0tsotac38awb" path="res://Assets/LiterallyAFuckingCircle.png" id="3_w2j62"]
+[ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="4_qyaid"]
+[ext_resource type="Texture2D" uid="uid://ch775ui1ex8y1" path="res://Assets/Browse.png" id="5_6mrd4"]
+[ext_resource type="Texture2D" uid="uid://cv78usmrt8bc2" path="res://PlayerBrowse.png" id="6_b72yn"]
+[ext_resource type="Texture2D" uid="uid://ccnaxuywvxqog" path="res://Assets/Leaderboard.png" id="6_yh5i6"]
+[ext_resource type="Texture2D" uid="uid://dsckrtyq7uasp" path="res://Assets/Featured.png" id="7_sywcn"]
+
+[sub_resource type="Gradient" id="Gradient_wj1c0"]
+offsets = PackedFloat32Array(0, 0.084980235, 0.756917, 1)
+colors = PackedColorArray(0.4666667, 0, 1, 0, 0.4666667, 0, 1, 1, 0.8613334, 0.74, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvhu2"]
+shader = ExtResource("4_qyaid")
+shader_parameter/blur_amount = 5.0
+
+[node name="OnlineLanding" type="Control" unique_id=151962572]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=466075798]
+
+[node name="BackgroundImage2" type="TextureRect" parent="CanvasLayer" unique_id=1455237162]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2732.0
+offset_top = -3440.0
+offset_right = 2732.0
+offset_bottom = 3440.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(2732, 3440)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_s7yxm")
+stretch_mode = 6
+script = ExtResource("2_b72yn")
+
+[node name="BackgroundParticles" type="CPUParticles2D" parent="CanvasLayer/BackgroundImage2" unique_id=664735526]
+position = Vector2(2732, 3440)
+amount = 30
+texture = ExtResource("3_w2j62")
+lifetime = 19.12
+randomness = 1.0
+lifetime_randomness = 1.0
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 1920)
+spread = 94.47
+gravity = Vector2(0, 0)
+initial_velocity_max = 291.39
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_max = 0.01
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 3.0
+color = Color(1, 0.050000012, 0.47749984, 0.6)
+color_ramp = SubResource("Gradient_wj1c0")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Blur" type="ColorRect" parent="CanvasLayer" unique_id=1705008258]
+material = SubResource("ShaderMaterial_fvhu2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer" unique_id=69081127]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+columns = 2
+
+[node name="Browse" type="TextureButton" parent="CanvasLayer/GridContainer" unique_id=655439921]
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_6mrd4")
+
+[node name="PlayerBrowse" type="TextureButton" parent="CanvasLayer/GridContainer" unique_id=1584523258]
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("6_b72yn")
+
+[node name="Leaderboard" type="TextureButton" parent="CanvasLayer/GridContainer" unique_id=523901150]
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("6_yh5i6")
+
+[node name="Featured" type="TextureButton" parent="CanvasLayer/GridContainer" unique_id=1532620103]
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("7_sywcn")
+
+[node name="Placeholder1" type="TextureButton" parent="CanvasLayer/GridContainer" unique_id=1159499432]
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("7_sywcn")
+
+[node name="Placeholder2" type="TextureButton" parent="CanvasLayer/GridContainer" unique_id=1164226273]
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("7_sywcn")
