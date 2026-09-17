@@ -9,14 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://0tsotac38awb" path="res://Assets/LiterallyAFuckingCircle.png" id="4_r2kxd"]
 [ext_resource type="Script" uid="uid://dnbqp136o1w61" path="res://Scenes/level_name.gd" id="5_hrcgd"]
 [ext_resource type="Shader" uid="uid://b171oioarlfk1" path="res://Blur.gdshader" id="5_y01l6"]
-[ext_resource type="Script" uid="uid://cyu41iqne0h4x" path="res://Scenes/create_track.gd" id="6_33e6r"]
+[ext_resource type="Script" uid="uid://cyu41iqne0h4x" path="res://create_track.gd" id="6_33e6r"]
 [ext_resource type="Texture2D" uid="uid://dex87x572pl3g" path="res://Assets/PixieAssets/ImportButton.png" id="8_2q35t"]
 [ext_resource type="Texture2D" uid="uid://c4fgxfhqehwme" path="res://Assets/FileBright.png" id="10_tb2id"]
-[ext_resource type="Script" uid="uid://djy51m15o644p" path="res://Scenes/track_folder.gd" id="11_6tpsf"]
-[ext_resource type="Script" uid="uid://cpysumla62qie" path="res://Scenes/edit_level.gd" id="11_r2kxd"]
+[ext_resource type="Script" uid="uid://djy51m15o644p" path="res://Scripts/track_folder.gd" id="11_6tpsf"]
+[ext_resource type="Texture2D" uid="uid://dhnwluyatu58s" path="res://Assets/CurnoxCogWheelWithOutLineThankYouTwin.png" id="12_sqog5"]
 [ext_resource type="Texture2D" uid="uid://bkt5luyfpdxyw" path="res://Assets/TrashIcon.png" id="14_dxh3j"]
 [ext_resource type="Script" uid="uid://cdyhac86cvdnn" path="res://Scenes/import_track.gd" id="14_h7j62"]
-[ext_resource type="Script" uid="uid://dfyr8ej0f0y4t" path="res://Scenes/delete_track_2.gd" id="15_24igb"]
+[ext_resource type="Script" uid="uid://dfyr8ej0f0y4t" path="res://delete_track_2.gd" id="15_24igb"]
+[ext_resource type="Script" uid="uid://c7d4lsthhmiow" path="res://Scenes/themed_texture_button.gd" id="16_sqog5"]
+[ext_resource type="Texture2D" uid="uid://dprchw34ysrhp" path="res://Assets/PixieAssets/Arrow.png" id="17_53erp"]
 [ext_resource type="Script" uid="uid://cqb82ns1aktke" path="res://Scripts/ThemedTextureButton.gd" id="18_24igb"]
 
 [sub_resource type="Gradient" id="Gradient_h7j62"]
@@ -100,6 +102,42 @@ offset_left = -128.0
 offset_bottom = 256.0
 grow_horizontal = 0
 
+[node name="ThemedTextureButton" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=399860828 node_paths=PackedStringArray("Canvas")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("12_sqog5")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("18_24igb")
+Options = true
+Canvas = NodePath("../..")
+metadata/_custom_type_script = "uid://cqb82ns1aktke"
+
+[node name="CreateTrack" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=651572776]
+z_index = 5
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_oh76i")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("6_33e6r")
+
+[node name="TrackFolder" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=1933767242]
+z_index = 5
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_tb2id")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("11_6tpsf")
+
 [node name="ImportTrack" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=1846549137]
 z_index = 5
 custom_minimum_size = Vector2(100, 100)
@@ -126,31 +164,6 @@ size = Vector2i(140, 100)
 force_native = true
 ok_button_text = "Oh, okay :("
 dialog_text = "An error occurred."
-
-[node name="CreateTrack" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=651572776]
-z_index = 5
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_oh76i")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("6_33e6r")
-
-[node name="TrackFolder" type="TextureButton" parent="CanvasLayer/VBoxContainer" unique_id=1933767242]
-z_index = 5
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-offset_transform_enabled = true
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("10_tb2id")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("11_6tpsf")
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1806407211]
 clip_contents = true
@@ -221,24 +234,26 @@ script = ExtResource("15_24igb")
 Custom = true
 metadata/_custom_type_script = "uid://cqb82ns1aktke"
 
-[node name="EditTrack" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=1257464364]
-custom_minimum_size = Vector2(100, 0)
+[node name="EditTrack" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=564178566]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-size_flags_horizontal = 8
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_oh76i")
 ignore_texture_size = true
 stretch_mode = 5
-script = ExtResource("11_r2kxd")
+script = ExtResource("16_sqog5")
+Custom = true
+metadata/_custom_type_script = "uid://cqb82ns1aktke"
 
-[node name="PlayTrack" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=604533440]
+[node name="PlayTrack" type="TextureButton" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer" unique_id=978008988]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-size_flags_horizontal = 8
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_31v5r")
+texture_normal = ExtResource("17_53erp")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("18_24igb")
+Custom = true
+metadata/_custom_type_script = "uid://cqb82ns1aktke"
 
 [node name="BackButton" type="TextureButton" parent="CanvasLayer" unique_id=507632488]
 offset_left = 1.0
@@ -254,16 +269,16 @@ script = ExtResource("18_24igb")
 SceneToLoad = "res://Scenes/home_page.tscn"
 metadata/_custom_type_script = "uid://cqb82ns1aktke"
 
-[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_pressed"]
-[connection signal="dir_selected" from="CanvasLayer/VBoxContainer/ImportTrack/ImportFile" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_import_file_dir_selected"]
 [connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CreateTrack" to="CanvasLayer/VBoxContainer/CreateTrack" method="_on_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/TrackFolder" to="CanvasLayer/VBoxContainer/TrackFolder" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/TrackFolder" to="CanvasLayer/VBoxContainer/TrackFolder" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/TrackFolder" to="CanvasLayer/VBoxContainer/TrackFolder" method="_on_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ImportTrack" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_pressed"]
+[connection signal="dir_selected" from="CanvasLayer/VBoxContainer/ImportTrack/ImportFile" to="CanvasLayer/VBoxContainer/ImportTrack" method="_on_import_file_dir_selected"]
 [connection signal="text_changed" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/LevelName" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/LevelName" method="_on_text_changed"]
 [connection signal="pressed" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/DeleteTrack" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/DeleteTrack" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" to="CanvasLayer/Panel/ScrollContainer/VBoxContainer/TestContainer/EditTrack" method="_on_pressed"]

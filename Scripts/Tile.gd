@@ -1,16 +1,29 @@
-extends Node2D
+extends TextureButton
+class_name Tile
+### This is the class for the editor tiles. This will be used
+### as the base for all future tiles and existing tiles.
+### This will serve as a means to condense the tile creation process
+### for the future.
 
-@onready var place_tile = get_node("Place Tile")
-@onready var tile: TextureButton = $BasicTile
-@onready var options_menu: Control = %OptionsMenu
-@onready var v_scroll_bar: VScrollBar = %VScrollBar
-@onready var tile_id_label: Label = $TileIDLabel
-@onready var camera_2d: Camera2D = $"../CanvasLayer/Camera2D"
-@onready var row_control: LineEdit = $"../CanvasLayer/OptionsMenu/OptionsPanel/MainVerticalContainer/Row 5/RowControl"
+@export_category("Tile Properties")
+@export var TileID: String ## In editor name to refer to the tile
+@export var TileName: String ## Human readable name for the tile
+@export var TileLayer: Node2D ## Should be the $TileLayer node
+@export_category("Advanced Tile Properties")
+@export var Modded: bool ## Used in exclusively modded tiles.
+@export var UsesCustomProperties: bool ## Enable custom vars
+@export var CustomProperties: Dictionary ## Custom vars, such as
+## the speed on SpeedTiles.
+
+### The vast majority of this code is lifted from the old
+### tile code. This will hopefully allow for easier tile additions
+### & less hundred+ line scripts. This will also hopefully allow for easier
+### debugging. This was all added via the 0.1.2 update.
+
+
 var Options = ConfigFile.new()
 var err = Options.load("user://options.cfg")
-
-var TileID = ""
+var TileNum
 signal place
 signal delete
 var dragging = false
@@ -21,22 +34,15 @@ var data = LevelController.DefaultLevelData
 
 func save_level():
 	if visible:
-		TileID = "Tile" + str(LevelController.TotalTiles-1)
-		tile_id_label.text = TileID
+		TileNum = "Tile" + str(LevelController.TotalTiles-1)
 		print(LevelController.TotalTiles)
-		LevelController.LevelData["Level Data"][TileID] = [1, 1, position.x, position.y]
-		print(LevelController.LevelData)
-		print("Saved?")
-		print("TileID: ", TileID, "LevelController: ", LevelController.TotalTiles)
+		LevelController.LevelData["Level Data"][TileNum] = [self.TileID, 1, position.x, position.y]
+		print("Save attempt")
+		print("TileNum: ", TileNum, "LevelController: ", LevelController.TotalTiles)
 		#LevelController.TotalTiles += 1
-		return TileID
+		return TileNum
 
-func _process(delta: float) -> void:
-	if Options.get_value("Editor", "ShowTileIDs") == true:
-		tile_id_label.visible = true
-	else:
-		tile_id_label.visible = false
-	
+func _process(delta: float) -> void:	
 	if dragging == true:
 		position = get_global_mouse_position() - offset
 		if SmoothDrag.DragSmooth == false:
@@ -46,12 +52,12 @@ func _process(delta: float) -> void:
 			if Options.get_value("Editor", "SnapY") == true:
 				position.y = snapped(position.y, 100)
 	if get_global_mouse_position().x >= 1000 or EditorOptionsGlobal.Shown == true and get_viewport().get_mouse_position().x <= 150 or EditorOptionsGlobal.Shown:
-		tile.disabled = true
-		tile.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		disabled = true
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		modulate.a = .5
 	else:
-		tile.disabled = false
-		tile.mouse_filter = Control.MOUSE_FILTER_STOP
+		disabled = false
+		mouse_filter = Control.MOUSE_FILTER_STOP
 		modulate.a = 1
 
 func _ready() -> void:
@@ -84,9 +90,6 @@ func _on_texture_button_button_up() -> void:
 			var origin = float(LevelController.LevelData["Level Info"]["Length"]) * float(LevelController.LevelData["Level Info"]["Speed"])
 			position.y = snapped(position.y - origin, snap) + origin
 			#position.y = snapped(position.y, float(LevelController.LevelData["Level Info"]["Speed"]) / (float(LevelController.BPM)/60.0))
-			print(float(LevelController.LevelData["Level Info"]["Speed"]) / (float(LevelController.BPM)/60.0))
-			print(LevelController.BPM)
-			print(LevelController.LevelData["Level Info"]["Speed"])
 		print_rich("[color=cyan]Placed Tile at [/color]", position)
 		place.emit()
 		LevelController.LevelData["Level Data"][TileID] = [1, 1, position.x, position.y]

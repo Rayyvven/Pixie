@@ -22,7 +22,7 @@ extends Node2D
 @onready var song_file: Button = $"../CanvasLayer/OptionsMenu/OptionsPanel/MainVerticalContainer/Row 3/SongFile"
 @onready var id_label: Label = $"../CanvasLayer/OptionsMenu/OptionsPanel/MainVerticalContainer/LevelName/IDLabel"
 @onready var canvas_layer: CanvasLayer = $"../CanvasLayer"
-@onready var tile_layer: CanvasLayer = $"../TileLayer"
+@onready var tile_layer: Node2D = $"../TileLayer"
 
 
 

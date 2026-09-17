@@ -34,9 +34,8 @@ SmoothDrag="*uid://cdpym7hkfa0a2"
 ButtonBlur="*uid://b5h1wdypogl02"
 SelectedTile="*uid://cflf0uyedllxl"
 TileSnapX="*uid://cf7jlh8t0qk0o"
-Firebase="*uid://cvb26atjckwlq"
 Alert="*uid://duopwd7q4yy40"
-Load="*uid://vh5224yornk7"
+Load="*uid://b5bhw1ie7q4kc"
 
 [display]
 
@@ -48,23 +47,22 @@ window/stretch/aspect="expand"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
 
-[editor_plugins]
+[file_customization]
 
-enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
+folder_colors={
+"res://Assets/": "red",
+"res://Lilita_One,Montserrat/": "orange",
+"res://Music/": "yellow",
+"res://Resources/": "green",
+"res://Scenes/": "teal",
+"res://Scripts/": "blue"
+}
 
 [gui]
 
 theme/default_font_antialiasing=2
 theme/default_font_multichannel_signed_distance_field=true
-theme/custom_font="uid://8lgp283mw5ex"
-
-[input]
-
-ShowTerminal={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-]
-}
+theme/custom_font="uid://d2ww86huppoqp"
 
 [physics]
 

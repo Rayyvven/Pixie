@@ -15,7 +15,12 @@ func _on_import_file_dir_selected(dir: String) -> void:
 	if err != OK:
 		print("Error")
 		return
-	Config.set_value(dict["Level Info"]["Name"], "Level", dict)
+	if dict["Level Info"]["Name"] in Config:
+		print("Track already exists. Saving it as a copy...")
+		Config.set_value(dict["Level Info"]["Name"] + " 2", "Level", dict)
+		
+	else:
+		Config.set_value(dict["Level Info"]["Name"], "Level", dict)
 	get_tree().reload_current_scene()
 	Config.save("user://SavedLevels.cfg")
 	## Get Song
@@ -53,6 +58,7 @@ func _on_import_file_dir_selected(dir: String) -> void:
 func _on_pressed() -> void:
 	print("Importing Track...")
 	import_file.visible = true
+
 var tween := Tween.new()
 func _on_mouse_entered() -> void:
 	tween.kill()

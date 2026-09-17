@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 					position.x = 900
 			if Options.get_value("Editor", "SnapY") == true:
 				position.y = snapped(position.y, 100)
-	if get_global_mouse_position().x >= 1000 or EditorOptionsGlobal.Shown == true or get_viewport().get_mouse_position().y >= 1500 or get_viewport().get_mouse_position().y <= 150 and get_viewport().get_mouse_position().x <= 150 or EditorOptionsGlobal.Shown:
+	if get_global_mouse_position().x >= 1000 or EditorOptionsGlobal.Shown == true and get_viewport().get_mouse_position().x <= 150 or EditorOptionsGlobal.Shown:
 		tile.disabled = true
 		#print("Disabled Tile")
 		tile.mouse_filter = Control.MOUSE_FILTER_IGNORE

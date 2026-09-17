@@ -15,9 +15,7 @@
 [ext_resource type="Script" uid="uid://bdj8cf87fcf1e" path="res://Scripts/git_hub_backing.gd" id="13_734iq"]
 [ext_resource type="Script" uid="uid://fnry734esafr" path="res://Scripts/you_tube_button.gd" id="14_guvn3"]
 [ext_resource type="Script" uid="uid://cqb82ns1aktke" path="res://Scripts/ThemedTextureButton.gd" id="17_dxlao"]
-[ext_resource type="Script" uid="uid://bpm34n0rep4gw" path="res://Scenes/splash_label.gd" id="17_w5jns"]
-[ext_resource type="Texture2D" uid="uid://dex87x572pl3g" path="res://Assets/PixieAssets/ImportButton.png" id="18_fg10g"]
-[ext_resource type="Script" uid="uid://c5rdds0v12i7o" path="res://Scenes/logout_button.gd" id="19_nwp2f"]
+[ext_resource type="Script" uid="uid://bpm34n0rep4gw" path="res://Scripts/splash_label.gd" id="17_w5jns"]
 
 [sub_resource type="Gradient" id="Gradient_45kqk"]
 offsets = PackedFloat32Array(0, 0.084980235, 0.756917, 1)
@@ -141,24 +139,6 @@ offset_bottom = 150.0
 grow_horizontal = 0
 alignment = 2
 
-[node name="LogoutButton" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=1748292064]
-z_index = 1
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_rotation = 1.5707964
-tooltip_text = "Logout"
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("18_fg10g")
-script = ExtResource("19_nwp2f")
-
-[node name="LogoutConfirm" type="ConfirmationDialog" parent="CanvasLayer/HBoxContainer/LogoutButton" unique_id=411729666]
-oversampling_override = 1.0
-title = "Confirm Logout"
-initial_position = 2
-size = Vector2i(245, 100)
-force_native = true
-dialog_text = "Are you sure you want to log out?"
-
 [node name="Options" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=1144972540 node_paths=PackedStringArray("Canvas")]
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -224,6 +204,7 @@ alignment = 1
 [node name="Online" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=1958204894]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_4eu37")
 ignore_texture_size = true
 stretch_mode = 5
@@ -243,6 +224,7 @@ metadata/_custom_type_script = "uid://cqb82ns1aktke"
 [node name="Editor" type="TextureButton" parent="CanvasLayer/HomeButtons/MenuButtons" unique_id=297861726]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_k3ry7")
 ignore_texture_size = true
 stretch_mode = 5
@@ -310,12 +292,10 @@ offset_left = -104.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "v0.1.1b"
+text = "v0.1.2"
 label_settings = SubResource("LabelSettings_734iq")
 horizontal_alignment = 2
 
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/LogoutButton" to="CanvasLayer/HBoxContainer/LogoutButton" method="_on_pressed"]
-[connection signal="confirmed" from="CanvasLayer/HBoxContainer/LogoutButton/LogoutConfirm" to="CanvasLayer/HBoxContainer/LogoutButton" method="_on_logout_confirm_confirmed"]
 [connection signal="pressed" from="CanvasLayer/CornerSocials/YouTubeButton" to="CanvasLayer/CornerSocials/YouTubeButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/CornerSocials/GitHubButton" to="CanvasLayer/CornerSocials/GitHubButton/GitHubBacking" method="_on_git_hub_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CornerSocials/DiscordButton" to="CanvasLayer/CornerSocials/DiscordButton" method="_on_pressed"]

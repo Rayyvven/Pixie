@@ -32,14 +32,13 @@
 [ext_resource type="Script" uid="uid://bycpm5fkhjmak" path="res://Scenes/SaveTrack.gd" id="11_r3d53"]
 [ext_resource type="Script" uid="uid://cp3l03576fqw0" path="res://Scripts/button.gd" id="12_2h0k7"]
 [ext_resource type="Script" uid="uid://cf7jlh8t0qk0o" path="res://Scripts/tile_snap_x.gd" id="12_5p5qg"]
-[ext_resource type="Script" uid="uid://cjg4pf8h06riw" path="res://Scripts/import.gd" id="12_op3c8"]
 [ext_resource type="Script" uid="uid://bm87kpvidk8ox" path="res://Scripts/song_file_label.gd" id="13_0l4bc"]
 [ext_resource type="Script" uid="uid://ddlfgebmjq0lr" path="res://Scripts/speed_val.gd" id="13_3lyd6"]
 [ext_resource type="Script" uid="uid://5ayk1qyr5n5k" path="res://Scripts/bpm_label.gd" id="14_i5vsu"]
 [ext_resource type="Script" uid="uid://d3t6seg068yoi" path="res://Scripts/level_name.gd" id="14_ruwpr"]
 [ext_resource type="Script" uid="uid://cisuq22rvjxpe" path="res://Scripts/song_name.gd" id="16_6utg8"]
 [ext_resource type="Script" uid="uid://waw0jjp7g0lg" path="res://Scripts/play_position.gd" id="16_l5j4h"]
-[ext_resource type="Script" uid="uid://b0qpugevmxkfm" path="res://Scenes/tile_snap_bpm.gd" id="17_sb36i"]
+[ext_resource type="Script" uid="uid://b0qpugevmxkfm" path="res://Scripts/tile_snap_bpm.gd" id="17_sb36i"]
 [ext_resource type="Script" uid="uid://dt710dm3kyexr" path="res://Scripts/song_artist.gd" id="17_yoksu"]
 [ext_resource type="Script" uid="uid://desxjy4lma3hx" path="res://Scripts/tile_select.gd" id="18_o8yew"]
 [ext_resource type="Texture2D" uid="uid://dhp85sqxg2sne" path="res://Assets/TileNoBG.png" id="18_pee1p"]
@@ -55,12 +54,12 @@
 [ext_resource type="Script" uid="uid://xy6liadbkp3j" path="res://Scripts/tile_placer_drag_thing.gd" id="25_iis80"]
 [ext_resource type="Script" uid="uid://biqewtrm3ttp5" path="res://Scripts/debuglabel.gd" id="25_ukxwk"]
 [ext_resource type="Texture2D" uid="uid://dex87x572pl3g" path="res://Assets/PixieAssets/ImportButton.png" id="28_6rfi4"]
-[ext_resource type="Script" uid="uid://cd1k3ekc81ygq" path="res://Scenes/background_color_picker.gd" id="29_ju71e"]
+[ext_resource type="Script" uid="uid://cd1k3ekc81ygq" path="res://Scripts/background_color_picker.gd" id="29_ju71e"]
 [ext_resource type="Theme" uid="uid://bm1n35hpxhw8k" path="res://BaseTheme.tres" id="32_27kt4"]
 [ext_resource type="Script" uid="uid://bw233mniumjda" path="res://Scenes/row_control.gd" id="32_r3d53"]
 [ext_resource type="Texture2D" uid="uid://idwtbk4h8cf0" path="res://Assets/TileColorSelect.png" id="32_x83xj"]
 [ext_resource type="Script" uid="uid://cflf0uyedllxl" path="res://Scripts/selected_tile.gd" id="34_ekxub"]
-[ext_resource type="Script" uid="uid://b7bpeeyf18qci" path="res://Scenes/video.gd" id="34_qkq5n"]
+[ext_resource type="Script" uid="uid://b7bpeeyf18qci" path="res://Scripts/video.gd" id="34_qkq5n"]
 [ext_resource type="Script" uid="uid://ba827vaevqf8f" path="res://Scenes/level_description_label.gd" id="35_sb36i"]
 [ext_resource type="Script" uid="uid://bvxqnpke80rkm" path="res://Scripts/tile_select_slide.gd" id="38_sdqln"]
 [ext_resource type="AudioStream" uid="uid://dx0agug4im5mg" path="res://freesound_community-plastic-trash-can-98819.mp3" id="40_1pi8w"]
@@ -81,11 +80,11 @@
 [ext_resource type="Script" uid="uid://b8mn6s0e0f82n" path="res://Scripts/tile_placer_flick.gd" id="58_e10g1"]
 [ext_resource type="Texture2D" uid="uid://b5ibbtybnygi5" path="res://Assets/PixieAssets/FlickTileDirection.png" id="59_e10g1"]
 [ext_resource type="Texture2D" uid="uid://dpgp3b2svj7ij" path="res://Assets/PixieAssets/TileSpeedUp.png" id="59_n38h7"]
-[ext_resource type="Script" uid="uid://cbkcs8gjahx14" path="res://Scenes/tile_select_speed.gd" id="60_kl7cl"]
+[ext_resource type="Script" uid="uid://cbkcs8gjahx14" path="res://Scripts/tile_select_speed.gd" id="60_kl7cl"]
 [ext_resource type="Script" uid="uid://cv5ay0ka5lk7c" path="res://Scripts/FlickTop.gd" id="61_eotcv"]
 [ext_resource type="Script" uid="uid://c1u54bi5g8sfl" path="res://Scripts/rotate.gd" id="62_5frhh"]
 [ext_resource type="Script" uid="uid://cfrt61s0junca" path="res://Scenes/rotation_control.gd" id="74_kl7cl"]
-[ext_resource type="Script" uid="uid://cwimlqqs4ly0l" path="res://Scenes/bpm_line_placer.gd" id="76_j51xc"]
+[ext_resource type="Script" uid="uid://cwimlqqs4ly0l" path="res://bpm_line_placer.gd" id="76_j51xc"]
 
 [sub_resource type="Shader" id="Shader_xos7g"]
 code = "shader_type canvas_item;
@@ -262,6 +261,23 @@ static func log_info(a_description: String) -> void:
 
 [sub_resource type="LabelSettings" id="LabelSettings_5lu7h"]
 font_size = 48
+
+[sub_resource type="GDScript" id="GDScript_bq14r"]
+script/source = "extends Button
+signal LoadLevel(dir: String)
+
+func _on_file_dialog_dir_selected(dir: String) -> void:
+	#get_tree().reload_current_scene()
+	print(\"Emitted Signal!\")
+	LoadLevel.emit(dir)
+			### Remove this node ASAP
+
+func _on_pressed() -> void:
+	if $FileDialog.visible == false:
+		$FileDialog.visible = true
+	else:
+		$FileDialog.visible = false
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_j3pel"]
 font_size = 32
@@ -955,20 +971,16 @@ offset_right = 712.0
 offset_bottom = 914.0
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Changelog v0.1.1b
+text = "Changelog v0.1.2
 Additions:
- - New folder button in the track browser which allows you to easily locate your real, saved files
- - New trash button next to your created tracks which will allow you to easily delete your tracks, rather than removing them via your save file.
- - Implimented a new loading screen that will hopefully make switching between different menus faster & smoother. Feel free to give feedback!
+ - Added an options button to the created track browser
 Bug Fixes & Improvements:
- - Removed Discord RPC due to instability
- - Removed \"SharePlugin\" due to lack of usage
- - Converted all Splash Texts to use a .txt file rather than being coded manually
- - Under the hood changes to buttons, which should mitigate some lag.
- - Modified the way tracks are saved, such that they now no longer use an ID based system. Although incompatible with previous versions, this addition should allow for less problematic saving & loading.
- - Fixed an issue in which loading a track without a song would crash your game
- - The screen drag now accurately starts & stops
- - Removed the arbitrary hard-coded Y-position limits to placing tiles"
+ - Added a back button to the work in progress online landing page.
+ - Removed arbitrary Y limitations which disallowed users from moving or selecting tiles at certain places.
+ - Fixed a crash when changing track names via the track browser
+ - Removed Firebase. This will be changed in the future
+ - An extensive amount of backend changes to improve file size & optimization
+ - Made buttons all extend the \"ThemedTextureButton\" class, such that they now all function essentially the same."
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer" unique_id=1043028808]
 position = Vector2(540, 960)
@@ -1376,7 +1388,7 @@ z_index = 22
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-script = ExtResource("12_op3c8")
+script = SubResource("GDScript_bq14r")
 
 [node name="FileDialog" type="FileDialog" parent="CanvasLayer/OptionsMenu/OptionsPanel/HBoxContainer/Import" unique_id=779258638]
 oversampling_override = 1.0
@@ -1397,6 +1409,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="DebugLabel" type="Label" parent="CanvasLayer" unique_id=485110023]
+custom_minimum_size = Vector2(1, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1404,35 +1417,7 @@ offset_left = -510.0
 offset_bottom = 240.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 32
-text = "aa
-a
-a
-a
-a
-a
-a
-
-a
-
-a
-
-a
-a
-
-a
-
-a
-
-a
-a
-
-a
-
-a
-
-a
-a
-"
+text = "This label should not display this text"
 label_settings = SubResource("LabelSettings_j3pel")
 horizontal_alignment = 2
 autowrap_mode = 3
@@ -1778,6 +1763,9 @@ playback_type = 1
 [node name="Place Tile" type="Node2D" parent="." unique_id=483865401]
 z_index = 5
 script = ExtResource("6_8howc")
+
+[node name="TileLayer" type="Node2D" parent="." unique_id=1145712809]
+position = Vector2(0, 2)
 
 [node name="TilePlacer" type="Node2D" parent="." unique_id=105616275]
 visible = false

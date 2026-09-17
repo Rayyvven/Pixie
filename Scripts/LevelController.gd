@@ -77,7 +77,6 @@ func save(dir):
 	var LVLDIR = base_dir + level_name
 	DirAccess.make_dir_recursive_absolute(LVLDIR)
 	debug.text = "Exporting... \n Creating file details"
-	await get_tree().create_timer(.5).timeout
 	export_progress.value += 14 #3
 	# Copy Song
 	
@@ -92,23 +91,24 @@ func save(dir):
 	var dest_path = LVLDIR + "/" + file_name
 	export_progress.value += 14 #4
 	debug.text = "Exporting... \n Copying song..." + str(file_name)
-	await get_tree().create_timer(.5).timeout
 	var source_file = FileAccess.open(SongCopy, FileAccess.READ)
 	if source_file == null:
 		print("Failed to read song!")
 		print("Path: ", SongCopy)
 		print("Error: ", FileAccess.get_open_error())
-		return
-	var data = source_file.get_buffer(source_file.get_length())
-	source_file.close()
-	var file = FileAccess.open(dest_path, FileAccess.WRITE)
-	if file == null:
-		print("Failed to write song!")
-		print("Path: ", dest_path)
-		print("Error: ", FileAccess.get_open_error())
-		return
-	file.store_buffer(data)
-	file.close()
+		debug.text = "Song copy failed!"
+		pass
+	else:
+		var data = source_file.get_buffer(source_file.get_length())
+		source_file.close()
+		var file = FileAccess.open(dest_path, FileAccess.WRITE)
+		if file == null:
+			print("Failed to write song!")
+			print("Path: ", dest_path)
+			print("Error: ", FileAccess.get_open_error())
+			pass
+		file.store_buffer(data)
+		file.close()
 	export_progress.value += 14 #5
 	# Save JSON
 	
